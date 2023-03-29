@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>check.png</file>
+        <file>inputError.jpg</file>
+        <file>pencil.png</file>
+        <file>quit.png</file>
+        <file>recycle-bin.png</file>
+    </qresource>
+</RCC>
