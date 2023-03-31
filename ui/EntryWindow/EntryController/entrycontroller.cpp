@@ -40,14 +40,18 @@ bool EntryController::editEntry(const QString &category, double amount, int id)
 void EntryController::finishUpEntrys(const QString &month, int year)
 {
     bool dateCorrect = Validator::checkDate(month, year);
-    if(dateCorrect)
+    bool entrysEmpty = entryDatahandler->newEntryData.empty();
+    if(dateCorrect && !entrysEmpty)
     {
         entryDatahandler->saveDateToEntrys(month, year);
         Datahandler::saveEntrysToFile(entryDatahandler->newEntryData);
     }
-    else
+    else if(!dateCorrect)
     {
         emit raiseError("The date doesnt fit in our required format, please check and try again.");
+    }
+    else if(entrysEmpty){
+        emit raiseError("There are no entrys to be saved. Please add Entrys or return to the main menu.");
     }
 }
 
