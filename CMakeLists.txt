@@ -17,18 +17,32 @@ set(PROJECT_SOURCES
         ui/mainWindow/mainwindow.cpp
         ui/mainWindow/mainwindow.h
         ui/mainWindow/mainwindow.ui
-        ui/addEntry/addEntryWindow/addentrywindow.h
-        ui/addEntry/addEntryWindow/addentrywindow.cpp
-        ui/addEntry/addEntryWindow/addentrywindow.ui
-        ui/addEntry/addEntryForm/entryform.h
-        ui/addEntry/addEntryForm/entryform.cpp
-        ui/addEntry/addEntryForm/entryform.ui
-        ui/addEntry/entryDatahandler/entrydatahandler.h
-        ui/addEntry/entryDatahandler/entrydatahandler.cpp
-        ui/addEntry/entryDatahandler/entrydata.h
-        ui/addEntry/entryDatahandler/entrydata.cpp
+        ui/EntryWindow/EntryWindow/addentrywindow.h
+        ui/EntryWindow/EntryWindow/addentrywindow.cpp
+        ui/EntryWindow/EntryWindow/addentrywindow.ui
+        ui/EntryWindow/EntryForm/entryform.h
+        ui/EntryWindow/EntryForm/entryform.cpp
+        ui/EntryWindow/EntryForm/entryform.ui
+        ui/EntryWindow/EntryDatahandler/entrydatahandler.h
+        ui/EntryWindow/EntryDatahandler/entrydatahandler.cpp
+        ui/EntryWindow/EntryDatahandler/entrydata.h
+        ui/EntryWindow/EntryDatahandler/entrydata.cpp
+        ui/EntryWindow/EntryController/entrycontroller.h
+        ui/EntryWindow/EntryController/entrycontroller.cpp
         src/windowManager/windowmanager.h
         src/windowManager/windowmanager.cpp
+        src/validator/validator.h
+        src/validator/validator.cpp
+        src/sorter/sorter.h
+        src/sorter/sorter.cpp
+        src/repository/repository.h
+        src/repository/repository.cpp
+        src/repository/datahandler/datahandler.h
+        src/repository/datahandler/datahandler.cpp
+        src/repository/writer/writer.h
+        src/repository/writer/writer.cpp
+        src/repository/reader/reader.h
+        src/repository/reader/reader.cpp
         assets/recource.qrc
 )
 

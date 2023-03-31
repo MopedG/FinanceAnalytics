@@ -1,9 +1,10 @@
 <RCC>
-    <qresource prefix="/img">
+    <qresource prefix="/assets">
         <file>check.png</file>
         <file>inputError.jpg</file>
         <file>pencil.png</file>
         <file>quit.png</file>
         <file>recycle-bin.png</file>
+        <file>confirmCheck.png</file>
     </qresource>
 </RCC>

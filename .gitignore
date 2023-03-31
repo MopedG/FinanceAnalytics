@@ -1,0 +1,4 @@
+*.user
+*.ninja
+*cache*
+/build/
