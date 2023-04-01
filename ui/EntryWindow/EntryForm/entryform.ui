@@ -229,6 +229,9 @@ QPushButton:disabled{
        <height>25</height>
       </size>
      </property>
+     <property name="shortcut">
+      <string>Return</string>
+     </property>
     </widget>
    </item>
   </layout>

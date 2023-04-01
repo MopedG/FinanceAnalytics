@@ -11,7 +11,7 @@ QStringList Writer::serealizeData(const std::vector<std::shared_ptr<EntryData>> 
     for(const auto &entry : entryData)
     {
         serealized += entry->getMonthYear().first + ",";
-        serealized += std::to_string(entry->getMonthYear().second) + ",";
+        serealized += QString::number(entry->getMonthYear().second) + ",";
         serealized += entry->getCategory() + ",";
         serealized += QString::number(entry->getAmount());
         serealizedData.emplace_back(serealized);

@@ -37,7 +37,7 @@ bool EntryController::editEntry(const QString &category, double amount, int id)
     return entryCorrect;
 }
 
-void EntryController::finishUpEntrys(const QString &month, int year)
+bool EntryController::finishUpEntrys(const QString &month, int year)
 {
     bool dateCorrect = Validator::checkDate(month, year);
     bool entrysEmpty = entryDatahandler->newEntryData.empty();

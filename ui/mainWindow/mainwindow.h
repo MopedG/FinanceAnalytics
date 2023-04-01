@@ -17,10 +17,13 @@ public:
 
 private slots:
     void on_newEntryButton_clicked();
+    void on_backToMain();
 
 private:
     Ui::MainWindow *ui;
-    std::unique_ptr<AddEntryWindow> entryWindow;
+    AddEntryWindow *entryWindow;
+
+    void initEntryWindow();
 };
 
 

@@ -85,6 +85,8 @@ void AddEntryWindow::on_confimAllButton_clicked()
 {
     QString month = ui->monthEdit->text();
     int year = ui->yearEdit->text().toInt();
-    controller->finishUpEntrys(month, year);
+    bool success = controller->finishUpEntrys(month, year);
+    if(success)
+        emit backToMain();
 }
 

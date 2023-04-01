@@ -2,3 +2,4 @@
 *.ninja
 *cache*
 /build/
+/CMakeLists.txt.user.b1eda0e

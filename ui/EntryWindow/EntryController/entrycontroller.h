@@ -14,7 +14,7 @@ public:
 
     bool saveEntry(const QString &category, double amout, int id);
     bool editEntry(const QString &category, double amount, int id);
-    void finishUpEntrys(const QString &month, int year);
+    bool finishUpEntrys(const QString &month, int year);
     void deleteEntry(int id);
 
 signals:
