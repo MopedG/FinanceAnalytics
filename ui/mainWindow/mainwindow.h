@@ -21,7 +21,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    AddEntryWindow *entryWindow;
+    std::unique_ptr<AddEntryWindow> entryWindow;
 
     void initEntryWindow();
 };

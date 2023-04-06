@@ -8,7 +8,7 @@ class Reader
 public:
     Reader() = default;
 
-    static std::map<int, std::shared_ptr<EntryData>> readData();
+    static std::vector<std::shared_ptr<EntryData>> readData();
 
 private:
     static QStringList deserealizeData(const QString &dataLine);

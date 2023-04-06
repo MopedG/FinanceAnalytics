@@ -2,12 +2,12 @@
 #include "EntryWindow/EntryDatahandler/entrydata.h"
 #include <algorithm>
 
-std::vector<std::shared_ptr<EntryData> > Sorter::sortByDate(const std::map<int, std::shared_ptr<EntryData>> &entryData)
+std::vector<std::shared_ptr<EntryData> > Sorter::sortByDate(const std::vector<std::shared_ptr<EntryData>> &entryData)
 {
     std::vector<std::shared_ptr<EntryData>> sortedData;
     for(const auto &entry : entryData)
     {
-        sortedData.emplace_back(entry.second);
+        sortedData.emplace_back(entry);
     }
 
     std::sort(sortedData.begin(), sortedData.end(), [](const auto &a, const auto &b)
@@ -17,7 +17,7 @@ std::vector<std::shared_ptr<EntryData> > Sorter::sortByDate(const std::map<int, 
             return a->getMonthYear().second < b->getMonthYear().second;
         }
         else
-            return a->monthToInt(a->getMonthYear().first) < a->monthToInt(b->getMonthYear().first);
+            return a->monthToInt(a->getMonthYear().first) < b->monthToInt(b->getMonthYear().first);
     });
     return sortedData;
 }

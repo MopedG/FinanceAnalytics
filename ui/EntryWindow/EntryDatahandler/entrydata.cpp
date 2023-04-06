@@ -34,29 +34,29 @@ double EntryData::getAmount() const
 
 int EntryData::monthToInt(const QString &month) const
 {
-    if (month == "januar")
+    if (month == "Januar")
             return 1;
-        else if (month == "februar")
+        else if (month == "Februar")
             return 2;
-        else if (month == "märz")
+        else if (month == "März")
             return 3;
-        else if (month == "april")
+        else if (month == "April")
             return 4;
-        else if (month == "mai")
+        else if (month == "Mai")
             return 5;
-        else if (month == "juni")
+        else if (month == "Juni")
             return 6;
-        else if (month == "juli")
+        else if (month == "Juli")
             return 7;
-        else if (month == "august")
+        else if (month == "August")
             return 8;
-        else if (month == "september")
+        else if (month == "September")
             return 9;
-        else if (month == "oktober")
+        else if (month == "Oktober")
             return 10;
-        else if (month == "november")
+        else if (month == "November")
             return 11;
-        else if (month == "dezember")
+        else if (month == "Dezember")
             return 12;
 }
 

@@ -23,12 +23,16 @@ set(PROJECT_SOURCES
         ui/EntryWindow/EntryForm/entryform.h
         ui/EntryWindow/EntryForm/entryform.cpp
         ui/EntryWindow/EntryForm/entryform.ui
+        ui/EntryWindow/ErrorMessageBox/errormessagebox.h
+        ui/EntryWindow/ErrorMessageBox/errormessagebox.cpp
+        ui/EntryWindow/ErrorMessageBox/errormessagebox.ui
         ui/EntryWindow/EntryDatahandler/entrydatahandler.h
         ui/EntryWindow/EntryDatahandler/entrydatahandler.cpp
         ui/EntryWindow/EntryDatahandler/entrydata.h
         ui/EntryWindow/EntryDatahandler/entrydata.cpp
         ui/EntryWindow/EntryController/entrycontroller.h
         ui/EntryWindow/EntryController/entrycontroller.cpp
+
         src/windowManager/windowmanager.h
         src/windowManager/windowmanager.cpp
         src/validator/validator.h

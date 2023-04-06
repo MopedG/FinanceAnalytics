@@ -39,11 +39,12 @@ bool EntryController::editEntry(const QString &category, double amount, int id)
 
 bool EntryController::finishUpEntrys(const QString &month, int year)
 {
-    bool dateCorrect = Validator::checkDate(month, year);
+    QString formatedMonth = formatMonth(month);
+    bool dateCorrect = Validator::checkDate(formatedMonth, year);
     bool entrysEmpty = entryDatahandler->newEntryData.empty();
     if(dateCorrect && !entrysEmpty)
     {
-        entryDatahandler->saveDateToEntrys(month, year);
+        entryDatahandler->saveDateToEntrys(formatedMonth, year);
         Datahandler::saveEntrysToFile(entryDatahandler->newEntryData);
     }
     else if(!dateCorrect)
@@ -53,9 +54,21 @@ bool EntryController::finishUpEntrys(const QString &month, int year)
     else if(entrysEmpty){
         emit raiseError("There are no entrys to be saved. Please add Entrys or return to the main menu.");
     }
+    return (dateCorrect && !entrysEmpty);
 }
 
 void EntryController::deleteEntry(int id)
 {
     entryDatahandler->deleteEntry(id);
+}
+
+QString EntryController::formatMonth(const QString &month)
+{
+    QString formatMonth = month;
+    QString firstLetter = month.left(1);
+    QString rest = month.mid(1);
+    QString upperFirstLetter = firstLetter.toUpper();
+    formatMonth = upperFirstLetter + rest;
+
+    return formatMonth;
 }

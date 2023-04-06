@@ -22,13 +22,13 @@
      <property name="minimumSize">
       <size>
        <width>200</width>
-       <height>50</height>
+       <height>55</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>580</width>
-       <height>16777215</height>
+       <width>50000</width>
+       <height>55</height>
       </size>
      </property>
      <property name="mouseTracking">
@@ -56,8 +56,8 @@ qproperty-alignment: AlignCenter;</string>
      </property>
      <property name="maximumSize">
       <size>
-       <width>300</width>
-       <height>50</height>
+       <width>50000</width>
+       <height>55</height>
       </size>
      </property>
      <property name="styleSheet">
@@ -77,10 +77,16 @@ font: 600 14pt &quot;Segoe UI&quot;;
    </item>
    <item>
     <widget class="QPushButton" name="editButton">
+     <property name="minimumSize">
+      <size>
+       <width>55</width>
+       <height>55</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
-       <width>50</width>
-       <height>50</height>
+       <width>55</width>
+       <height>55</height>
       </size>
      </property>
      <property name="styleSheet">
@@ -127,7 +133,7 @@ QPushButton:disabled{
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>110</width>
+       <width>50</width>
        <height>20</height>
       </size>
      </property>
@@ -137,14 +143,14 @@ QPushButton:disabled{
     <widget class="QPushButton" name="deleteButton">
      <property name="minimumSize">
       <size>
-       <width>50</width>
-       <height>50</height>
+       <width>55</width>
+       <height>55</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>50</width>
-       <height>50</height>
+       <width>55</width>
+       <height>55</height>
       </size>
      </property>
      <property name="styleSheet">
@@ -186,14 +192,14 @@ QPushButton:disabled{
     <widget class="QPushButton" name="submitButton">
      <property name="minimumSize">
       <size>
-       <width>50</width>
-       <height>50</height>
+       <width>55</width>
+       <height>55</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>50</width>
-       <height>50</height>
+       <width>55</width>
+       <height>55</height>
       </size>
      </property>
      <property name="styleSheet">

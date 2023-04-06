@@ -3,5 +3,5 @@
 
 void Repository::fetchData()
 {
-    entryData = Datahandler::getEntrysFromFile();
+    //entryData = Datahandler::getEntrysFromFile();
 }

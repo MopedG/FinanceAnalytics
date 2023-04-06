@@ -24,7 +24,7 @@ void Writer::writeData(const QStringList &serealizedData)
 {
     std::filesystem::path filePath = getRepositoryFilePath();
     QFile targetFile(filePath);
-    if(targetFile.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text))
+    if(targetFile.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         QTextStream file(&targetFile);
         for(const auto &entry : serealizedData)

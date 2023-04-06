@@ -6,5 +6,6 @@
         <file>quit.png</file>
         <file>recycle-bin.png</file>
         <file>confirmCheck.png</file>
+        <file>home.png</file>
     </qresource>
 </RCC>

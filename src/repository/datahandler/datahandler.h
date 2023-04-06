@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include <map>
 #include <memory>
 
@@ -10,7 +11,7 @@ public:
     Datahandler() = default;
 
     static void saveEntrysToFile(const std::map<int, std::shared_ptr<EntryData>>& entryData);
-    static std::map<int, std::shared_ptr<EntryData>> getEntrysFromFile();
+    static std::vector<std::shared_ptr<EntryData>> getEntrysFromFile();
 };
 
 

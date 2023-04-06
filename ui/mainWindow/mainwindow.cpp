@@ -7,9 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    entryWindow = new AddEntryWindow();
-    ui->stackedWidget->addWidget(entryWindow);
-    MainWindow::connect(entryWindow, &AddEntryWindow::backToMain, this, &MainWindow::on_backToMain);
+    entryWindow = std::make_unique<AddEntryWindow>();
+    ui->stackedWidget->addWidget(entryWindow.get());
+    MainWindow::connect(entryWindow.get(), &AddEntryWindow::backToMain, this, &MainWindow::on_backToMain);
 }
 
 MainWindow::~MainWindow()
@@ -27,14 +27,15 @@ void MainWindow::on_newEntryButton_clicked()
 void MainWindow::on_backToMain()
 {
     ui->stackedWidget->setCurrentIndex(0);
-    entryWindow->close();
+    ui->stackedWidget->removeWidget(entryWindow.get());
+    entryWindow.reset();
 }
 
 void MainWindow::initEntryWindow()
 {
-    entryWindow = new AddEntryWindow();
-    ui->stackedWidget->addWidget(entryWindow);
-    MainWindow::connect(entryWindow, &AddEntryWindow::backToMain, this, &MainWindow::on_backToMain);
+    entryWindow = std::make_unique<AddEntryWindow>();
+    ui->stackedWidget->addWidget(entryWindow.get());
+    MainWindow::connect(entryWindow.get(), &AddEntryWindow::backToMain, this, &MainWindow::on_backToMain);
 }
 
 

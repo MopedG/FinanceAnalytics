@@ -5,20 +5,19 @@
 #include <QTextStream>
 #include <QFile>
 
-std::map<int, std::shared_ptr<EntryData>> Reader::readData()
+std::vector<std::shared_ptr<EntryData>> Reader::readData()
 {
     std::filesystem::path repoPath = Writer::getRepositoryFilePath();
     QFile repoFile(repoPath);
     QString dataLine;
-    std::map<int, std::shared_ptr<EntryData>> entryData;
+    std::vector<std::shared_ptr<EntryData>> entryData;
     int id = 0;
 
-    if(repoFile.open(QIODevice::ReadOnly) | QIODevice::Text)
+    if(repoFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream stream(&repoFile);
         while(!stream.atEnd())
         {
-            id++;
             dataLine = stream.readLine().trimmed();
             QStringList data = deserealizeData(dataLine);
 
@@ -28,7 +27,7 @@ std::map<int, std::shared_ptr<EntryData>> Reader::readData()
             double amount = data[3].toDouble();
 
             std::shared_ptr<EntryData> entry = std::make_shared<EntryData>(std::pair(month, year), category, amount);
-            entryData.emplace(std::pair(id, entry));
+            entryData.emplace_back(entry);
         }
     }
     return entryData;

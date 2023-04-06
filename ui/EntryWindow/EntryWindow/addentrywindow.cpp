@@ -1,6 +1,7 @@
 #include "addentrywindow.h"
 #include "EntryWindow/EntryForm/entryform.h"
 #include "EntryWindow/EntryController/entrycontroller.h"
+#include "EntryWindow/ErrorMessageBox/ErrorMessageBox.h"
 #include "ui_addentrywindow.h"
 
 #include <QMessageBox>
@@ -10,8 +11,8 @@ AddEntryWindow::AddEntryWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::addEntryWindow)
 {
-    controller = std::make_unique<EntryController>();
-    AddEntryWindow::connect(controller.get(), &EntryController::raiseError, this, &AddEntryWindow::on_raiseError);
+    initializeClasses();
+    setUpInitialConnections();
     ui->setupUi(this);
     on_openEntryForm();
 }
@@ -25,7 +26,7 @@ void AddEntryWindow::on_openEntryForm()
 {
     entryForm = new EntryForm(this);
     setEntryFormAttributes();
-    setUpConnections();
+    connectEntryForm();
 }
 
 void AddEntryWindow::on_saveEntry(const QString &category, double amount, int id)
@@ -49,6 +50,7 @@ void AddEntryWindow::on_closeEntryForm(EntryForm &entryForm)
 
 void AddEntryWindow::on_raiseError(const QString &errorMessage)
 {
+    setEnabled(false);
     displayError(errorMessage);
 }
 
@@ -60,7 +62,7 @@ void AddEntryWindow::setEntryFormAttributes()
     entryForm->disableCancelEdit();
 }
 
-void AddEntryWindow::setUpConnections()
+void AddEntryWindow::connectEntryForm()
 {
     AddEntryWindow::connect(entryForm, &EntryForm::openEntryForm, this, &AddEntryWindow::on_openEntryForm);
     AddEntryWindow::connect(entryForm, &EntryForm::saveEntry, this, &AddEntryWindow::on_saveEntry);
@@ -69,16 +71,22 @@ void AddEntryWindow::setUpConnections()
 
 }
 
+void AddEntryWindow::setUpInitialConnections()
+{
+    AddEntryWindow::connect(controller.get(), &EntryController::raiseError, this, &AddEntryWindow::on_raiseError);
+    AddEntryWindow::connect(error.get(), &ErrorMessageBox::enableEntryWindow, this, &AddEntryWindow::on_enableEntryWindow);
+}
+
+void AddEntryWindow::initializeClasses()
+{
+    controller = std::make_unique<EntryController>();
+    error = std::make_unique<ErrorMessageBox>();
+}
+
 void AddEntryWindow::displayError(const QString &errorMessage)
 {
-    QPixmap pixmap = QPixmap(":/assets/inputError.jpg");
-    QMessageBox error;
-    error.setIcon(QMessageBox::Information);
-    error.setWindowTitle("An error has occured.");
-    error.setInformativeText(errorMessage);
-    error.setIconPixmap(pixmap);
-    error.setStyleSheet("font-weight: bold; color:white; background-color: #3f4145");
-    error.exec();
+    error->setErrorMessage(errorMessage);
+    error->show();
 }
 
 void AddEntryWindow::on_confimAllButton_clicked()
@@ -88,5 +96,16 @@ void AddEntryWindow::on_confimAllButton_clicked()
     bool success = controller->finishUpEntrys(month, year);
     if(success)
         emit backToMain();
+}
+
+void AddEntryWindow::on_enableEntryWindow()
+{
+    setEnabled(true);
+}
+
+
+void AddEntryWindow::on_homeButton_clicked()
+{
+    emit backToMain();
 }
 
