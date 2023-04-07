@@ -2,6 +2,7 @@
 #include "EntryWindow/EntryForm/entryform.h"
 #include "EntryWindow/EntryController/entrycontroller.h"
 #include "EntryWindow/ErrorMessageBox/ErrorMessageBox.h"
+#include "validator/validator.h"
 #include "ui_addentrywindow.h"
 
 #include <QMessageBox>
@@ -60,6 +61,7 @@ void AddEntryWindow::setEntryFormAttributes()
     ui->cellLayout_2->addWidget(entryForm, 0, Qt::AlignTop);
     entryForm->setAttribute(Qt::WA_DeleteOnClose, true);
     entryForm->disableCancelEdit();
+    ui->yearEdit->setText(QString::number(Validator::getCurrentYear()));
 }
 
 void AddEntryWindow::connectEntryForm()

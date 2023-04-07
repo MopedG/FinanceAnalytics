@@ -103,11 +103,19 @@
              <height>16777215</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>18</pointsize>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: rgb(51, 51, 51);
 border-radius: 7px;
 color: rgb(255, 255, 255);
-font: 700 14pt &quot;Segoe UI&quot;;
+font: 700 18pt &quot;Segoe UI&quot;;
 qproperty-alignment: AlignCenter;</string>
            </property>
            <property name="placeholderText">
@@ -140,7 +148,7 @@ qproperty-alignment: AlignCenter;</string>
 border-radius: 7px;
 qproperty-alignment: AlignCenter;
 color: rgb(255, 255, 255);
-font: 700 14pt &quot;Segoe UI&quot;;</string>
+font: 700 18pt &quot;Segoe UI&quot;;</string>
            </property>
            <property name="placeholderText">
             <string>Jahr</string>
@@ -308,7 +316,7 @@ QPushButton:clicked {
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../assets/recource.qrc">
+         <iconset>
           <normaloff>:/assets/home.png</normaloff>:/assets/home.png</iconset>
         </property>
         <property name="iconSize">
@@ -374,7 +382,7 @@ QPushButton:pressed{
          <string>Confirm</string>
         </property>
         <property name="icon">
-         <iconset resource="../../../assets/recource.qrc">
+         <iconset>
           <normaloff>:/assets/confirmCheck.png</normaloff>:/assets/confirmCheck.png</iconset>
         </property>
         <property name="iconSize">
@@ -390,8 +398,6 @@ QPushButton:pressed{
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../../../assets/recource.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
