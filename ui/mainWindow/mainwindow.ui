@@ -14,6 +14,12 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(26, 26, 26);</string>
    </property>
@@ -42,6 +48,12 @@
        </sizepolicy>
       </property>
       <widget class="QWidget" name="page1">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
          <width>1000</width>
@@ -107,7 +119,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QPushButton" name="showStatisticsButton">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -133,7 +145,7 @@ QPushButton:pressed {
 }</string>
              </property>
              <property name="text">
-              <string>Budget anzeigen/bearbeiten</string>
+              <string>Budgetstatistiken anzeigen</string>
              </property>
             </widget>
            </item>

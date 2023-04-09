@@ -32,6 +32,15 @@ set(PROJECT_SOURCES
         ui/EntryWindow/EntryDatahandler/entrydata.cpp
         ui/EntryWindow/EntryController/entrycontroller.h
         ui/EntryWindow/EntryController/entrycontroller.cpp
+        ui/StatisticsWindow/MainWindow/statisticswindow.h
+        ui/StatisticsWindow/MainWindow/statisticswindow.cpp
+        ui/StatisticsWindow/MainWindow/statisticswindow.ui
+        ui/StatisticsWindow/Forms/MonthCard/MonthCard.h
+        ui/StatisticsWindow/Forms/MonthCard/MonthCard.cpp
+        ui/StatisticsWindow/Forms/MonthCard/MonthCard.ui
+        ui/StatisticsWindow/Forms/SpendingForm/spendingform.h
+        ui/StatisticsWindow/Forms/SpendingForm/spendingform.cpp
+        ui/StatisticsWindow/Forms/SpendingForm/spendingform.ui
 
         src/windowManager/windowmanager.h
         src/windowManager/windowmanager.cpp

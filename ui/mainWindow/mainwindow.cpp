@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "EntryWindow/EntryWindow/addentrywindow.h"
+#include "StatisticsWindow/MainWindow/statisticswindow.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -7,9 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    entryWindow = std::make_unique<AddEntryWindow>();
-    ui->stackedWidget->addWidget(entryWindow.get());
-    MainWindow::connect(entryWindow.get(), &AddEntryWindow::backToMain, this, &MainWindow::on_backToMain);
+    initStatisticsWindow();
+    initEntryWindow();
 }
 
 MainWindow::~MainWindow()
@@ -21,15 +21,21 @@ void MainWindow::on_newEntryButton_clicked()
 {
     if(entryWindow == nullptr)
         initEntryWindow();
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_showStatisticsButton_clicked()
+{
     ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_backToMain()
 {
     ui->stackedWidget->setCurrentIndex(0);
-    ui->stackedWidget->removeWidget(entryWindow.get());
     entryWindow.reset();
 }
+
+
 
 void MainWindow::initEntryWindow()
 {
@@ -38,5 +44,10 @@ void MainWindow::initEntryWindow()
     MainWindow::connect(entryWindow.get(), &AddEntryWindow::backToMain, this, &MainWindow::on_backToMain);
 }
 
-
+void MainWindow::initStatisticsWindow()
+{
+    statisticsWindow = std::make_unique<StatisticsWindow>();
+    MainWindow::connect(statisticsWindow.get(), &StatisticsWindow::backToMain, this, &MainWindow::on_backToMain);
+    ui->stackedWidget->addWidget(statisticsWindow.get());
+}
 

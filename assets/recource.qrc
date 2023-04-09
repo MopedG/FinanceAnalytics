@@ -7,5 +7,8 @@
         <file>recycle-bin.png</file>
         <file>confirmCheck.png</file>
         <file>home.png</file>
+        <file>settingWheel.png</file>
+        <file>spending.png</file>
+        <file>earning.png</file>
     </qresource>
 </RCC>
