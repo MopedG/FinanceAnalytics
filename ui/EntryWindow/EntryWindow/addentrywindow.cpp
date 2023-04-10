@@ -46,7 +46,7 @@ void AddEntryWindow::on_editEntry(const QString &category, double amount, int id
 void AddEntryWindow::on_closeEntryForm(EntryForm &entryForm)
 {
     controller->deleteEntry(entryForm.id);
-    emit backToMain();
+    entryForm.close();
 }
 
 void AddEntryWindow::on_raiseError(const QString &errorMessage)

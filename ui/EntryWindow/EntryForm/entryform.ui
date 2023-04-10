@@ -19,6 +19,12 @@
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QLineEdit" name="categoryLineEdit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="minimumSize">
       <size>
        <width>200</width>
@@ -48,6 +54,12 @@ qproperty-alignment: AlignCenter;</string>
    </item>
    <item>
     <widget class="QLineEdit" name="spendingLineEdit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="minimumSize">
       <size>
        <width>300</width>
@@ -112,7 +124,7 @@ QPushButton:disabled{
       <string/>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../../../assets/recource.qrc">
        <normaloff>:/assets/pencil.png</normaloff>:/assets/pencil.png</iconset>
      </property>
      <property name="iconSize">
@@ -177,7 +189,7 @@ QPushButton:disabled{
       <string/>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../../../assets/recource.qrc">
        <normaloff>:/assets/recycle-bin.png</normaloff>:/assets/recycle-bin.png</iconset>
      </property>
      <property name="iconSize">
@@ -226,7 +238,7 @@ QPushButton:disabled{
 }</string>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../../../assets/recource.qrc">
        <normaloff>:/assets/check.png</normaloff>:/assets/check.png</iconset>
      </property>
      <property name="iconSize">
@@ -242,6 +254,8 @@ QPushButton:disabled{
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../../assets/recource.qrc"/>
+ </resources>
  <connections/>
 </ui>
