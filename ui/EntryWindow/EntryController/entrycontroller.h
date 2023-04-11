@@ -23,7 +23,7 @@ signals:
 private:
     std::unique_ptr<EntryDatahandler> entryDatahandler;
 
-    QString formatMonth(const QString &month);
+    QString firstLetterToUpper(const QString &month);
 };
 
 

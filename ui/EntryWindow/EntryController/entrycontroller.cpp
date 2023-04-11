@@ -12,9 +12,10 @@ EntryController::EntryController()
 bool EntryController::saveEntry(const QString &category, double amount, int id)
 {
     bool entryCorrect = Validator::checkEntry(category, amount);
+    QString formatedCategory = firstLetterToUpper(category);
     if(entryCorrect)
     {
-        entryDatahandler->saveEntry(category, amount, id);
+        entryDatahandler->saveEntry(formatedCategory, amount, id);
     }
     else
     {
@@ -26,9 +27,10 @@ bool EntryController::saveEntry(const QString &category, double amount, int id)
 bool EntryController::editEntry(const QString &category, double amount, int id)
 {
     bool entryCorrect = Validator::checkEntry(category, amount);
+    QString formatedCategory = firstLetterToUpper(category);
     if(entryCorrect)
     {
-        entryDatahandler->editEntry(category, amount, id);
+        entryDatahandler->editEntry(formatedCategory, amount, id);
     }
     else
     {
@@ -39,7 +41,7 @@ bool EntryController::editEntry(const QString &category, double amount, int id)
 
 bool EntryController::finishUpEntrys(const QString &month, int year)
 {
-    QString formatedMonth = formatMonth(month);
+    QString formatedMonth = firstLetterToUpper(month);
     bool dateCorrect = Validator::checkDate(formatedMonth, year);
     bool entrysEmpty = entryDatahandler->newEntryData.empty();
     if(dateCorrect && !entrysEmpty)
@@ -62,13 +64,14 @@ void EntryController::deleteEntry(int id)
     entryDatahandler->deleteEntry(id);
 }
 
-QString EntryController::formatMonth(const QString &month)
+QString EntryController::firstLetterToUpper(const QString &month)
 {
     QString formatMonth = month;
     QString firstLetter = month.left(1);
-    QString rest = month.mid(1);
+    QString rest = month.mid(1).toLower();
     QString upperFirstLetter = firstLetter.toUpper();
     formatMonth = upperFirstLetter + rest;
 
     return formatMonth;
 }
+

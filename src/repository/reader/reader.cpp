@@ -33,6 +33,16 @@ std::vector<std::shared_ptr<EntryData>> Reader::readData()
     return entryData;
 }
 
+QString Reader::getValueAfterComma(QString value, int afterComma)
+{
+    QStringList parts = value.split(',');
+    if(parts.size() > afterComma)
+    {
+        return parts[afterComma];
+    }
+    return QString();
+}
+
 QStringList Reader::deserealizeData(const QString &dataLine)
 {
     QStringList values;

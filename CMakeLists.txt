@@ -56,6 +56,8 @@ set(PROJECT_SOURCES
         src/repository/writer/writer.cpp
         src/repository/reader/reader.h
         src/repository/reader/reader.cpp
+        src/repository/refactorer/refactorer.h
+        src/repository/refactorer/refactorer.cpp
         assets/recource.qrc
 )
 
