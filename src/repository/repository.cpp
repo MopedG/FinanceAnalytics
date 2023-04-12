@@ -1,7 +1,5 @@
 #include "repository.h"
-#include "repository/datahandler/datahandler.h"
 
-void Repository::fetchData()
-{
-    //entryData = Datahandler::getEntrysFromFile();
-}
+
+Repository::Repository(std::vector<std::shared_ptr<EntryData>> entryData) : entryData(entryData) {}
+

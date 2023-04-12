@@ -3,40 +3,21 @@
 #include "repository/datahandler/datahandler.h"
 
 
-
-EntryController::EntryController()
+EntryController::EntryController(QStringList categoryWhiteList) : categoryWhiteList(categoryWhiteList)
 {
     entryDatahandler = std::make_unique<EntryDatahandler>();
 }
 
-bool EntryController::saveEntry(const QString &category, double amount, int id)
+void EntryController::saveEntry(const QString &category, double amount, int id)
 {
-    bool entryCorrect = Validator::checkEntry(category, amount);
     QString formatedCategory = firstLetterToUpper(category);
-    if(entryCorrect)
-    {
-        entryDatahandler->saveEntry(formatedCategory, amount, id);
-    }
-    else
-    {
-        emit raiseError("Your input did not match the requirements. Please try again!");
-    }
-    return entryCorrect;
+    entryDatahandler->saveEntry(formatedCategory, amount, id);
 }
 
-bool EntryController::editEntry(const QString &category, double amount, int id)
+void EntryController::editEntry(const QString &category, double amount, int id)
 {
-    bool entryCorrect = Validator::checkEntry(category, amount);
     QString formatedCategory = firstLetterToUpper(category);
-    if(entryCorrect)
-    {
-        entryDatahandler->editEntry(formatedCategory, amount, id);
-    }
-    else
-    {
-        emit raiseError("Your input did not match the requirements. Please try again!");
-    }
-    return entryCorrect;
+    entryDatahandler->editEntry(formatedCategory, amount, id);
 }
 
 bool EntryController::finishUpEntrys(const QString &month, int year)
@@ -64,6 +45,27 @@ void EntryController::deleteEntry(int id)
     entryDatahandler->deleteEntry(id);
 }
 
+bool EntryController::checkCategoryWhitelist(const QString &category)
+{
+    bool passedProcedure = Validator::categoryInWhiteList(categoryWhiteList, category);
+    return passedProcedure;
+}
+
+bool EntryController::checkEntryCorrectnes(const QString &category, double amount, const QString &errorMessage)
+{
+    if(!Validator::checkEntry(category, amount))
+    {
+        emit raiseError(errorMessage);
+        return false;
+    }
+    return true;
+}
+
+void EntryController::addToCategoryWhitelist(const QString &category)
+{
+    categoryWhiteList.emplace_back(category);
+}
+
 QString EntryController::firstLetterToUpper(const QString &month)
 {
     QString formatMonth = month;
@@ -74,4 +76,6 @@ QString EntryController::firstLetterToUpper(const QString &month)
 
     return formatMonth;
 }
+
+
 

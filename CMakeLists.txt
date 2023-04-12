@@ -14,18 +14,21 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        ui/mainWindow/mainwindow.cpp
-        ui/mainWindow/mainwindow.h
-        ui/mainWindow/mainwindow.ui
+        ui/MainWindow/mainwindow.cpp
+        ui/MainWindow/mainwindow.h
+        ui/MainWindow/mainwindow.ui
         ui/EntryWindow/EntryWindow/addentrywindow.h
         ui/EntryWindow/EntryWindow/addentrywindow.cpp
         ui/EntryWindow/EntryWindow/addentrywindow.ui
         ui/EntryWindow/EntryForm/entryform.h
         ui/EntryWindow/EntryForm/entryform.cpp
         ui/EntryWindow/EntryForm/entryform.ui
-        ui/EntryWindow/ErrorMessageBox/errormessagebox.h
-        ui/EntryWindow/ErrorMessageBox/errormessagebox.cpp
-        ui/EntryWindow/ErrorMessageBox/errormessagebox.ui
+        ui/EntryWindow/MessageBox/ErrorMessageBox/errormessagebox.h
+        ui/EntryWindow/MessageBox/ErrorMessageBox/errormessagebox.cpp
+        ui/EntryWindow/MessageBox/ErrorMessageBox/errormessagebox.ui
+        ui/EntryWindow/MessageBox/WhitelistMessageBox/whitelistmessagebox.h
+        ui/EntryWindow/MessageBox/WhitelistMessageBox/whitelistmessagebox.cpp
+        ui/EntryWindow/MessageBox/WhitelistMessageBox/whitelistmessagebox.ui
         ui/EntryWindow/EntryDatahandler/entrydatahandler.h
         ui/EntryWindow/EntryDatahandler/entrydatahandler.cpp
         ui/EntryWindow/EntryDatahandler/entrydata.h
@@ -42,22 +45,22 @@ set(PROJECT_SOURCES
         ui/StatisticsWindow/Forms/SpendingForm/spendingform.cpp
         ui/StatisticsWindow/Forms/SpendingForm/spendingform.ui
 
-        src/windowManager/windowmanager.h
-        src/windowManager/windowmanager.cpp
-        src/validator/validator.h
-        src/validator/validator.cpp
-        src/sorter/sorter.h
-        src/sorter/sorter.cpp
-        src/repository/repository.h
-        src/repository/repository.cpp
-        src/repository/datahandler/datahandler.h
-        src/repository/datahandler/datahandler.cpp
-        src/repository/writer/writer.h
-        src/repository/writer/writer.cpp
-        src/repository/reader/reader.h
-        src/repository/reader/reader.cpp
-        src/repository/refactorer/refactorer.h
-        src/repository/refactorer/refactorer.cpp
+        src/WindowManager/windowmanager.h
+        src/WindowManager/windowmanager.cpp
+        src/Validator/validator.h
+        src/Validator/validator.cpp
+        src/Sorter/sorter.h
+        src/Sorter/sorter.cpp
+        src/Repository/repository.h
+        src/Repository/repository.cpp
+        src/Repository/Datahandler/datahandler.h
+        src/Repository/Datahandler/datahandler.cpp
+        src/Repository/Writer/writer.h
+        src/Repository/Writer/writer.cpp
+        src/Repository/Reader/reader.h
+        src/Repository/Reader/reader.cpp
+        src/Repository/Refactorer/refactorer.h
+        src/Repository/Refactorer/refactorer.cpp
         assets/recource.qrc
 )
 

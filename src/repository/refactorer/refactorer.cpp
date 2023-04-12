@@ -1,12 +1,13 @@
 #include "refactorer.h"
 #include <map>
+#include <set>
 
 Refactorer::Refactorer()
 {
 
 }
 
-std::vector<std::shared_ptr<EntryData>> Refactorer::combineEntriesByCategory(std::vector<std::shared_ptr<EntryData>> entryData)
+std::vector<std::shared_ptr<EntryData>> Refactorer::combineEntriesByCategory(const std::vector<std::shared_ptr<EntryData>> &entryData)
 {
     std::vector<std::shared_ptr<EntryData>> refactoredEntryData;
     std::map<QString, std::shared_ptr<EntryData>> addedEntryData;
@@ -32,5 +33,17 @@ std::vector<std::shared_ptr<EntryData>> Refactorer::combineEntriesByCategory(std
         }
 
 
-    return refactoredEntryData;
+        return refactoredEntryData;
+}
+
+QStringList Refactorer::createWhiteList(const std::vector<std::shared_ptr<EntryData> > &entryData)
+{
+
+    std::set<QString> uniqueCategorys;
+    for(const auto &entry : entryData)
+    {
+        uniqueCategorys.insert(entry->getCategory());
+    }
+    QStringList whiteList(uniqueCategorys.begin(), uniqueCategorys.end());
+    return whiteList;
 }

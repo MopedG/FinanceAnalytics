@@ -1,16 +1,15 @@
 #pragma once
-#include <map>
+#include <vector>
 #include <memory>
 
 class EntryData;
 class Repository
 {
 public:
-    Repository() = default;
+    Repository(std::vector<std::shared_ptr<EntryData>> entryData);
 
-    std::map<int, std::shared_ptr<EntryData>> entryData;
+    std::vector<std::shared_ptr<EntryData>> entryData;
 
-    void fetchData();
 };
 
 

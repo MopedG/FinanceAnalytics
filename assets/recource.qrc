@@ -10,5 +10,6 @@
         <file>settingWheel.png</file>
         <file>spending.png</file>
         <file>earning.png</file>
+        <file>discard.png</file>
     </qresource>
 </RCC>

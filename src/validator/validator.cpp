@@ -40,3 +40,18 @@ int Validator::getCurrentYear()
     int year = localTime.tm_year + 1900;
     return year;
 }
+
+bool Validator::categoryInWhiteList(const QStringList &whiteList, const QString &category)
+{
+    bool inWhiteList = false;
+
+    for(const auto &entry : whiteList)
+    {
+        if(entry == category)
+        {
+            inWhiteList = true;
+            break;
+        }
+    }
+    return inWhiteList;
+}

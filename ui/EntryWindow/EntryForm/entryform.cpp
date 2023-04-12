@@ -25,6 +25,11 @@ void EntryForm::disableCancelEdit(bool disable)
     ui->editButton->setDisabled(disable);
 }
 
+void EntryForm::enableAddedToWhitelist(bool enable)
+{
+    addedToWhitelist = enable;
+}
+
 void EntryForm::disableFields(bool disable)
 {
         ui->categoryLineEdit->setReadOnly(disable);
@@ -40,8 +45,8 @@ void EntryForm::on_submitButton_clicked()
     if(!editPressedBefore)
         emit saveEntry(categoryEntry, spendingEntry.toDouble(), id);
     else
-        emit editEntry(categoryEntry, spendingEntry.toDouble(), id);
-    if(Validator::checkEntry(categoryEntry, spendingEntry.toDouble()))
+        emit editEntry(categoryEntry, spendingEntry.toDouble(), id, *this);
+    if(Validator::checkEntry(categoryEntry, spendingEntry.toDouble()) && addedToWhitelist)
     {
         ui->spendingLineEdit->setText(spendingEntry+"€");
         disableFields();
@@ -51,8 +56,12 @@ void EntryForm::on_submitButton_clicked()
             emit openEntryForm();
         }
         editPressedBefore = false;
-
     }
+    else
+    {
+        disableCancelEdit();
+    }
+
 }
 
 
@@ -67,7 +76,6 @@ void EntryForm::on_editButton_clicked()
         editPressedBefore =  true;
     }
 }
-
 
 void EntryForm::on_deleteButton_clicked()
 {

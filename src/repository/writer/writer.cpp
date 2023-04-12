@@ -36,7 +36,7 @@ void Writer::writeData(const QStringList &serealizedData)
 
 std::filesystem::path Writer::getRepositoryFilePath()
 {
-    std::filesystem::path relPath = "src\\repository\\repository.txt";
+    std::filesystem::path relPath = "src\\Repository\\repository.txt";
 
     HMODULE hModule = GetModuleHandle(NULL);
     TCHAR path[MAX_PATH];

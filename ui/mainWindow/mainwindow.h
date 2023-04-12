@@ -4,6 +4,7 @@
 
 class StatisticsWindow;
 class AddEntryWindow;
+class Repository;
 namespace Ui {
 class MainWindow;
 }
@@ -27,9 +28,12 @@ private:
     Ui::MainWindow *ui;
     std::unique_ptr<AddEntryWindow> entryWindow;
     std::unique_ptr<StatisticsWindow> statisticsWindow;
+    std::unique_ptr<Repository> repository;
 
+    void init();
     void initEntryWindow();
     void initStatisticsWindow();
+    void initRepository();
 };
 
 
