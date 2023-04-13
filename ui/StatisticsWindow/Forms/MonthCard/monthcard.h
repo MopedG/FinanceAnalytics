@@ -16,6 +16,7 @@ public:
 
     void deactivate();
     void activate();
+    QString getMonth();
 
 signals:
     void monthCardActivated(MonthCard *monthCard);

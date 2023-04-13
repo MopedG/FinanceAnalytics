@@ -28,6 +28,11 @@ void MainWindow::on_newEntryButton_clicked()
 
 void MainWindow::on_showStatisticsButton_clicked()
 {
+    if(reloadStatisticsWindow)
+    {
+        repository->updateData(Datahandler::getEntrysFromFile());
+        statisticsWindow->update(repository->entryData);
+    }
     ui->stackedWidget->setCurrentIndex(1);
 }
 
@@ -38,8 +43,9 @@ void MainWindow::init()
     initEntryWindow();
 }
 
-void MainWindow::on_backToMain()
+void MainWindow::on_backToMain(bool newDataAdded)
 {
+    reloadStatisticsWindow = newDataAdded;
     ui->stackedWidget->setCurrentIndex(0);
     entryWindow.reset();
 }

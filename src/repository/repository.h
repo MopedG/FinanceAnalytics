@@ -10,6 +10,7 @@ public:
 
     std::vector<std::shared_ptr<EntryData>> entryData;
 
+    void updateData(std::vector<std::shared_ptr<EntryData>> updatedData);
 };
 
 

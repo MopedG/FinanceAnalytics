@@ -19,9 +19,7 @@ public:
 
 private slots:
     void on_newEntryButton_clicked();
-    void on_backToMain();
-
-
+    void on_backToMain(bool newDataAdded = false);
     void on_showStatisticsButton_clicked();
 
 private:
@@ -29,6 +27,8 @@ private:
     std::unique_ptr<AddEntryWindow> entryWindow;
     std::unique_ptr<StatisticsWindow> statisticsWindow;
     std::unique_ptr<Repository> repository;
+
+    bool reloadStatisticsWindow = false;
 
     void init();
     void initEntryWindow();

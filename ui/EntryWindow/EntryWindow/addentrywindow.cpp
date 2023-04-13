@@ -90,12 +90,12 @@ void AddEntryWindow::on_confimAllButton_clicked()
     int year = ui->yearEdit->text().toInt();
     bool success = controller->finishUpEntrys(month, year);
     if(success)
-        emit backToMain();
+        emit backToMain(true);
 }
 
 void AddEntryWindow::on_homeButton_clicked()
 {
-    emit backToMain();
+    emit backToMain(false);
 }
 
 void AddEntryWindow::on_entrySuccessfull(bool successfull, EntryForm &entryForm)

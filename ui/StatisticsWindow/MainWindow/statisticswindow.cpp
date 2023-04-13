@@ -19,16 +19,29 @@ StatisticsWindow::~StatisticsWindow()
     delete ui;
 }
 
+void StatisticsWindow::update(const std::vector<std::shared_ptr<EntryData>> &data)
+{
+    QStringList dates = Refactorer::createDateList(data);
+    if(dates.size() != ui->monthLayout->count())
+        updateMonthCard(dates);
+}
+
+void StatisticsWindow::updateMonthCard(const QStringList &dates)
+{
+    removeMonthCards();
+    createMonthCards(dates, true);
+}
+
 void StatisticsWindow::initObjects(const std::vector<std::shared_ptr<EntryData>> &data)
 {
-    initMonthCards(Refactorer::createDateList(data));
+    createMonthCards(Refactorer::createDateList(data));
     spendingForm = new SpendingForm();
 
     ui->spendingsLayout->setAlignment(Qt::AlignTop);
     ui->spendingsLayout->addWidget(spendingForm, 0, Qt::AlignTop);
 }
 
-void StatisticsWindow::initMonthCards(const QStringList &dates)
+void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
 {
     auto mostRecentDateIter = dates.rbegin();
     for (auto dateIter = dates.rbegin(); dateIter != dates.rend(); ++dateIter) {
@@ -36,10 +49,25 @@ void StatisticsWindow::initMonthCards(const QStringList &dates)
         StatisticsWindow::connect(monthCard, &MonthCard::monthCardActivated, this, &StatisticsWindow::on_monthCardActivated);
         ui->monthLayout->setAlignment(Qt::AlignTop);
         ui->monthLayout->addWidget(monthCard, 0, Qt::AlignTop);
-        if (dateIter == mostRecentDateIter) {
+        if (dateIter == mostRecentDateIter && !update) {
             on_monthCardActivated(monthCard);
         }
+        if(update)
+        {
+            if(monthCard->getMonth() == lastActiveMonthCard)
+                on_monthCardActivated(monthCard);
+        }
     }
+}
+
+void StatisticsWindow::removeMonthCards()
+{
+    QLayoutItem *monthCardItem;
+    while ((monthCardItem = ui->monthLayout->takeAt(0)) != nullptr) {
+        delete monthCardItem->widget();
+        delete monthCardItem;
+    }
+    monthCardActive = nullptr;
 }
 
 void StatisticsWindow::on_homeButton_clicked()
@@ -53,8 +81,8 @@ void StatisticsWindow::on_monthCardActivated(MonthCard *activeMonthCard)
     {
          monthCardActive->deactivate();
     }
-
     monthCardActive = activeMonthCard;
     monthCardActive->activate();
+    lastActiveMonthCard = monthCardActive->getMonth();
 }
 

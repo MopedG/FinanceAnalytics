@@ -24,10 +24,16 @@ void MonthCard::activate()
     ui->selectButton->setChecked(true);
 }
 
+QString MonthCard::getMonth()
+{
+    QStringList dataParts = ui->dateLabel->text().split(" ");
+    return dataParts[0];
+
+}
+
 void MonthCard::on_selectButton_clicked()
 {
     emit monthCardActivated(this);
-    bool test = ui->selectButton->isChecked();
 }
 
 

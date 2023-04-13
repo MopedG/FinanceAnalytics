@@ -22,7 +22,7 @@ public:
 
 
 signals:
-    void backToMain();
+    void backToMain(bool newDataAdded);
 
 private slots:
     void on_openEntryForm();

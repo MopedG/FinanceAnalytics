@@ -19,8 +19,11 @@ public:
                               = std::vector<std::shared_ptr<EntryData>>());
     ~StatisticsWindow();
 
+
+    void update(const std::vector<std::shared_ptr<EntryData>> &data);
+
 signals:
-    void backToMain();
+    void backToMain(bool newDataAdded = false);
 
 
 private slots:
@@ -32,10 +35,13 @@ private:
 
     MonthCard *monthCard;
     MonthCard *monthCardActive = nullptr;
+    QString lastActiveMonthCard;
     SpendingForm *spendingForm;
 
     void initObjects(const std::vector<std::shared_ptr<EntryData>> &data);
-    void initMonthCards(const QStringList &dates);
+    void updateMonthCard(const QStringList &dates);
+    void createMonthCards(const QStringList &dates, bool update = false);
+    void removeMonthCards();
 };
 
 
