@@ -1,12 +1,13 @@
 #pragma once
 
-#include <QWidget>
+#include "qdialog.h"
+#include <QDialog>
 
 namespace Ui {
 class ErrorMessageBox;
 }
 
-class ErrorMessageBox : public QWidget
+class ErrorMessageBox : public QDialog
 {
     Q_OBJECT
 

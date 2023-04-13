@@ -1,6 +1,5 @@
 #include "entryform.h"
 #include "ui_entryform.h"
-#include "validator/validator.h"
 
 int EntryForm::instances = 0;
 
@@ -25,16 +24,38 @@ void EntryForm::disableCancelEdit(bool disable)
     ui->editButton->setDisabled(disable);
 }
 
-void EntryForm::enableAddedToWhitelist(bool enable)
+void EntryForm::operationSuccessfull(bool successfull)
 {
-    addedToWhitelist = enable;
+    if(successfull)
+    {
+        ui->spendingLineEdit->setText(ui->spendingLineEdit->text()+"€");
+        currentAmount = ui->spendingLineEdit->text();
+        currentCategory = ui->categoryLineEdit->text();
+        disableFields();
+        disableCancelEdit(false);
+
+        if(!editPressedBefore)
+        {
+            emit openEntryForm();
+        }
+        editPressedBefore = false;
+    }
+}
+
+void EntryForm::reset()
+{
+    ui->categoryLineEdit->setText(currentCategory);
+    ui->spendingLineEdit->setText(currentAmount);
+    editPressedBefore = false;
+    disableCancelEdit(false);
+    disableFields();
 }
 
 void EntryForm::disableFields(bool disable)
 {
-        ui->categoryLineEdit->setReadOnly(disable);
-        ui->spendingLineEdit->setReadOnly(disable);
-        ui->submitButton->setDisabled(disable);
+    ui->categoryLineEdit->setReadOnly(disable);
+    ui->spendingLineEdit->setReadOnly(disable);
+    ui->submitButton->setDisabled(disable);
 }
 
 void EntryForm::on_submitButton_clicked()
@@ -43,27 +64,14 @@ void EntryForm::on_submitButton_clicked()
     QString spendingEntry = ui->spendingLineEdit->text();
 
     if(!editPressedBefore)
-        emit saveEntry(categoryEntry, spendingEntry.toDouble(), id);
+    {
+        emit saveEntry(categoryEntry, spendingEntry.toDouble(), id, *this);
+    }
     else
+    {
         emit editEntry(categoryEntry, spendingEntry.toDouble(), id, *this);
-    if(Validator::checkEntry(categoryEntry, spendingEntry.toDouble()) && addedToWhitelist)
-    {
-        ui->spendingLineEdit->setText(spendingEntry+"€");
-        disableFields();
-        disableCancelEdit(false);
-        if(!editPressedBefore)
-        {
-            emit openEntryForm();
-        }
-        editPressedBefore = false;
     }
-    else
-    {
-        disableCancelEdit();
-    }
-
 }
-
 
 void EntryForm::on_editButton_clicked()
 {

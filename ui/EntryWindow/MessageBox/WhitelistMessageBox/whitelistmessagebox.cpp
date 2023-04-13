@@ -1,6 +1,5 @@
 #include "whitelistmessagebox.h"
 #include "ui_whitelistmessagebox.h"
-#include <QDialog>
 #include <QDialogButtonBox>
 
 WhiteListMessageBox::WhiteListMessageBox(QWidget *parent) :

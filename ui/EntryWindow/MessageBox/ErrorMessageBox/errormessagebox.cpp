@@ -2,7 +2,7 @@
 #include "ui_errormessagebox.h"
 
 ErrorMessageBox::ErrorMessageBox(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::ErrorMessageBox)
 {
     ui->setupUi(this);

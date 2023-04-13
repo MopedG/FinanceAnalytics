@@ -1,7 +1,7 @@
 #pragma once
 
 #include "qdialog.h"
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class WhiteListMessageBox;

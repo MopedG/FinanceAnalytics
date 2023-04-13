@@ -27,29 +27,23 @@ signals:
 private slots:
     void on_openEntryForm();
     void on_closeEntryForm(EntryForm &entryForm);
-    void on_saveEntry(const QString &category, double amount, int id);
+    void on_saveEntry(const QString &category, double amount, int id, EntryForm &entryForm);
     void on_editEntry(const QString &category, double amount, int id, EntryForm &entryForm);
-    void on_raiseError(const QString &errorMessage);
-
+    void on_displayDialog(std::shared_ptr<QDialog> dialog);
+    void on_resetEntryForm(EntryForm &entryForm);
     void on_confimAllButton_clicked();
-    void on_enableEntryWindow();
     void on_homeButton_clicked();
+    void on_entrySuccessfull(bool successfull, EntryForm &entryForm);
 
 private:
     Ui::addEntryWindow *ui;
     EntryForm *entryForm;
-    std::unique_ptr<ErrorMessageBox> error;
-    std::unique_ptr<WhiteListMessageBox> whitelistMessage;
     std::unique_ptr<EntryController> controller;
 
     void setEntryFormAttributes();
     void connectEntryForm();
     void setUpInitialConnections();
     void initializeClasses(const QStringList &categoryWhiteList);
-    void displayError(const QString &errorMessage);
-    bool showCategoryWhitelist(const QString &message);
-    bool handleCategoryWhitelist(const QString &category, const double amount, EntryForm &entryForm);
-    bool openWhitelistDialog(const QString &message);
 };
 
 

@@ -12,16 +12,16 @@ class EntryForm : public QWidget
 public:
     explicit EntryForm(QWidget *parent = nullptr);
     ~EntryForm();
+    void disableCancelEdit(bool disable = true);
+    void operationSuccessfull(bool successfull);
+    void reset();
 
     int id = 0;
-
-    void disableCancelEdit(bool disable = true);
-    void enableAddedToWhitelist(bool enable = true);
 
 signals:
     void openEntryForm();
     void closeEntryForm(EntryForm &entryForm);
-    void saveEntry(const QString &category, double amount, int id);
+    void saveEntry(const QString &category, double amount, int id, EntryForm &entryForm);
     void editEntry(const QString &category, double amount, int id, EntryForm &entryForm);
 
 private slots:
@@ -31,12 +31,13 @@ private slots:
 
 private:
     Ui::EntryForm *ui;
+    static int instances;
+    bool editPressedBefore = false;
+    QString currentCategory;
+    QString currentAmount;
 
     void disableFields(bool disable = true);
 
-    static int instances;
-    bool editPressedBefore = false;
-    bool addedToWhitelist = false;
 };
 
 
