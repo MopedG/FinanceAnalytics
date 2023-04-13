@@ -11,7 +11,6 @@ std::vector<std::shared_ptr<EntryData>> Reader::readData()
     QFile repoFile(repoPath);
     QString dataLine;
     std::vector<std::shared_ptr<EntryData>> entryData;
-    int id = 0;
 
     if(repoFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -32,6 +31,7 @@ std::vector<std::shared_ptr<EntryData>> Reader::readData()
                 entryData.emplace_back(entry);
             }
         }
+        repoFile.close();
     }
     return entryData;
 }

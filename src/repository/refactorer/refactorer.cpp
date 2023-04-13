@@ -36,9 +36,8 @@ std::vector<std::shared_ptr<EntryData>> Refactorer::combineEntriesByCategory(con
         return refactoredEntryData;
 }
 
-QStringList Refactorer::createWhiteList(const std::vector<std::shared_ptr<EntryData> > &entryData)
+QStringList Refactorer::createWhiteList(const std::vector<std::shared_ptr<EntryData>> &entryData)
 {
-
     std::set<QString> uniqueCategorys;
     for(const auto &entry : entryData)
     {
@@ -46,4 +45,18 @@ QStringList Refactorer::createWhiteList(const std::vector<std::shared_ptr<EntryD
     }
     QStringList whiteList(uniqueCategorys.begin(), uniqueCategorys.end());
     return whiteList;
+}
+
+QStringList Refactorer::createDateList(const std::vector<std::shared_ptr<EntryData> > &entryData)
+{
+    QStringList uniqueDates;
+    for (const auto& entry : entryData)
+    {
+        QString date = entry->getMonthYear().first + " " + QString::number(entry->getMonthYear().second);
+        if (!uniqueDates.contains(date))
+        {
+            uniqueDates.emplace_back(date);
+        }
+    }
+    return uniqueDates;
 }

@@ -25,7 +25,7 @@ void EntryController::saveEntry(const QString &category, double amount, int id, 
     }
     if(entryCanBeSaved)
     {
-        categoryWhiteList.emplace_back(category);
+        addToCategoryWhitelist(category);
         QString formatedCategory = firstLetterToUpper(category);
         entryDatahandler->saveEntry(formatedCategory, amount, id);
         emit entrySuccessfull(true, entryForm);
@@ -38,14 +38,13 @@ void EntryController::editEntry(const QString &category, double amount, int id, 
     bool entryCanBeEdited = checkEntryCorrectnes(category, amount, "Your input did not match the requirements. Please try again!");
     if(entryCanBeEdited && !Validator::categoryInWhiteList(categoryWhiteList, category))
     {
-        whitelistDialog->setMessage("The category '"+category+"' is new. Press Confirm to add it to the whitelist"
-                                                              " or press Discard");
+        whitelistDialog->setMessage("The category '"+category+"' is new and will overwrite the current one. Are you sure?");
         emit displayDialog(whitelistDialog);
         entryCanBeEdited = whitelistDialog->getStatus();
     }
     if(entryCanBeEdited)
     {
-        categoryWhiteList.emplace_back(category);
+        addToCategoryWhitelist(category);
         QString formatedCategory = firstLetterToUpper(category);
         entryDatahandler->editEntry(formatedCategory, amount, id);
         emit entrySuccessfull(true, entryForm);

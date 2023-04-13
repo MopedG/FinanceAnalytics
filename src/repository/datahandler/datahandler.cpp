@@ -9,7 +9,7 @@ void Datahandler::saveEntrysToFile(const std::map<int, std::shared_ptr<EntryData
     std::vector<std::shared_ptr<EntryData>> fetchedFromFile = getEntrysFromFile();
     for (const auto& entry : entryData)
     {
-        fetchedFromFile.push_back(entry.second);
+        fetchedFromFile.emplace_back(entry.second);
     }
     //#############################################################################################################
 

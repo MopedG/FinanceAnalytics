@@ -53,7 +53,7 @@ void MainWindow::initEntryWindow()
 
 void MainWindow::initStatisticsWindow()
 {
-    statisticsWindow = std::make_unique<StatisticsWindow>();
+    statisticsWindow = std::make_unique<StatisticsWindow>(nullptr, repository->entryData); //data
     MainWindow::connect(statisticsWindow.get(), &StatisticsWindow::backToMain, this, &MainWindow::on_backToMain);
     ui->stackedWidget->addWidget(statisticsWindow.get());
 }
