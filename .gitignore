@@ -1,0 +1,11 @@
+*.user
+*.ninja
+*cache*
+/build/
+/CMakeLists.txt.user.b1eda0e
+/.$BudgetAnsichtDesign.drawio.bkp
+/BudgetAnsichtDesign.drawio
+*.drawio
+*.autosave
+*drawio*
+*.txt
