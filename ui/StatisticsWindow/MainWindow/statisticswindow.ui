@@ -177,7 +177,7 @@ background-color: rgb(51, 51, 51);
 </string>
                     </property>
                     <property name="text">
-                     <string>Ausgabenübersicht Februar</string>
+                     <string>Keine Einträge vorhanden</string>
                     </property>
                     <property name="scaledContents">
                      <bool>true</bool>
@@ -232,7 +232,7 @@ QPushButton:hover {
 }</string>
                     </property>
                     <property name="text">
-                     <string>Gesamt: 623 €</string>
+                     <string>0€</string>
                     </property>
                    </widget>
                   </item>

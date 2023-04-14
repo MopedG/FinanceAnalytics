@@ -43,6 +43,7 @@ std::filesystem::path Writer::getRepositoryFilePath()
     GetModuleFileName(hModule, path, MAX_PATH);
     std::filesystem::path exePath = std::filesystem::absolute(std::filesystem::path(path)).parent_path();
     exePath = exePath.parent_path();
+    exePath = exePath.parent_path();
     std::filesystem::path fullPath = exePath / relPath;
 
     return fullPath;
