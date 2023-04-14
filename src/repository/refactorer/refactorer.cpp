@@ -1,4 +1,5 @@
 #include "refactorer.h"
+#include "Sorter/sorter.h"
 #include <map>
 #include <set>
 
@@ -59,4 +60,18 @@ QStringList Refactorer::createDateList(const std::vector<std::shared_ptr<EntryDa
         }
     }
     return uniqueDates;
+}
+
+std::vector<std::pair<QString, double>> Refactorer::createSpendingsList(const std::vector<std::shared_ptr<EntryData>> &entryData, const QString &month)
+{
+    std::vector<std::pair<QString, double>> spendingsList;
+    for(const auto &entry : entryData)
+    {
+        if(entry->getMonthYear().first == month)
+        {
+            spendingsList.emplace_back(std::pair(entry->getCategory(), entry->getAmount()));
+        }
+    }
+    Sorter::sortSpendingsListByAmount(spendingsList);
+    return spendingsList;
 }

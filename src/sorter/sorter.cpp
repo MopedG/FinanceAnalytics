@@ -21,3 +21,13 @@ std::vector<std::shared_ptr<EntryData> > Sorter::sortByDate(const std::vector<st
     });
     return sortedData;
 }
+
+void Sorter::sortSpendingsListByAmount(std::vector<std::pair<QString, double> > &spendingsList)
+{
+    std::sort(spendingsList.begin(), spendingsList.end(), [](const auto &a, const auto &b)
+    {
+
+        return a.second > b.second;
+
+    });
+}

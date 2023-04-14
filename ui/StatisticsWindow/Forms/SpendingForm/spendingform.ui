@@ -63,7 +63,7 @@ border-radius: 12px;</string>
     </spacer>
    </item>
    <item>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="amount">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>3</horstretch>

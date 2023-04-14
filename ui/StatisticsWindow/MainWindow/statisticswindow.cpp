@@ -10,6 +10,7 @@ StatisticsWindow::StatisticsWindow(QWidget *parent, const std::vector<std::share
     ui(new Ui::StatisticsWindow)
 {
     ui->setupUi(this);
+    this->data = data;
     initObjects(data);
 
 }
@@ -21,9 +22,12 @@ StatisticsWindow::~StatisticsWindow()
 
 void StatisticsWindow::update(const std::vector<std::shared_ptr<EntryData>> &data)
 {
+    this->data = data;
     QStringList dates = Refactorer::createDateList(data);
     if(dates.size() != ui->monthLayout->count())
         updateMonthCard(dates);
+    else
+        updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth()));
 }
 
 void StatisticsWindow::updateMonthCard(const QStringList &dates)
@@ -32,13 +36,15 @@ void StatisticsWindow::updateMonthCard(const QStringList &dates)
     createMonthCards(dates, true);
 }
 
+void StatisticsWindow::updateSpendingForms(const std::vector<std::pair<QString, double>> spendings)
+{
+    removeSpendingForms();
+    createSpendingForms(spendings);
+}
+
 void StatisticsWindow::initObjects(const std::vector<std::shared_ptr<EntryData>> &data)
 {
     createMonthCards(Refactorer::createDateList(data));
-    spendingForm = new SpendingForm();
-
-    ui->spendingsLayout->setAlignment(Qt::AlignTop);
-    ui->spendingsLayout->addWidget(spendingForm, 0, Qt::AlignTop);
 }
 
 void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
@@ -60,14 +66,39 @@ void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
     }
 }
 
+void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, double>> spendings)
+{
+    double totalSpendings = 0;
+    for(const auto &entry : spendings)
+    {
+        spendingForm = new SpendingForm(nullptr, entry.first, entry.second);
+        ui->spendingsLayout->setAlignment(Qt::AlignTop);
+        ui->spendingsLayout->addWidget(spendingForm, 0, Qt::AlignTop);
+        totalSpendings += entry.second;
+    }
+    ui->titleLabel->setText(monthCardActive->getMonth() + " 2023");
+    ui->totalSpendingsLabel->setText(QString::number(totalSpendings) + " €");
+}
+
 void StatisticsWindow::removeMonthCards()
 {
     QLayoutItem *monthCardItem;
-    while ((monthCardItem = ui->monthLayout->takeAt(0)) != nullptr) {
+    while((monthCardItem = ui->monthLayout->takeAt(0)) != nullptr)
+    {
         delete monthCardItem->widget();
         delete monthCardItem;
     }
     monthCardActive = nullptr;
+}
+
+void StatisticsWindow::removeSpendingForms()
+{
+    QLayoutItem *spendingFormItem;
+    while((spendingFormItem = ui->spendingsLayout->takeAt(0)) != nullptr)
+    {
+        delete spendingFormItem->widget();
+        delete spendingFormItem;
+    }
 }
 
 void StatisticsWindow::on_homeButton_clicked()
@@ -84,5 +115,6 @@ void StatisticsWindow::on_monthCardActivated(MonthCard *activeMonthCard)
     monthCardActive = activeMonthCard;
     monthCardActive->activate();
     lastActiveMonthCard = monthCardActive->getMonth();
+    updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth()));
 }
 
