@@ -65,6 +65,7 @@ void AddEntryWindow::setUpInitialConnections()
     AddEntryWindow::connect(controller.get(), &EntryController::displayDialog, this, &AddEntryWindow::on_displayDialog);
     AddEntryWindow::connect(controller.get(), &EntryController::entrySuccessfull, this, &AddEntryWindow::on_entrySuccessfull);
     AddEntryWindow::connect(controller.get(), &EntryController::resetEntryForm, this, &AddEntryWindow::on_resetEntryForm);
+    AddEntryWindow::connect(controller.get(), &EntryController::filePathError, this, &AddEntryWindow::filePathError);
 }
 
 void AddEntryWindow::initializeClasses(const QStringList &categoryWhiteList)
@@ -105,4 +106,5 @@ void AddEntryWindow::on_entrySuccessfull(bool successfull, EntryForm &entryForm)
      else
         entryForm.operationSuccessfull(false);
 }
+
 

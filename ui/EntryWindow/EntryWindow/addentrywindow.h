@@ -23,6 +23,7 @@ public:
 
 signals:
     void backToMain(bool newDataAdded);
+    void filePathError();
 
 private slots:
     void on_openEntryForm();

@@ -9,3 +9,4 @@
 *.autosave
 *drawio*
 *.txt
+/copyDep.cmd

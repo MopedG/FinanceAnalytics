@@ -15,11 +15,11 @@ EntryController::EntryController(QStringList categoryWhiteList) : categoryWhiteL
 
 void EntryController::saveEntry(const QString &category, double amount, int id, EntryForm &entryForm)
 {
-    bool entryCanBeSaved = checkEntryCorrectnes(category, amount, "Your input did not match the requirements. Please try again!");
+    bool entryCanBeSaved = checkEntryCorrectnes(category, amount, "Der Eintrag konnte wegen falschem Input nicht gespeichert werden. "
+                                                                  "Bitte versuchen sie es erneut!");
     if(entryCanBeSaved && !Validator::categoryInWhiteList(categoryWhiteList, category))
     {
-        whitelistDialog->setMessage("The category '"+category+"' is new. Press Confirm to add it to the whitelist"
-                                                              " or press Discard");
+        whitelistDialog->setMessage("Die Kategorie '"+category+"' ist noch nicht bekannt. Bestätige, um es der Whitelist hinzuzufügen");
         emit displayDialog(whitelistDialog);
         entryCanBeSaved = whitelistDialog->getStatus();
     }
@@ -35,10 +35,11 @@ void EntryController::saveEntry(const QString &category, double amount, int id, 
 
 void EntryController::editEntry(const QString &category, double amount, int id, EntryForm &entryForm)
 {
-    bool entryCanBeEdited = checkEntryCorrectnes(category, amount, "Your input did not match the requirements. Please try again!");
+    bool entryCanBeEdited = checkEntryCorrectnes(category, amount, "Der Eintrag konnte wegen falschem Input nicht gespeichert werden. "
+                                                                   "Bitte versuchen sie es erneut!");
     if(entryCanBeEdited && !Validator::categoryInWhiteList(categoryWhiteList, category))
     {
-        whitelistDialog->setMessage("The category '"+category+"' is new and will overwrite the current one. Are you sure?");
+        whitelistDialog->setMessage("Die Kategorie '"+category+"' ist noch nicht bekannt. Bestätige, um es der Whitelist hinzuzufügen");
         emit displayDialog(whitelistDialog);
         entryCanBeEdited = whitelistDialog->getStatus();
     }
@@ -64,15 +65,22 @@ bool EntryController::finishUpEntrys(const QString &month, int year)
     if(dateCorrect && !entrysEmpty)
     {
         entryDatahandler->saveDateToEntrys(formatedMonth, year);
-        Datahandler::saveEntrysToFile(entryDatahandler->newEntryData);
+        bool writingDataSuccessfull = Datahandler::saveEntrysToFile(entryDatahandler->newEntryData);
+        if(!writingDataSuccessfull)
+        {
+            errorDialog->setErrorMessage("Beim Speichern der Daten ist ein Problem aufgetreten. Bitte kontaktieren sie den Publisher");
+            emit displayDialog(errorDialog);
+            emit filePathError();
+        }
     }
     else if(!dateCorrect)
     {
-        errorDialog->setErrorMessage("The date doesnt fit in our required format, please check and try again.");
+        errorDialog->setErrorMessage("Das Datum passt nicht in unser Format. Bitte korrigieren sie dieses.");
         emit displayDialog(errorDialog);
     }
     else if(entrysEmpty){
-        errorDialog->setErrorMessage("There are no entrys to be saved. Please add Entrys or return to the main menu.");
+        errorDialog->setErrorMessage("Wir konnten keine Einträge zum Speichern finden. "
+                                     "Fügen sie Eitnräge hinzu oder kehren sie zum Menü zurück!");
         emit displayDialog(errorDialog);
     }
     return (dateCorrect && !entrysEmpty);

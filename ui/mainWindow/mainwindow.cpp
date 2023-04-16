@@ -4,6 +4,7 @@
 #include "repository/datahandler/datahandler.h"
 #include "EntryWindow/EntryWindow/addentrywindow.h"
 #include "StatisticsWindow/MainWindow/statisticswindow.h"
+#include <QMessageBox>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -11,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("Finance Tracker");
     init();
 }
 
@@ -36,6 +38,14 @@ void MainWindow::on_showStatisticsButton_clicked()
     ui->stackedWidget->setCurrentIndex(1);
 }
 
+void MainWindow::on_filePathError()
+{
+    ui->showStatisticsButton->setDisabled(true);
+    QMessageBox::critical(this, tr("Error"), tr("The repository file could not be created/opened. Statistics disabled. "
+                                                "Please check if the folder in Username/AppData/Local/FinanceAnalytics exists "
+                                                "and has writing permissions or contact the publisher."));
+}
+
 void MainWindow::init()
 {
     initRepository();
@@ -55,6 +65,7 @@ void MainWindow::initEntryWindow()
     entryWindow = std::make_unique<AddEntryWindow>(nullptr, repository->entryData);
     ui->stackedWidget->addWidget(entryWindow.get());
     MainWindow::connect(entryWindow.get(), &AddEntryWindow::backToMain, this, &MainWindow::on_backToMain);
+    MainWindow::connect(entryWindow.get(), &AddEntryWindow::filePathError, this, &MainWindow::on_filePathError);
 }
 
 void MainWindow::initStatisticsWindow()
