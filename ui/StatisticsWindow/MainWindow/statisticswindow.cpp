@@ -2,6 +2,7 @@
 #include "ui_statisticswindow.h"
 #include "EntryWindow/EntryDatahandler/entrydata.h"
 #include "Repository/refactorer/refactorer.h"
+#include "validator/validator.h"
 #include "StatisticsWindow/Forms/MonthCard/monthcard.h"
 #include "StatisticsWindow/Forms/SpendingForm/spendingform.h"
 
@@ -55,7 +56,7 @@ void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
         StatisticsWindow::connect(monthCard, &MonthCard::monthCardActivated, this, &StatisticsWindow::on_monthCardActivated);
         ui->monthLayout->setAlignment(Qt::AlignTop);
         ui->monthLayout->addWidget(monthCard, 0, Qt::AlignTop);
-        if (dateIter == mostRecentDateIter && !update) {
+        if (dateIter == mostRecentDateIter && !update || lastActiveMonthCard.isEmpty() && dateIter == mostRecentDateIter) {
             on_monthCardActivated(monthCard);
         }
         if(update)
@@ -76,7 +77,7 @@ void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, 
         ui->spendingsLayout->addWidget(spendingForm, 0, Qt::AlignTop);
         totalSpendings += entry.second;
     }
-    ui->titleLabel->setText(monthCardActive->getMonth() + " 2023");
+    ui->titleLabel->setText(monthCardActive->getMonth() + " " + QString::number(Validator::getCurrentYear()));
     ui->totalSpendingsLabel->setText(QString::number(totalSpendings) + " €");
 }
 

@@ -171,7 +171,8 @@ border: 3px solid rgb(102, 102, 102);
                      <string notr="true">QLabel {
 color: rgb(255, 255, 255);
 border-radius: 10px;
-background-color: rgb(51, 51, 51);
+	background-color: rgb(17, 17, 17);
+border-bottom: 3px solid rgb(255, 79, 48);
 }
 
 </string>
@@ -223,12 +224,12 @@ background-color: rgb(51, 51, 51);
 color: rgb(255, 79, 48);
 border-radius: 10px;
 padding-left: 10px;
-background-color: rgb(51, 51, 51);
+	background-color: rgb(17, 17, 17);
 border: 2px solid rgb(255, 79, 48);
 }
 
 QPushButton:hover {
-	background-color: rgb(40, 40, 40);
+	background-color: rgb(17, 17, 17);
 }</string>
                     </property>
                     <property name="text">
