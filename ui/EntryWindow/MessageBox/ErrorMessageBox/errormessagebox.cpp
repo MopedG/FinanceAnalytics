@@ -8,7 +8,7 @@ ErrorMessageBox::ErrorMessageBox(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
     setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::WindowStaysOnTopHint);
-    setWindowTitle("StupidUser Alert");
+    setWindowTitle("Bad Request Error");
 }
 
 ErrorMessageBox::~ErrorMessageBox()

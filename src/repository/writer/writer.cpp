@@ -1,8 +1,9 @@
 #include "writer.h"
-#include <windows.h>
 #include <filesystem>
 #include <QFile>
 #include <QTextStream>
+#include <Windows.h>
+#include <QStandardPaths>
 
 QStringList Writer::serealizeData(const std::vector<std::shared_ptr<EntryData>> &entryData)
 {
@@ -20,7 +21,7 @@ QStringList Writer::serealizeData(const std::vector<std::shared_ptr<EntryData>> 
     return serealizedData;
 }
 
-void Writer::writeData(const QStringList &serealizedData)
+bool Writer::writeData(const QStringList &serealizedData)
 {
     std::filesystem::path filePath = getRepositoryFilePath();
     QFile targetFile(filePath);
@@ -31,12 +32,16 @@ void Writer::writeData(const QStringList &serealizedData)
         {
             file << entry << "\n";
         }
+        return true;
+    }
+    else {
+        return false;
     }
 }
 
 std::filesystem::path Writer::getRepositoryFilePath()
 {
-    std::filesystem::path relPath = "src\\Repository\\repository.txt";
+    /*std::filesystem::path relPath = "src\\Repository\\repository.txt";
 
     HMODULE hModule = GetModuleHandle(NULL);
     TCHAR path[MAX_PATH];
@@ -44,7 +49,18 @@ std::filesystem::path Writer::getRepositoryFilePath()
     std::filesystem::path exePath = std::filesystem::absolute(std::filesystem::path(path)).parent_path();
     exePath = exePath.parent_path();
     exePath = exePath.parent_path();
-    std::filesystem::path fullPath = exePath / relPath;
+    std::filesystem::path fullPath = exePath / relPath;*/
+    std::filesystem::path folderPath = getAppDataLocalPath() / "Repository";
+    std::filesystem::create_directories(folderPath);
+    std::filesystem::path fullPath = folderPath / "repository.txt";
 
     return fullPath;
 }
+
+std::filesystem::__cxx11::path Writer::getAppDataLocalPath()
+{
+    QString path = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+    return path.toStdString();
+}
+
+

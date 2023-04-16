@@ -27,6 +27,7 @@ signals:
     void displayDialog(std::shared_ptr<QDialog> dialog);
     void entrySuccessfull(bool successfull, EntryForm &entryForm);
     void resetEntryForm(EntryForm &entryForm);
+    void filePathError();
 
 private:
     std::unique_ptr<EntryDatahandler> entryDatahandler;

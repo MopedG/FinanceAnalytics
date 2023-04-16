@@ -21,6 +21,7 @@ private slots:
     void on_newEntryButton_clicked();
     void on_backToMain(bool newDataAdded = false);
     void on_showStatisticsButton_clicked();
+    void on_filePathError();
 
 private:
     Ui::MainWindow *ui;

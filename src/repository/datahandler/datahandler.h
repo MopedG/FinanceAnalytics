@@ -10,7 +10,7 @@ class Datahandler
 public:
     Datahandler() = default;
 
-    static void saveEntrysToFile(const std::map<int, std::shared_ptr<EntryData>>& entryData);
+    static bool saveEntrysToFile(const std::map<int, std::shared_ptr<EntryData>>& entryData);
     static std::vector<std::shared_ptr<EntryData>> getEntrysFromFile();
 };
 
