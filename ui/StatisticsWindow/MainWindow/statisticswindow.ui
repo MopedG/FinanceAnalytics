@@ -18,8 +18,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1515</width>
-    <height>805</height>
+    <width>1000</width>
+    <height>500</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -130,7 +130,7 @@ border: 3px solid rgb(102, 102, 102);
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>702</width>
+                 <width>709</width>
                  <height>397</height>
                 </rect>
                </property>
@@ -333,7 +333,7 @@ border: 3px solid rgb(102, 102, 102);
        </property>
        <property name="minimumSize">
         <size>
-         <width>95</width>
+         <width>0</width>
          <height>0</height>
         </size>
        </property>
