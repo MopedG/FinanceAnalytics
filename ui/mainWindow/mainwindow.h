@@ -35,6 +35,7 @@ private:
     void initEntryWindow();
     void initStatisticsWindow();
     void initRepository();
+    void setWindowSizes();
 };
 
 

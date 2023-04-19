@@ -5,6 +5,7 @@
 #include "EntryWindow/EntryWindow/addentrywindow.h"
 #include "StatisticsWindow/MainWindow/statisticswindow.h"
 #include <QMessageBox>
+#include <QScreen>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -48,6 +49,7 @@ void MainWindow::on_filePathError()
 
 void MainWindow::init()
 {
+    setWindowSizes();
     initRepository();
     initStatisticsWindow();
     initEntryWindow();
@@ -78,5 +80,13 @@ void MainWindow::initStatisticsWindow()
 void MainWindow::initRepository()
 {
     repository = std::make_unique<Repository>(Datahandler::getEntrysFromFile());
+}
+
+void MainWindow::setWindowSizes()
+{
+    setWindowState(Qt::WindowMaximized);
+    const QRect screenGeometry = QGuiApplication::screenAt(QCursor::pos())->geometry();
+    setMaximumSize(screenGeometry.width(), screenGeometry.height());
+    resize(screenGeometry.width() / 2, screenGeometry.height() / 2);
 }
 
