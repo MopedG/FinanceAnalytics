@@ -45,8 +45,8 @@ void AddEntryWindow::on_closeEntryForm(EntryForm &entryForm)
 
 void AddEntryWindow::setEntryFormAttributes()
 {
-    ui->cellLayout_2->setAlignment(Qt::AlignTop);
-    ui->cellLayout_2->addWidget(entryForm, 0, Qt::AlignTop);
+    ui->formLayout->setAlignment(Qt::AlignTop);
+    ui->formLayout->addWidget(entryForm, 0, Qt::AlignTop);
     entryForm->setAttribute(Qt::WA_DeleteOnClose, true);
     entryForm->disableCancelEdit();
     ui->yearEdit->setText(QString::number(Validator::getCurrentYear()));
@@ -73,6 +73,20 @@ void AddEntryWindow::initializeClasses(const QStringList &categoryWhiteList)
     controller = std::make_unique<EntryController>(categoryWhiteList);
 }
 
+bool AddEntryWindow::checkForUnsubmittedEdits()
+{
+    EntryForm *entryForm;
+    bool unsubmittedEdits = false;
+    for(int i = 0; i < ui->formLayout->count(); i++)
+    {
+        entryForm = qobject_cast<EntryForm*>(ui->formLayout->itemAt(i)->widget());
+        unsubmittedEdits = entryForm->checkForUnsibmittedEdit();
+        if(unsubmittedEdits)
+            break;
+    }
+    return unsubmittedEdits;
+}
+
 void AddEntryWindow::on_displayDialog(std::shared_ptr<QDialog> dialog)
 {
     setEnabled(false);
@@ -89,7 +103,7 @@ void AddEntryWindow::on_confimAllButton_clicked()
 {
     QString month = ui->monthEdit->text();
     int year = ui->yearEdit->text().toInt();
-    bool success = controller->finishUpEntrys(month, year);
+    bool success = controller->finishUpEntrys(month, year, checkForUnsubmittedEdits());
     if(success)
         emit backToMain(true);
 }

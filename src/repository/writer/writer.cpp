@@ -41,18 +41,9 @@ bool Writer::writeData(const QStringList &serealizedData)
 
 std::filesystem::path Writer::getRepositoryFilePath()
 {
-    /*std::filesystem::path relPath = "src\\Repository\\repository.txt";
-
-    HMODULE hModule = GetModuleHandle(NULL);
-    TCHAR path[MAX_PATH];
-    GetModuleFileName(hModule, path, MAX_PATH);
-    std::filesystem::path exePath = std::filesystem::absolute(std::filesystem::path(path)).parent_path();
-    exePath = exePath.parent_path();
-    exePath = exePath.parent_path();
-    std::filesystem::path fullPath = exePath / relPath;*/
     std::filesystem::path folderPath = getAppDataLocalPath() / "Repository";
     std::filesystem::create_directories(folderPath);
-    std::filesystem::path fullPath = folderPath / "repository.txt";
+    std::filesystem::path fullPath = folderPath / "demorepository.txt"; //Needs to be set back before release 'repository.txt'
 
     return fullPath;
 }

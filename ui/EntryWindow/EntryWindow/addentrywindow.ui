@@ -235,7 +235,7 @@ QScrollBar::sub-line:vertical {
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <layout class="QVBoxLayout" name="cellLayout_2">
+           <layout class="QVBoxLayout" name="formLayout">
             <property name="spacing">
              <number>6</number>
             </property>

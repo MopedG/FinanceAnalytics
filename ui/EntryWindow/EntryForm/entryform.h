@@ -14,6 +14,7 @@ public:
     ~EntryForm();
     void disableCancelEdit(bool disable = true);
     void operationSuccessfull(bool successfull);
+    bool checkForUnsibmittedEdit();
     void reset();
 
     int id = 0;
@@ -33,6 +34,7 @@ private:
     Ui::EntryForm *ui;
     static int instances;
     bool editPressedBefore = false;
+    bool entrySaved = false;
     QString currentCategory;
     QString currentAmount;
 
