@@ -53,6 +53,9 @@
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(23, 23, 22);</string>
+      </property>
       <widget class="QWidget" name="page1">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">

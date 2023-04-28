@@ -42,10 +42,10 @@
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(26, 26, 26);
-border: 1px solid rgb(255, 255, 255);
-border-radius: 7px;
+border: 1px solid rgb(234, 234, 234);
+border-radius: 6px;
 color: rgb(255, 255, 255);
-font: 400 18pt &quot;Segoe UI&quot;;
+font: 400 20pt &quot;Segoe UI&quot;;
 qproperty-alignment: AlignCenter;</string>
      </property>
      <property name="placeholderText">
@@ -92,11 +92,11 @@ qproperty-alignment: AlignCenter;</string>
      <property name="styleSheet">
       <string notr="true">QLineEdit{
 background-color: rgb(26, 26, 26);
-border: 1px solid rgb(255, 255, 255);
-border-radius: 7px;
+border: 1px solid rgb(234, 234, 234);
+border-radius: 6px;
 qproperty-alignment: AlignCenter;
 color: rgb(229, 229, 229);
-font: 600 18pt &quot;Segoe UI&quot;;
+font: 600 20pt &quot;Segoe UI&quot;;
 }
 </string>
      </property>
@@ -139,7 +139,7 @@ font: 600 18pt &quot;Segoe UI&quot;;
       <string notr="true">QPushButton
 {
 background-color: rgb(26, 26, 26);
-border: 2px solid rgb(238, 238, 238);
+border: 2px solid rgb(234, 234, 234);
 border-radius: 9px;
 font-size: 25px;
 }
@@ -205,7 +205,7 @@ QPushButton:disabled{
       <string notr="true">QPushButton
 {
 background-color: rgb(26, 26, 26);
-border: 2px solid rgb(238, 238, 238);
+border: 2px solid rgb(234, 234, 234);
 border-radius: 9px;
 font-size: 25px;
 }
@@ -257,7 +257,7 @@ QPushButton:disabled{
 QPushButton
 {
 background-color: rgb(26, 26, 26);
-border: 2px solid rgb(238, 238, 238);
+border: 2px solid rgb(234, 234, 234);
 	border-radius: 9px;
 	font-size: 25px;
 	color: rgb(85, 255, 0);
