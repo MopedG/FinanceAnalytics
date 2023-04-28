@@ -41,7 +41,8 @@
       <bool>true</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(51, 51, 51);
+      <string notr="true">background-color: rgb(26, 26, 26);
+border: 1px solid rgb(255, 255, 255);
 border-radius: 7px;
 color: rgb(255, 255, 255);
 font: 400 18pt &quot;Segoe UI&quot;;
@@ -51,6 +52,22 @@ qproperty-alignment: AlignCenter;</string>
       <string>Ausgabe 1</string>
      </property>
     </widget>
+   </item>
+   <item>
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Maximum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item>
     <widget class="QLineEdit" name="spendingLineEdit">
@@ -74,7 +91,8 @@ qproperty-alignment: AlignCenter;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QLineEdit{
-background-color: rgb(74, 74, 74);
+background-color: rgb(26, 26, 26);
+border: 1px solid rgb(255, 255, 255);
 border-radius: 7px;
 qproperty-alignment: AlignCenter;
 color: rgb(229, 229, 229);
@@ -86,6 +104,22 @@ font: 600 18pt &quot;Segoe UI&quot;;
       <string>Betrag</string>
      </property>
     </widget>
+   </item>
+   <item>
+    <spacer name="horizontalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Maximum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>10</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item>
     <widget class="QPushButton" name="editButton">
@@ -104,16 +138,18 @@ font: 600 18pt &quot;Segoe UI&quot;;
      <property name="styleSheet">
       <string notr="true">QPushButton
 {
-	background-color: rgb(74, 74, 74);
-border-radius: 25px;
+background-color: rgb(26, 26, 26);
+border: 2px solid rgb(238, 238, 238);
+border-radius: 9px;
+font-size: 25px;
 }
 QPushButton:hover {
 	
-	background-color: rgb(63, 63, 63);
+	background-color: rgb(50, 50, 50);
 }
 QPushButton:pressed {
 	
-	background-color: rgb(48, 48, 48);
+	background-color: rgb(45, 45, 45);
 }
 
 QPushButton:disabled{
@@ -145,7 +181,7 @@ QPushButton:disabled{
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>50</width>
+       <width>40</width>
        <height>20</height>
       </size>
      </property>
@@ -168,7 +204,8 @@ QPushButton:disabled{
      <property name="styleSheet">
       <string notr="true">QPushButton
 {
-	background-color: rgb(74, 74, 74);
+background-color: rgb(26, 26, 26);
+border: 2px solid rgb(238, 238, 238);
 border-radius: 9px;
 font-size: 25px;
 }
@@ -219,7 +256,8 @@ QPushButton:disabled{
 
 QPushButton
 {
-	background-color: rgb(74, 74, 74);
+background-color: rgb(26, 26, 26);
+border: 2px solid rgb(238, 238, 238);
 	border-radius: 9px;
 	font-size: 25px;
 	color: rgb(85, 255, 0);
