@@ -19,7 +19,7 @@ void EntryController::saveEntry(const QString &category, double amount, int id, 
                                                                   "Bitte versuchen sie es erneut!");
     if(entryCanBeSaved && !Validator::categoryInWhiteList(categoryWhiteList, category))
     {
-        whitelistDialog->setMessage("Die Kategorie '"+category+"' ist noch nicht bekannt. Bestätige, um es der Whitelist hinzuzufügen");
+        whitelistDialog->setMessage("Die Kategorie '"+category+"' ist noch nicht bekannt. Bestätige, um es der Whitelist hinzuzufügen.");
         emit displayDialog(whitelistDialog);
         entryCanBeSaved = whitelistDialog->getStatus();
     }
