@@ -57,7 +57,7 @@
      </property>
      <property name="styleSheet">
       <string notr="true">border-radius: 20px;
-background-color: rgb(24, 24, 24);</string>
+background-color: rgb(26, 26, 26);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -543,7 +543,7 @@ QScrollBar::sub-line:vertical {
      </property>
      <property name="styleSheet">
       <string notr="true">border-radius: 25px;
-background-color: rgb(24, 24, 24);</string>
+background-color: rgb(26, 26, 26);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>

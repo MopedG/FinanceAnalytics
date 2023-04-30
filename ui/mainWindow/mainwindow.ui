@@ -69,7 +69,7 @@
          <height>600</height>
         </size>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
+       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0,0,0">
         <item>
          <spacer name="verticalSpacer">
           <property name="orientation">
@@ -80,8 +80,86 @@
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>20</width>
+            <width>10</width>
             <height>60</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_3">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>55</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item alignment="Qt::AlignHCenter|Qt::AlignTop">
+            <widget class="QLabel" name="label">
+             <property name="styleSheet">
+              <string notr="true">font: 700 30pt &quot;Verdana&quot;;
+color: qlineargradient(spread:pad, x1:1, y1:0.011, x2:0, y2:0.960227, stop:0 rgba(164, 58, 151, 255), stop:0.659218 rgba(165, 145, 218, 255), stop:1 rgba(255, 203, 203, 255));
+qproperty-alignment: AlignCenter;</string>
+             </property>
+             <property name="text">
+              <string>Finance Tracker 2.0</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignHCenter">
+         <widget class="QFrame" name="frame_4">
+          <property name="minimumSize">
+           <size>
+            <width>500</width>
+            <height>10</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0.011, x2:0, y2:0.960227, stop:0 rgba(164, 58, 151, 255), stop:0.659218 rgba(165, 145, 218, 255), stop:1 rgba(255, 203, 203, 255));</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>100</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
            </size>
           </property>
          </spacer>
@@ -91,7 +169,7 @@
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
             <horstretch>1</horstretch>
-            <verstretch>0</verstretch>
+            <verstretch>1</verstretch>
            </sizepolicy>
           </property>
           <property name="minimumSize">
@@ -143,7 +221,12 @@
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">#frame_2{
+	border: 3px solid qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(100, 6, 6, 255), stop:1 rgba(139, 45, 255, 255));
+border-radius: 12px;
+}
+
+</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
@@ -152,6 +235,18 @@
               <enum>QFrame::Raised</enum>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_4">
+              <property name="leftMargin">
+               <number>40</number>
+              </property>
+              <property name="topMargin">
+               <number>30</number>
+              </property>
+              <property name="rightMargin">
+               <number>40</number>
+              </property>
+              <property name="bottomMargin">
+               <number>30</number>
+              </property>
               <item>
                <widget class="QPushButton" name="newEntryButton">
                 <property name="sizePolicy">
@@ -176,14 +271,14 @@
                  <string notr="true">QPushButton
 {
 	border-radius: 5px;
-	background-color: rgb(131, 202, 131);
+	
+	background-color: qlineargradient(spread:pad, x1:0.00558659, y1:0, x2:1, y2:1, stop:0 rgba(55, 193, 38, 232), stop:1 rgba(163, 255, 141, 203));
 	color: rgb(26, 29, 27);
 	font: 700 20pt &quot;Segoe UI&quot;;
 }
 QPushButton:hover {
 	/*color: rgb(230, 230, 230);*/
-	
-	background-color: rgb(114, 176, 114);
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 182, 94, 255), stop:1 rgba(127, 219, 120, 232));
 }
 QPushButton:pressed {
 	background-color: rgb(102, 157, 102);
@@ -204,7 +299,7 @@ QPushButton:pressed {
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>20</width>
+                  <width>40</width>
                   <height>20</height>
                  </size>
                 </property>
@@ -236,12 +331,14 @@ QPushButton:pressed {
 QPushButton
 {
 	border-radius: 5px;
-	background-color: rgb(245, 245, 245);
+	
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(173, 173, 173, 255), stop:1 rgba(255, 228, 228, 255));
 	color: rgb(51, 51, 51);
 	font: 700 20pt &quot;Segoe UI&quot;;
 }
 QPushButton:hover {
-	background-color: rgb(207, 207, 207);
+	
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(143, 143, 143, 255), stop:1 rgba(214, 175, 175, 255));
 }
 QPushButton:pressed {
 	
@@ -273,7 +370,7 @@ QPushButton:disabled {
           </property>
           <property name="sizeHint" stdset="0">
            <size>
-            <width>20</width>
+            <width>50</width>
             <height>200</height>
            </size>
           </property>
