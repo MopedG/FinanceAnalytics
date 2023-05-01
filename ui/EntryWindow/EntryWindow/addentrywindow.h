@@ -45,6 +45,7 @@ private:
     void connectEntryForm();
     void setUpInitialConnections();
     void initializeClasses(const QStringList &categoryWhiteList);
+    bool checkForUnsubmittedEdits();
 };
 
 

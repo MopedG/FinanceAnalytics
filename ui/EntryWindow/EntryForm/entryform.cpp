@@ -33,12 +33,25 @@ void EntryForm::operationSuccessfull(bool successfull)
         currentCategory = ui->categoryLineEdit->text();
         disableFields();
         disableCancelEdit(false);
+        this->entrySaved = true;
 
         if(!editPressedBefore)
         {
             emit openEntryForm();
         }
         editPressedBefore = false;
+    }
+}
+
+bool EntryForm::checkForUnsibmittedEdit()
+{
+    if(editPressedBefore && entrySaved && ui->submitButton->isEnabled())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 

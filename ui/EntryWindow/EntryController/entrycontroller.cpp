@@ -19,7 +19,7 @@ void EntryController::saveEntry(const QString &category, double amount, int id, 
                                                                   "Bitte versuchen sie es erneut!");
     if(entryCanBeSaved && !Validator::categoryInWhiteList(categoryWhiteList, category))
     {
-        whitelistDialog->setMessage("Die Kategorie '"+category+"' ist noch nicht bekannt. Bestätige, um es der Whitelist hinzuzufügen");
+        whitelistDialog->setMessage("Die Kategorie '"+category+"' ist noch nicht bekannt. Bestätige, um es der Whitelist hinzuzufügen.");
         emit displayDialog(whitelistDialog);
         entryCanBeSaved = whitelistDialog->getStatus();
     }
@@ -39,7 +39,7 @@ void EntryController::editEntry(const QString &category, double amount, int id, 
                                                                    "Bitte versuchen sie es erneut!");
     if(entryCanBeEdited && !Validator::categoryInWhiteList(categoryWhiteList, category))
     {
-        whitelistDialog->setMessage("Die Kategorie '"+category+"' ist noch nicht bekannt. Bestätige, um es der Whitelist hinzuzufügen");
+        whitelistDialog->setMessage("Die Kategorie '"+category+"' ist noch nicht bekannt. Bestätige, um es der Whitelist hinzuzufügen.");
         emit displayDialog(whitelistDialog);
         entryCanBeEdited = whitelistDialog->getStatus();
     }
@@ -47,6 +47,7 @@ void EntryController::editEntry(const QString &category, double amount, int id, 
     {
         addToCategoryWhitelist(category);
         QString formatedCategory = firstLetterToUpper(category);
+        entryDatahandler->saveEntry(formatedCategory, amount, id);
         entryDatahandler->editEntry(formatedCategory, amount, id);
         emit entrySuccessfull(true, entryForm);
     }
@@ -57,18 +58,18 @@ void EntryController::editEntry(const QString &category, double amount, int id, 
     }
 }
 
-bool EntryController::finishUpEntrys(const QString &month, int year)
+bool EntryController::finishUpEntrys(const QString &month, int year, bool unsubmittedEdits)
 {
     QString formatedMonth = firstLetterToUpper(month);
     bool dateCorrect = Validator::checkDate(formatedMonth, year);
     bool entrysEmpty = entryDatahandler->newEntryData.empty();
-    if(dateCorrect && !entrysEmpty)
+    if(dateCorrect && !entrysEmpty && !unsubmittedEdits)
     {
         entryDatahandler->saveDateToEntrys(formatedMonth, year);
         bool writingDataSuccessfull = Datahandler::saveEntrysToFile(entryDatahandler->newEntryData);
         if(!writingDataSuccessfull)
         {
-            errorDialog->setErrorMessage("Beim Speichern der Daten ist ein Problem aufgetreten. Bitte kontaktieren sie den Publisher");
+            errorDialog->setErrorMessage("Beim Speichern der Daten ist ein Problem aufgetreten. Bitte kontaktieren Sie den Publisher.");
             emit displayDialog(errorDialog);
             emit filePathError();
         }
@@ -80,10 +81,16 @@ bool EntryController::finishUpEntrys(const QString &month, int year)
     }
     else if(entrysEmpty){
         errorDialog->setErrorMessage("Wir konnten keine Einträge zum Speichern finden. "
-                                     "Fügen sie Eitnräge hinzu oder kehren sie zum Menü zurück!");
+                                     "Fügen Sie Einträge hinzu oder kehren Sie zum Menü zurück!");
         emit displayDialog(errorDialog);
     }
-    return (dateCorrect && !entrysEmpty);
+    else if(unsubmittedEdits)
+    {
+        errorDialog->setErrorMessage("Sie haben ungespeicherte Änderungen, die sonst verloren gehen würden. "
+                                     "Bitte bestätigen sie diese, bevor Sie auf weiter klicken.");
+        emit displayDialog(errorDialog);
+    }
+    return (dateCorrect && !entrysEmpty && !unsubmittedEdits);
 }
 
 void EntryController::deleteEntry(int id)

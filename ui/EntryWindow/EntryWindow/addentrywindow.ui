@@ -20,9 +20,21 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(26, 26, 26);</string>
+   <string notr="true">background-color: rgb(23, 23, 22);</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <property name="leftMargin">
+    <number>25</number>
+   </property>
+   <property name="topMargin">
+    <number>25</number>
+   </property>
+   <property name="rightMargin">
+    <number>25</number>
+   </property>
+   <property name="bottomMargin">
+    <number>25</number>
+   </property>
    <item>
     <widget class="QFrame" name="frame_3">
      <property name="sizePolicy">
@@ -44,7 +56,8 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">border-radius: 20px;
+background-color: rgb(26, 26, 26);</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -82,7 +95,7 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0,0">
          <property name="leftMargin">
           <number>19</number>
          </property>
@@ -115,25 +128,240 @@
              <height>0</height>
             </size>
            </property>
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Button">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>236</red>
+                 <green>231</green>
+                 <blue>165</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Text">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="ButtonText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>236</red>
+                 <green>231</green>
+                 <blue>165</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>236</red>
+                 <green>231</green>
+                 <blue>165</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="PlaceholderText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="128">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Button">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>236</red>
+                 <green>231</green>
+                 <blue>165</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Text">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="ButtonText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>236</red>
+                 <green>231</green>
+                 <blue>165</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>236</red>
+                 <green>231</green>
+                 <blue>165</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="PlaceholderText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="128">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="WindowText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Button">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>236</red>
+                 <green>231</green>
+                 <blue>165</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Text">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="ButtonText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>236</red>
+                 <green>231</green>
+                 <blue>165</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="Window">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>236</red>
+                 <green>231</green>
+                 <blue>165</blue>
+                </color>
+               </brush>
+              </colorrole>
+              <colorrole role="PlaceholderText">
+               <brush brushstyle="SolidPattern">
+                <color alpha="128">
+                 <red>36</red>
+                 <green>36</green>
+                 <blue>36</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
            <property name="font">
             <font>
              <family>Segoe UI</family>
-             <pointsize>18</pointsize>
+             <pointsize>20</pointsize>
              <italic>false</italic>
              <bold>true</bold>
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(51, 51, 51);
-border-radius: 7px;
-color: rgb(255, 255, 255);
-font: 700 18pt &quot;Segoe UI&quot;;
+            <string notr="true">background-color: rgb(236, 231, 165);
+border-radius: 6px;
+color: rgb(36, 36, 36);
+font: 700 20pt &quot;Segoe UI&quot;;
 qproperty-alignment: AlignCenter;</string>
            </property>
            <property name="placeholderText">
             <string>Monat</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Maximum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
          <item>
           <widget class="QLineEdit" name="yearEdit">
@@ -155,17 +383,41 @@ qproperty-alignment: AlignCenter;</string>
              <height>16777215</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>20</pointsize>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(74, 74, 74);
-border-radius: 7px;
+            <string notr="true">background-color: rgb(236, 231, 165);
+border-radius: 6px;
 qproperty-alignment: AlignCenter;
-color: rgb(255, 255, 255);
-font: 700 18pt &quot;Segoe UI&quot;;</string>
+color: rgb(36, 36, 36);
+font: 700 20pt &quot;Segoe UI&quot;;</string>
            </property>
            <property name="placeholderText">
             <string>Jahr</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Maximum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>232</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </widget>
@@ -190,10 +442,6 @@ QScrollBar::add-page:vertical {
 	background: rgb(171, 255, 185);
 }
 
-QScrollBar::handle:vertical {
-	background: rgb(53, 53, 53);
-    min-height: 20px;
-}
 
 QScrollBar::add-line:vertical {
     background: none;
@@ -229,13 +477,13 @@ QScrollBar::sub-line:vertical {
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>1583</width>
-           <height>896</height>
+           <width>1539</width>
+           <height>866</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <layout class="QVBoxLayout" name="cellLayout_2">
+           <layout class="QVBoxLayout" name="formLayout">
             <property name="spacing">
              <number>6</number>
             </property>
@@ -257,6 +505,22 @@ QScrollBar::sub-line:vertical {
      </layout>
     </widget>
    </item>
+   <item>
+    <spacer name="horizontalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Maximum</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>10</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item alignment="Qt::AlignRight">
     <widget class="QFrame" name="frame_2">
      <property name="sizePolicy">
@@ -277,6 +541,10 @@ QScrollBar::sub-line:vertical {
        <height>16777215</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 25px;
+background-color: rgb(26, 26, 26);</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -284,6 +552,9 @@ QScrollBar::sub-line:vertical {
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="leftMargin">
+       <number>9</number>
+      </property>
       <item>
        <spacer name="verticalSpacer_2">
         <property name="orientation">
@@ -313,6 +584,9 @@ QScrollBar::sub-line:vertical {
           <width>60</width>
           <height>60</height>
          </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
@@ -375,13 +649,16 @@ QPushButton:clicked {
           <height>16777215</height>
          </size>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
 font: 700 16pt &quot;Segoe UI&quot;;
-	background-color: rgb(57, 57, 57);
+background-color: rgb(57, 57, 57);
 color: rgb(255, 255, 255);
 border-radius: 10px;
 
@@ -389,7 +666,7 @@ border-radius: 10px;
 
 QPushButton:hover{
 	
-	background-color: rgb(152, 235, 143);
+	background-color: rgb(129, 217, 129);
 }
 QPushButton:pressed{
 	

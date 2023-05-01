@@ -86,7 +86,6 @@ void MainWindow::setWindowSizes()
 {
     setWindowState(Qt::WindowMaximized);
     const QRect screenGeometry = QGuiApplication::screenAt(QCursor::pos())->geometry();
-    //setMaximumSize(screenGeometry.width(), screenGeometry.height());
     resize(screenGeometry.width() / 2, screenGeometry.height() / 2);
 }
 
