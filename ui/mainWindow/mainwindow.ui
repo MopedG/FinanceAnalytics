@@ -267,21 +267,24 @@ border-radius: 12px;
                   <height>16777215</height>
                  </size>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">QPushButton
 {
 	border-radius: 5px;
 	
-	background-color: qlineargradient(spread:pad, x1:0.00558659, y1:0, x2:1, y2:1, stop:0 rgba(55, 193, 38, 232), stop:1 rgba(163, 255, 141, 203));
+	
+	background-color: rgb(108, 203, 92);
 	color: rgb(26, 29, 27);
 	font: 700 20pt &quot;Segoe UI&quot;;
 }
 QPushButton:hover {
-	/*color: rgb(230, 230, 230);*/
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(0, 182, 94, 255), stop:1 rgba(127, 219, 120, 232));
+	background-color: rgb(97, 190, 84);
 }
 QPushButton:pressed {
-	background-color: rgb(102, 157, 102);
+	background-color: rgb(90, 180, 75);
 }</string>
                 </property>
                 <property name="text">
@@ -325,6 +328,9 @@ QPushButton:pressed {
                   <height>16777215</height>
                  </size>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">
 
@@ -337,8 +343,7 @@ QPushButton
 	font: 700 20pt &quot;Segoe UI&quot;;
 }
 QPushButton:hover {
-	
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(143, 143, 143, 255), stop:1 rgba(214, 175, 175, 255));
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(160, 160, 160, 255), stop:1 rgba(246, 216, 216, 255));
 }
 QPushButton:pressed {
 	

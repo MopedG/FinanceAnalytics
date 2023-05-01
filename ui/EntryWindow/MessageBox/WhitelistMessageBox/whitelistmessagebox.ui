@@ -99,6 +99,9 @@ background: transparent;</string>
             <height>60</height>
            </size>
           </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton
 {
@@ -170,6 +173,9 @@ QPushButton:disabled{
             <width>60</width>
             <height>60</height>
            </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton
