@@ -135,6 +135,9 @@ font: 600 20pt &quot;Segoe UI&quot;;
        <height>55</height>
       </size>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton
 {
@@ -201,6 +204,9 @@ QPushButton:disabled{
        <height>55</height>
       </size>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton
 {
@@ -250,6 +256,9 @@ QPushButton:disabled{
        <width>55</width>
        <height>55</height>
       </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">

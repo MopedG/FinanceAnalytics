@@ -43,8 +43,7 @@ std::filesystem::path Writer::getRepositoryFilePath()
 {
     std::filesystem::path folderPath = getAppDataLocalPath() / "Repository";
     std::filesystem::create_directories(folderPath);
-    std::filesystem::path fullPath = folderPath / "demorepository.txt"; //Needs to be set back before release 'repository.txt'
-
+    std::filesystem::path fullPath = folderPath / "repository.txt";
     return fullPath;
 }
 

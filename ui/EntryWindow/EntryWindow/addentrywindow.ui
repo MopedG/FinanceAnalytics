@@ -585,6 +585,9 @@ background-color: rgb(26, 26, 26);</string>
           <height>60</height>
          </size>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
 background-color: rgb(43, 43, 43);
@@ -645,6 +648,9 @@ QPushButton:clicked {
           <width>80</width>
           <height>16777215</height>
          </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
