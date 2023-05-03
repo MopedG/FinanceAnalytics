@@ -2,7 +2,6 @@
 #include "ui_statisticswindow.h"
 #include "EntryWindow/EntryDatahandler/entrydata.h"
 #include "Repository/refactorer/refactorer.h"
-#include "validator/validator.h"
 #include "StatisticsWindow/Forms/MonthCard/monthcard.h"
 #include "StatisticsWindow/Forms/SpendingForm/spendingform.h"
 
@@ -28,7 +27,7 @@ void StatisticsWindow::update(const std::vector<std::shared_ptr<EntryData>> &dat
     if(dates.size() != ui->monthLayout->count())
         updateMonthCard(dates);
     else
-        updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth()));
+        updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getMonth().toInt()));
 }
 
 void StatisticsWindow::updateMonthCard(const QStringList &dates)
@@ -77,7 +76,7 @@ void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, 
         ui->spendingsLayout->addWidget(spendingForm, 0, Qt::AlignTop);
         totalSpendings += entry.second;
     }
-    ui->titleLabel->setText(monthCardActive->getMonth() + " " + QString::number(Validator::getCurrentYear()));
+    ui->titleLabel->setText(monthCardActive->getMonth() + " " + monthCardActive->getYear());
     ui->totalSpendingsLabel->setText(QString::number(totalSpendings) + " €");
 }
 
@@ -116,6 +115,6 @@ void StatisticsWindow::on_monthCardActivated(MonthCard *activeMonthCard)
     monthCardActive = activeMonthCard;
     monthCardActive->activate();
     lastActiveMonthCard = monthCardActive->getMonth();
-    updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth()));
+    updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt()));
 }
 

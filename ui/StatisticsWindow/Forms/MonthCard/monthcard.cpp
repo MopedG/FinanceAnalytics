@@ -17,11 +17,13 @@ MonthCard::~MonthCard()
 void MonthCard::deactivate()
 {
     ui->selectButton->setChecked(false);
+    buttonChecked = false;
 }
 
 void MonthCard::activate()
 {
     ui->selectButton->setChecked(true);
+    buttonChecked = true;
 }
 
 QString MonthCard::getMonth()
@@ -31,9 +33,18 @@ QString MonthCard::getMonth()
 
 }
 
+QString MonthCard::getYear()
+{
+    QStringList dataParts = ui->dateLabel->text().split(" ");
+    return dataParts[1];
+}
+
 void MonthCard::on_selectButton_clicked()
 {
-    emit monthCardActivated(this);
+    if(!buttonChecked)
+        emit monthCardActivated(this);
+    else
+        activate();
 }
 
 
