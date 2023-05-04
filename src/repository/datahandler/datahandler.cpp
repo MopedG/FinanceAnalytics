@@ -9,13 +9,13 @@ bool Datahandler::saveEntrysToFile(const std::map<int, std::shared_ptr<EntryData
     std::vector<std::shared_ptr<EntryData>> fetchedFromFile = getEntrysFromFile();
     for (const auto& entry : entryData)
     {
-        fetchedFromFile.emplace_back(entry.second);
+        if(entry.second->getAmount() != 0)
+            fetchedFromFile.emplace_back(entry.second);
     }
     //#############################################################################################################
 
     fetchedFromFile = Refactorer::combineEntriesByCategory(fetchedFromFile);
 
-    //Bevor ich das Zeug in den Sorter schmeiße muss ich sicherstellen, dass die Kategorien keine Doppelungen haben
     std::vector<std::shared_ptr<EntryData>> sortedEntrys = Sorter::sortByDate(fetchedFromFile);
     QStringList serealizedData = Writer::serealizeData(sortedEntrys);
     return Writer::writeData(serealizedData);

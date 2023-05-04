@@ -25,6 +25,8 @@ std::vector<std::shared_ptr<EntryData>> Refactorer::combineEntriesByCategory(con
             {
                 std::shared_ptr<EntryData> existingEntry = addedEntryData.find(key)->second;
                 existingEntry->setAmount(existingEntry->getAmount() + entry->getAmount());
+                if(existingEntry->getAmount() <= 0)
+                    addedEntryData.erase(key);
 
             }
         }
