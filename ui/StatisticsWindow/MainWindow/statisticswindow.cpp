@@ -27,7 +27,7 @@ void StatisticsWindow::update(const std::vector<std::shared_ptr<EntryData>> &dat
     if(dates.size() != ui->monthLayout->count())
         updateMonthCard(dates);
     else
-        updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getMonth().toInt()));
+        updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt()));
 }
 
 void StatisticsWindow::updateMonthCard(const QStringList &dates)
