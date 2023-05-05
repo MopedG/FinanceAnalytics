@@ -9,8 +9,9 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Charts)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Charts)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -44,6 +45,8 @@ set(PROJECT_SOURCES
         ui/StatisticsWindow/Forms/SpendingForm/spendingform.h
         ui/StatisticsWindow/Forms/SpendingForm/spendingform.cpp
         ui/StatisticsWindow/Forms/SpendingForm/spendingform.ui
+        ui/StatisticsWindow/Forms/PieChart/piechart.h
+        ui/StatisticsWindow/Forms/PieChart/piechart.cpp
 
         src/WindowManager/windowmanager.h
         src/WindowManager/windowmanager.cpp
@@ -87,7 +90,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(FinanceAnalytics PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(FinanceAnalytics PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts)
 target_include_directories(${PROJECT_NAME} PUBLIC
     "${CMAKE_CURRENT_SOURCE_DIR}/src"
     "${CMAKE_CURRENT_SOURCE_DIR}/ui"

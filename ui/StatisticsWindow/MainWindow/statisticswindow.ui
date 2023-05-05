@@ -308,6 +308,11 @@ border: 3px solid rgb(102, 102, 102);
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <layout class="QVBoxLayout" name="pieLayout"/>
+        </item>
+       </layout>
       </widget>
      </item>
      <item>

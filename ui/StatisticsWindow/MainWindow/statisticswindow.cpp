@@ -4,6 +4,7 @@
 #include "Repository/refactorer/refactorer.h"
 #include "StatisticsWindow/Forms/MonthCard/monthcard.h"
 #include "StatisticsWindow/Forms/SpendingForm/spendingform.h"
+#include "StatisticsWindow/Forms/PieChart/piechart.h"
 
 StatisticsWindow::StatisticsWindow(QWidget *parent, const std::vector<std::shared_ptr<EntryData>> &data) :
     QWidget(parent),
@@ -45,6 +46,8 @@ void StatisticsWindow::updateSpendingForms(const std::vector<std::pair<QString, 
 void StatisticsWindow::initObjects(const std::vector<std::shared_ptr<EntryData>> &data)
 {
     createMonthCards(Refactorer::createDateList(data));
+    PieChart *pie = new PieChart();
+    ui->pieLayout->addWidget(pie->chartView);
 }
 
 void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
