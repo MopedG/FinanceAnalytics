@@ -12,6 +12,9 @@ public:
 
     QChartView *chartView;
 
+private:
+    void drawDonut();
+    void drawPie();
 };
 
 

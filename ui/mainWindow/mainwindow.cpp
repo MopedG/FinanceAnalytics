@@ -6,6 +6,7 @@
 #include "StatisticsWindow/MainWindow/statisticswindow.h"
 #include <QMessageBox>
 #include <QScreen>
+#include <QGraphicsDropShadowEffect>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -14,6 +15,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Finance Tracker");
+    /*QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect( ); //Button Box-Shadow
+    effect->setColor(QColorConstants::White);
+    effect->setOffset(2);
+    effect->setBlurRadius(8);
+    ui->newEntryButton->setGraphicsEffect(effect);
+    ui->showStatisticsButton->setGraphicsEffect(effect);*/
     init();
 }
 
