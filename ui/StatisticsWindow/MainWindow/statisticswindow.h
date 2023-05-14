@@ -42,9 +42,10 @@ private:
 
     void initObjects(const std::vector<std::shared_ptr<EntryData>> &data);
     void updateMonthCard(const QStringList &dates);
-    void updateSpendingForms(const std::vector<std::pair<QString, double>> spendings);
+    void updateSpendingForms(const std::vector<std::pair<QString, double>> &spendings);
     void createMonthCards(const QStringList &dates, bool update = false);
-    void createSpendingForms(const std::vector<std::pair<QString, double>> spendings);
+    void createSpendingForms(const std::vector<std::pair<QString, double>> &spendings);
+    void createDonutChart(const std::vector<std::pair<QString, double> > &spendings);
     void removeMonthCards();
     void removeSpendingForms();
 };

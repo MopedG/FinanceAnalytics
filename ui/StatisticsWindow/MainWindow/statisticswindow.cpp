@@ -5,6 +5,7 @@
 #include "StatisticsWindow/Forms/MonthCard/monthcard.h"
 #include "StatisticsWindow/Forms/SpendingForm/spendingform.h"
 #include "StatisticsWindow/Forms/DonutChart/donutchart.h"
+#include <memory>
 
 StatisticsWindow::StatisticsWindow(QWidget *parent, const std::vector<std::shared_ptr<EntryData>> &data) :
     QWidget(parent),
@@ -37,7 +38,7 @@ void StatisticsWindow::updateMonthCard(const QStringList &dates)
     createMonthCards(dates, true);
 }
 
-void StatisticsWindow::updateSpendingForms(const std::vector<std::pair<QString, double>> spendings)
+void StatisticsWindow::updateSpendingForms(const std::vector<std::pair<QString, double>> &spendings)
 {
     removeSpendingForms();
     createSpendingForms(spendings);
@@ -46,8 +47,6 @@ void StatisticsWindow::updateSpendingForms(const std::vector<std::pair<QString, 
 void StatisticsWindow::initObjects(const std::vector<std::shared_ptr<EntryData>> &data)
 {
     createMonthCards(Refactorer::createDateList(data));
-    DonutChart *pie = new DonutChart();
-    ui->pieLayout->addWidget(pie->chartView);
 }
 
 void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
@@ -69,7 +68,7 @@ void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
     }
 }
 
-void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, double>> spendings)
+void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, double>> &spendings)
 {
     double totalSpendings = 0;
     for(const auto &entry : spendings)
@@ -81,6 +80,14 @@ void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, 
     }
     ui->titleLabel->setText(monthCardActive->getMonth() + " " + monthCardActive->getYear());
     ui->totalSpendingsLabel->setText(QString::number(totalSpendings) + " €");
+}
+
+void StatisticsWindow::createDonutChart(const std::vector<std::pair<QString, double>> &spendings)
+{
+    if(!ui->pieLayout->isEmpty())
+        delete ui->pieLayout->takeAt(0)->widget();
+    std::unique_ptr<DonutChart> donut(new DonutChart(spendings));
+    ui->pieLayout->addWidget(donut->chartView);
 }
 
 void StatisticsWindow::removeMonthCards()
@@ -118,6 +125,9 @@ void StatisticsWindow::on_monthCardActivated(MonthCard *activeMonthCard)
     monthCardActive = activeMonthCard;
     monthCardActive->activate();
     lastActiveMonthCard = monthCardActive->getMonth();
-    updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt()));
+    std::vector<std::pair<QString, double>> spendingsList =
+            Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
+    updateSpendingForms(spendingsList);
+    createDonutChart(spendingsList);
 }
 

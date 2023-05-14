@@ -6,28 +6,30 @@
 
 
 
-DonutChart::DonutChart(std::vector<std::shared_ptr<EntryData>>)
+DonutChart::DonutChart(const std::vector<std::pair<QString, double>> &spendings)
 {
-    drawDonut();
+    drawDonut(spendings);
 }
 
-void DonutChart::drawDonut()
+double calcSize(double totalSpendings, double amount);
+double calcTotalAmount(const std::vector<std::pair<QString, double>> &spendings);
+
+void DonutChart::drawDonut(const std::vector<std::pair<QString, double>> &spendings)
 {
     QPieSeries *series = new QPieSeries();
-    series->setHoleSize(0.50);
+    series->setHoleSize(0.54);
 
-
+    int totalSpendings = calcTotalAmount(spendings);
+    for (const auto &entry : spendings)
+    {
+        Slice *slice(new Slice(entry.first, calcSize(totalSpendings, entry.second)));
+        series->append(slice);
+    }
     series->setLabelsVisible();
-    Slice *slice = new Slice("Shopping 128€", 4);
-    Slice *slice1 = new Slice("Food 66€", 3);
-    series->append(slice);
-    series->append(slice1);
-
 
     QChart *donut = new QChart();
     donut->addSeries(series);
     donut->setAnimationOptions(QChart::SeriesAnimations);
-    donut->setTitle("Donut Demo");
     donut->legend()->hide();
 
     QColor customColor(25, 25, 25); // RGB values for custom color
@@ -40,6 +42,23 @@ void DonutChart::drawDonut()
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->setStyleSheet("background-color: rgb(25,25,25);");
 }
+
+
+
+double calcSize(double totalSpendings, double amount){
+    return amount/totalSpendings;
+}
+
+double calcTotalAmount(const std::vector<std::pair<QString, double>> &spendings){
+    double totalSpendings = 0;
+    for(const auto &entry : spendings)
+    {
+        totalSpendings += entry.second;
+    }
+    return totalSpendings;
+}
+
+
 
 
 

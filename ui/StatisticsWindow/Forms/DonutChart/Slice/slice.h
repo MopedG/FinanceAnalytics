@@ -17,6 +17,7 @@ signals:
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void setStyle();
 };
 
 

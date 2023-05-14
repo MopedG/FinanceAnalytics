@@ -9,13 +9,13 @@ class DonutChart : public QObject
 {
     Q_OBJECT
 public:
-    DonutChart(std::vector<std::shared_ptr<EntryData>>);
+    DonutChart(const std::vector<std::pair<QString, double>> &spendings);
 
     QChartView *chartView;
 
 
 private:
-    void drawDonut();
+    void drawDonut(const std::vector<std::pair<QString, double>> &spendings);
 };
 
 
