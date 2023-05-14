@@ -45,10 +45,10 @@ set(PROJECT_SOURCES
         ui/StatisticsWindow/Forms/SpendingForm/spendingform.h
         ui/StatisticsWindow/Forms/SpendingForm/spendingform.cpp
         ui/StatisticsWindow/Forms/SpendingForm/spendingform.ui
-        ui/StatisticsWindow/Forms/PieChart/piechart.h
-        ui/StatisticsWindow/Forms/PieChart/piechart.cpp
-        ui/StatisticsWindow/Forms/PieChart/Slice/pieslice.h
-        ui/StatisticsWindow/Forms/PieChart/Slice/pieslice.cpp
+        ui/StatisticsWindow/Forms/DonutChart/donutchart.h
+        ui/StatisticsWindow/Forms/DonutChart/donutchart.cpp
+        ui/StatisticsWindow/Forms/DonutChart/Slice/slice.h
+        ui/StatisticsWindow/Forms/DonutChart/Slice/slice.cpp
 
         src/WindowManager/windowmanager.h
         src/WindowManager/windowmanager.cpp

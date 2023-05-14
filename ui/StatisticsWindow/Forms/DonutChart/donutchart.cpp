@@ -1,25 +1,25 @@
-#include "piechart.h"
-#include "StatisticsWindow/Forms/PieChart/Slice/pieslice.h"
+#include "donutchart.h"
+#include "StatisticsWindow/Forms/DonutChart/Slice/slice.h"
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
 #include <QtCharts/QChartView>
 
 
 
-PieChart::PieChart() //needs data to create pie from it
+DonutChart::DonutChart(std::vector<std::shared_ptr<EntryData>>)
 {
     drawDonut();
 }
 
-void PieChart::drawDonut()
+void DonutChart::drawDonut()
 {
     QPieSeries *series = new QPieSeries();
     series->setHoleSize(0.50);
 
 
     series->setLabelsVisible();
-    PieSlice *slice = new PieSlice("Shopping 128€", 4);
-    PieSlice *slice1 = new PieSlice("Food 66€", 3);
+    Slice *slice = new Slice("Shopping 128€", 4);
+    Slice *slice1 = new Slice("Food 66€", 3);
     series->append(slice);
     series->append(slice1);
 

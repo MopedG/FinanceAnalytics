@@ -4,17 +4,18 @@
 #include <QObject>
 #include <QWidget>
 
-class PieChart : public QObject
+class EntryData;
+class DonutChart : public QObject
 {
     Q_OBJECT
 public:
-    PieChart();
+    DonutChart(std::vector<std::shared_ptr<EntryData>>);
 
     QChartView *chartView;
 
+
 private:
     void drawDonut();
-    void drawPie();
 };
 
 
