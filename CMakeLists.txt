@@ -47,6 +47,8 @@ set(PROJECT_SOURCES
         ui/StatisticsWindow/Forms/SpendingForm/spendingform.ui
         ui/StatisticsWindow/Forms/PieChart/piechart.h
         ui/StatisticsWindow/Forms/PieChart/piechart.cpp
+        ui/StatisticsWindow/Forms/PieChart/Slice/pieslice.h
+        ui/StatisticsWindow/Forms/PieChart/Slice/pieslice.cpp
 
         src/WindowManager/windowmanager.h
         src/WindowManager/windowmanager.cpp
