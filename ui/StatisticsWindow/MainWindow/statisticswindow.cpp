@@ -6,6 +6,7 @@
 #include "StatisticsWindow/Forms/SpendingForm/spendingform.h"
 #include "StatisticsWindow/Forms/DonutChart/donutchart.h"
 #include "Repository/Writer/writer.h"
+#include "EntryWindow/MessageBox/ErrorMessageBox/errormessagebox.h"
 #include <memory>
 #include <QProcess>
 
@@ -148,9 +149,19 @@ void openRepoFile(const QString &path)
     QProcess::startDetached(explorerCommand);
 }
 
+void displayRepoWarning()
+{
+    std::unique_ptr<ErrorMessageBox>warningDialog(new ErrorMessageBox);
+    warningDialog->setErrorMessage("Jegliche Änderungen in der Repository File sind unüberwacht und können zu einem Absturz der Applikation führen."
+    "   \nUm Änderungen anzeigen zu lassen, starten sie bitte die Applikation neu.");
+    warningDialog->setNewWindowTitle("Warning");
+    warningDialog->exec();
+}
+
 
 void StatisticsWindow::on_openRepoButton_clicked()
 {
     openRepoFile(QString::fromStdString(Writer::getRepositoryFilePath().string()));
+    displayRepoWarning();
 }
 

@@ -21,6 +21,11 @@ void ErrorMessageBox::setErrorMessage(const QString &errorMessage)
     ui->errorMessageLabel->setText(errorMessage);
 }
 
+void ErrorMessageBox::setNewWindowTitle(const QString &title)
+{
+    setWindowTitle(title);
+}
+
 void ErrorMessageBox::on_confirmButton_clicked()
 {
     close();
