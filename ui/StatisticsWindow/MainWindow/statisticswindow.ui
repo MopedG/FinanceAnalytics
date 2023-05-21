@@ -130,8 +130,8 @@ border: 3px solid rgb(102, 102, 102);
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>709</width>
-                 <height>397</height>
+                 <width>726</width>
+                 <height>408</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -448,50 +448,6 @@ QPushButton:clicked {
           </property>
          </spacer>
         </item>
-        <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-         <widget class="QPushButton" name="pushButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-background-color: rgb(43, 43, 43);
-border-radius: 20px;
-}
-
-QPushButton:hover {
-	background-color: rgb(38, 38, 38);
-}
-
-QPushButton:clicked {
-	background-color: rgb(34, 34, 34);
-}
-</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../../../assets/recource.qrc">
-            <normaloff>:/assets/settingWheel.png</normaloff>:/assets/settingWheel.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-         </widget>
-        </item>
         <item>
          <spacer name="verticalSpacer_4">
           <property name="orientation">
@@ -507,50 +463,6 @@ QPushButton:clicked {
            </size>
           </property>
          </spacer>
-        </item>
-        <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-background-color: rgb(43, 43, 43);
-border-radius: 20px;
-}
-
-QPushButton:hover {
-	background-color: rgb(38, 38, 38);
-}
-
-QPushButton:clicked {
-	background-color: rgb(34, 34, 34);
-}
-</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../../../assets/recource.qrc">
-            <normaloff>:/assets/spending.png</normaloff>:/assets/spending.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer">
@@ -650,7 +562,7 @@ border: 3px solid rgb(102, 102, 102)
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>448</width>
+             <width>450</width>
              <height>269</height>
             </rect>
            </property>
