@@ -26,10 +26,15 @@ void StatisticsWindow::update(const std::vector<std::shared_ptr<EntryData>> &dat
 {
     this->data = data;
     QStringList dates = Refactorer::createDateList(data);
+
     if(dates.size() != ui->monthLayout->count())
         updateMonthCard(dates);
     else
+    {
+        createDonutChart(data);
         updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt()));
+    }
+
 }
 
 void StatisticsWindow::updateMonthCard(const QStringList &dates)
@@ -82,11 +87,13 @@ void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, 
     ui->totalSpendingsLabel->setText(QString::number(totalSpendings) + " €");
 }
 
-void StatisticsWindow::createDonutChart(const std::vector<std::pair<QString, double>> &spendings)
+void StatisticsWindow::createDonutChart(const std::vector<std::shared_ptr<EntryData>> &data)
 {
+    std::vector<std::pair<QString, double>> spendingsList =
+        Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
     if(!ui->pieLayout->isEmpty())
         delete ui->pieLayout->takeAt(0)->widget();
-    std::unique_ptr<DonutChart> donut(new DonutChart(spendings));
+    std::unique_ptr<DonutChart> donut(new DonutChart(spendingsList));
     QMargins margins(0, 0, 0, 0);
     donut->chartView->chart()->setMargins(margins);
     ui->pieLayout->addWidget(donut->chartView);
@@ -130,6 +137,6 @@ void StatisticsWindow::on_monthCardActivated(MonthCard *activeMonthCard)
     std::vector<std::pair<QString, double>> spendingsList =
             Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
     updateSpendingForms(spendingsList);
-    createDonutChart(spendingsList);
+    createDonutChart(data);
 }
 

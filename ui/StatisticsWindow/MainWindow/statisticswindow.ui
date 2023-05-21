@@ -130,8 +130,8 @@ border: 3px solid rgb(102, 102, 102);
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>726</width>
-                 <height>408</height>
+                 <width>709</width>
+                 <height>397</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -402,6 +402,9 @@ border: 3px solid rgb(255, 191, 30);
             <height>60</height>
            </size>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
 background-color: rgb(43, 43, 43);
@@ -562,7 +565,7 @@ border: 3px solid rgb(102, 102, 102)
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>450</width>
+             <width>448</width>
              <height>269</height>
             </rect>
            </property>
