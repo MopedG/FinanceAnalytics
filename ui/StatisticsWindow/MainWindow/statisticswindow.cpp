@@ -5,7 +5,9 @@
 #include "StatisticsWindow/Forms/MonthCard/monthcard.h"
 #include "StatisticsWindow/Forms/SpendingForm/spendingform.h"
 #include "StatisticsWindow/Forms/DonutChart/donutchart.h"
+#include "Repository/Writer/writer.h"
 #include <memory>
+#include <QProcess>
 
 StatisticsWindow::StatisticsWindow(QWidget *parent, const std::vector<std::shared_ptr<EntryData>> &data) :
     QWidget(parent),
@@ -138,5 +140,17 @@ void StatisticsWindow::on_monthCardActivated(MonthCard *activeMonthCard)
             Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
     updateSpendingForms(spendingsList);
     createDonutChart(data);
+}
+
+void openRepoFile(const QString &path)
+{
+    QString explorerCommand = "explorer.exe /select,\"" + path + "\"";
+    QProcess::startDetached(explorerCommand);
+}
+
+
+void StatisticsWindow::on_openRepoButton_clicked()
+{
+    openRepoFile(QString::fromStdString(Writer::getRepositoryFilePath().string()));
 }
 

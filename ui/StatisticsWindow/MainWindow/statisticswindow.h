@@ -30,6 +30,8 @@ private slots:
     void on_homeButton_clicked();
     void on_monthCardActivated(MonthCard *activeMonthCard);
 
+    void on_openRepoButton_clicked();
+
 private:
     Ui::StatisticsWindow *ui;
 

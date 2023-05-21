@@ -402,6 +402,9 @@ border: 3px solid rgb(255, 191, 30);
             <height>60</height>
            </size>
           </property>
+          <property name="cursor">
+           <cursorShape>OpenHandCursor</cursorShape>
+          </property>
           <property name="focusPolicy">
            <enum>Qt::ClickFocus</enum>
           </property>
@@ -450,6 +453,49 @@ QPushButton:clicked {
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="openRepoButton">
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>60</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>OpenHandCursor</cursorShape>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+background-color: rgb(43, 43, 43);
+border-radius: 20px;
+}
+
+QPushButton:hover {
+	background-color: rgb(38, 38, 38);
+}
+
+QPushButton:clicked {
+	background-color: rgb(34, 34, 34);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../assets/recource.qrc">
+            <normaloff>:/assets/explorer.png</normaloff>:/assets/explorer.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>40</width>
+            <height>40</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer_4">

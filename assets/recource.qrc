@@ -11,5 +11,6 @@
         <file>spending.png</file>
         <file>earning.png</file>
         <file>discard.png</file>
+        <file>explorer.png</file>
     </qresource>
 </RCC>
