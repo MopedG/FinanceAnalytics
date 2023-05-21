@@ -87,6 +87,8 @@ void StatisticsWindow::createDonutChart(const std::vector<std::pair<QString, dou
     if(!ui->pieLayout->isEmpty())
         delete ui->pieLayout->takeAt(0)->widget();
     std::unique_ptr<DonutChart> donut(new DonutChart(spendings));
+    QMargins margins(0, 0, 0, 0);
+    donut->chartView->chart()->setMargins(margins);
     ui->pieLayout->addWidget(donut->chartView);
 }
 
