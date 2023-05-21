@@ -325,21 +325,21 @@ border: 3px solid rgb(102, 102, 102);
          <number>0</number>
         </property>
         <item>
-         <layout class="QVBoxLayout" name="pieLayout" stretch="">
+         <layout class="QVBoxLayout" name="pieLayout">
           <property name="spacing">
            <number>0</number>
           </property>
           <property name="leftMargin">
-           <number>3</number>
+           <number>5</number>
           </property>
           <property name="topMargin">
-           <number>3</number>
+           <number>5</number>
           </property>
           <property name="rightMargin">
-           <number>3</number>
+           <number>5</number>
           </property>
           <property name="bottomMargin">
-           <number>3</number>
+           <number>5</number>
           </property>
          </layout>
         </item>

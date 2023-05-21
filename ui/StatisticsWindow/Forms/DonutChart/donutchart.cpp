@@ -22,15 +22,19 @@ void DonutChart::drawDonut(const std::vector<std::pair<QString, double>> &spendi
     int totalSpendings = calcTotalAmount(spendings);
     for (const auto &entry : spendings)
     {
-        Slice *slice(new Slice(entry.first, calcSize(totalSpendings, entry.second)));
+        double sizePerc = calcSize(totalSpendings, entry.second);
+        Slice *slice(new Slice(entry.first, sizePerc));
+        if(sizePerc < 0.04)
+            slice->setLabelVisible(false);
         series->append(slice);
     }
-    series->setLabelsVisible();
+
 
     QChart *donut = new QChart();
     donut->addSeries(series);
     donut->setAnimationOptions(QChart::SeriesAnimations);
     donut->legend()->hide();
+
 
     QColor customColor(25, 25, 25); // RGB values for custom color
     donut->setBackgroundBrush(QBrush(customColor));
