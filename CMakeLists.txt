@@ -49,6 +49,8 @@ set(PROJECT_SOURCES
         ui/StatisticsWindow/Forms/DonutChart/donutchart.cpp
         ui/StatisticsWindow/Forms/DonutChart/Slice/slice.h
         ui/StatisticsWindow/Forms/DonutChart/Slice/slice.cpp
+        ui/StatisticsWindow/Forms/BarChart/barchart.h
+        ui/StatisticsWindow/Forms/BarChart/barchart.cpp
 
         src/WindowManager/windowmanager.h
         src/WindowManager/windowmanager.cpp
