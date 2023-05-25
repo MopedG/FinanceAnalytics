@@ -50,7 +50,7 @@ QStringList Refactorer::createWhiteList(const std::vector<std::shared_ptr<EntryD
     return whiteList;
 }
 
-QStringList Refactorer::createDateList(const std::vector<std::shared_ptr<EntryData> > &entryData)
+QStringList Refactorer::createDateList(const std::vector<std::shared_ptr<EntryData>> &entryData)
 {
     QStringList uniqueDates;
     for (const auto& entry : entryData)

@@ -5,6 +5,7 @@
 #include "StatisticsWindow/Forms/MonthCard/monthcard.h"
 #include "StatisticsWindow/Forms/SpendingForm/spendingform.h"
 #include "StatisticsWindow/Forms/DonutChart/donutchart.h"
+#include "StatisticsWindow/Forms/BarChart/barchart.h"
 #include "Repository/Writer/writer.h"
 #include "EntryWindow/MessageBox/ErrorMessageBox/errormessagebox.h"
 #include <memory>
@@ -29,7 +30,7 @@ void StatisticsWindow::update(const std::vector<std::shared_ptr<EntryData>> &dat
 {
     this->data = data;
     QStringList dates = Refactorer::createDateList(data);
-
+    createBarChart(data);
     if(dates.size() != ui->monthLayout->count())
         updateMonthCard(dates);
     else
@@ -55,6 +56,7 @@ void StatisticsWindow::updateSpendingForms(const std::vector<std::pair<QString, 
 void StatisticsWindow::initObjects(const std::vector<std::shared_ptr<EntryData>> &data)
 {
     createMonthCards(Refactorer::createDateList(data));
+    createBarChart(data);
 }
 
 void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
@@ -97,9 +99,13 @@ void StatisticsWindow::createDonutChart(const std::vector<std::shared_ptr<EntryD
     if(!ui->pieLayout->isEmpty())
         delete ui->pieLayout->takeAt(0)->widget();
     std::unique_ptr<DonutChart> donut(new DonutChart(spendingsList));
-    QMargins margins(0, 0, 0, 0);
-    donut->chartView->chart()->setMargins(margins);
     ui->pieLayout->addWidget(donut->chartView);
+}
+
+void StatisticsWindow::createBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
+{
+    std::unique_ptr<BarChart> barChart(new BarChart(data));
+    ui->barchartLayout->addWidget(barChart->chartView);
 }
 
 void StatisticsWindow::removeMonthCards()

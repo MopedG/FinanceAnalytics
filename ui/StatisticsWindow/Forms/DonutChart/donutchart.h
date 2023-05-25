@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QWidget>
 
-class EntryData;
 class DonutChart : public QObject
 {
     Q_OBJECT

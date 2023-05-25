@@ -19,6 +19,7 @@ void DonutChart::drawDonut(const std::vector<std::pair<QString, double>> &spendi
     QPieSeries *series = new QPieSeries();
     series->setHoleSize(0.54);
 
+
     int totalSpendings = calcTotalAmount(spendings);
     for (const auto &entry : spendings)
     {
@@ -35,16 +36,15 @@ void DonutChart::drawDonut(const std::vector<std::pair<QString, double>> &spendi
     donut->setAnimationOptions(QChart::SeriesAnimations);
     donut->legend()->hide();
 
-
     QColor customColor(25, 25, 25); // RGB values for custom color
     donut->setBackgroundBrush(QBrush(customColor));
-    QFont font("Helvetica [Cronyx]", 22, QFont::Bold);
-    donut->setTitleFont(font);
-    donut->setTitleBrush(QBrush(QColorConstants::White));
 
     chartView = new QChartView(donut);
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->setStyleSheet("background-color: rgb(25,25,25);");
+
+    QMargins margins(0, 0, 0, 0);
+    chartView->chart()->setMargins(margins);
 }
 
 
