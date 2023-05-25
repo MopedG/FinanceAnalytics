@@ -48,6 +48,7 @@ private:
     void createMonthCards(const QStringList &dates, bool update = false);
     void createSpendingForms(const std::vector<std::pair<QString, double>> &spendings);
     void createDonutChart(const std::vector<std::shared_ptr<EntryData>> &data);
+    void createBarChart(const std::vector<std::shared_ptr<EntryData>> &data);
     void removeMonthCards();
     void removeSpendingForms();
 };
