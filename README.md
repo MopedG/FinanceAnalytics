@@ -9,7 +9,7 @@
 
 ## Installation
 
-1. Lade den Installer für FinanceAnalytics aus dem [releases](https://github.com/MopedG/FinanceAnalytics/tree/develop/releases) Abschnitt herunter.
+1. Lade den Installer (*Finance Tracker Version Installer.exe*) für FinanceAnalytics aus dem [releases](https://github.com/MopedG/FinanceAnalytics/tree/develop/releases) Abschnitt herunter.
 2. Führe den Installer aus und folge den Anweisungen auf dem Bildschirm.
 3. Die Anwendung wird im Verzeichnis `programs\FinanceAnalytics` installiert.
 4. Stelle sicher, dass du einen `AppData`-Ordner in deinem System hast, damit die Anwendung ordnungsgemäß funktioniert.
