@@ -104,7 +104,9 @@ void StatisticsWindow::createDonutChart(const std::vector<std::shared_ptr<EntryD
 
 void StatisticsWindow::createBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
 {
-    std::unique_ptr<BarChart> barChart(new BarChart(data));
+    if(!ui->barchartLayout->isEmpty())
+        delete ui->barchartLayout->takeAt(0);
+    BarChart *barChart(new BarChart(data));
     ui->barchartLayout->addWidget(barChart->chartView);
 }
 
