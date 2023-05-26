@@ -2,7 +2,7 @@ pushd .
 
 :: copy dependencies
 cd ..\build\build-release
-..\..\deployApplication\copyDep.cmd
+..\..\releases\copyDep.cmd
 
 popd
 
