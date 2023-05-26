@@ -16,7 +16,6 @@ public:
 
 private:
     void drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data);
-    void drawBars(const std::vector<std::shared_ptr<EntryData>> &data, QBarSeries &series, const QStringList &categories);
 };
 
 

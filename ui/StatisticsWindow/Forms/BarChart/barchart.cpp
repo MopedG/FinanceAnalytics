@@ -1,11 +1,12 @@
 #include "barchart.h"
-#include <QChartView>
+#include "EntryWindow/EntryDatahandler/entrydata.h"
+#include "Validator/validator.h"
+#include <QtCharts/QChart>
 #include <QtCharts/QBarSeries>
 #include <QtCharts/QBarSet>
-#include <QtCharts/QChart>
-#include "Repository/Refactorer/refactorer.h"
-#include "EntryWindow/EntryDatahandler/entrydata.h"
-#include "qbarcategoryaxis.h"
+#include <QtCharts/QChartView>
+#include <QtCharts/QCategoryAxis>
+
 
 BarChart::BarChart(const std::vector<std::shared_ptr<EntryData>> &data)
 {
@@ -28,83 +29,76 @@ double calcTotalAmount(const std::vector<std::shared_ptr<EntryData>> &data, cons
 
 void BarChart::drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
 {
-    chartView = new QChartView;
-    QBarSeries *series = new QBarSeries;
-    QBarSet *barSet(new QBarSet("Jan"));
-    QBarSet *barSet2(new QBarSet("Feb"));
-    *barSet << 500;
-    *barSet2 << 400;
-    series->append(barSet);
-    series->append(barSet2);
-    // ...
-    chartView->chart()->addSeries(series);
-    chartView->chart()->createDefaultAxes();
+    QBarSet *set = new QBarSet("");
 
-    QBarCategoryAxis *axisX = new QBarCategoryAxis;
-    QStringList categories;
-    categories << "Jan" << "Feb" << "Mar" << "Apr" << "May" << "Jun";
-    axisX->append(categories);
-    axisX->setRange("Jan", "Jun");
-    chartView->chart()->setAxisX(axisX, series);
-
-
-
-    /*QBarCategoryAxis *axis = new QBarCategoryAxis;
-    QStringList categories;
-    categories << "Jan" << "Feb" << "Mär" << "Apr" << "Mai" << "Jun" << "Jul" << "Aug" << "Sep" << "Okt" << "Nov" << "Dez";
-    axis->append(categories);*/
-
-
-    /*QBarSeries *series(new QBarSeries());
-    QStringList categories;
-    categories << "Jan" << "Feb" << "Mär" << "Apr" << "Mai" << "Jun" << "Jul" << "Aug" << "Sep" << "Okt" << "Nov" << "Dez";
-                      QBarCategoryAxis *axis(new QBarCategoryAxis());
-    axis->append(categories);
-
-    drawBars(data, *series, categories);
-    series->setBarWidth(0.2);
-
-
-
-    //series->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
-
-    // Create the chart and set the bar series
+    QBarSeries *series = new QBarSeries();
     QChart *chart = new QChart();
+    QCategoryAxis *axisX = new QCategoryAxis();
+    QValueAxis *axisY = new QValueAxis();
 
+    QString currentYear = QString::number(Validator::getCurrentYear());
+
+    set->append(calcTotalAmount(data, "Januar "+currentYear));
+    set->append(calcTotalAmount(data, "Februar "+currentYear));
+    set->append(calcTotalAmount(data, "März "+currentYear));
+    set->append(calcTotalAmount(data, "April "+currentYear));
+    set->append(calcTotalAmount(data, "Mai "+currentYear));
+    set->append(calcTotalAmount(data, "Juni "+currentYear));
+    set->append(calcTotalAmount(data, "Juli "+currentYear));
+    set->append(calcTotalAmount(data, "August "+currentYear));
+    set->append(calcTotalAmount(data, "September "+currentYear));
+    set->append(calcTotalAmount(data, "Oktober "+currentYear));
+    set->append(calcTotalAmount(data, "November "+currentYear));
+    set->append(calcTotalAmount(data, "Dezember "+currentYear));
+
+    axisX->setRange(-1,12);
+    axisY->setLabelsColor(Qt::white);
+    series->append(set);
     chart->addSeries(series);
-
+    chart->addAxis(axisX, Qt::AlignBottom);
+    chart->addAxis(axisY, Qt::AlignLeft);
+    series->attachAxis(axisX);
+    series->attachAxis(axisY);
+    series->setBarWidth(0.4);
     QColor customColor(25, 25, 25); // RGB values for custom color
     chart->setBackgroundBrush(QBrush(customColor));
-    chart->legend()->hide();
     chart->setAnimationOptions(QChart::SeriesAnimations);
 
 
+    // Set the color of the chart title text
+    chart->setTitle("Gesamtausgaben");
+    chart->setTitleBrush(QBrush(Qt::white));
+    chart->setTitleFont(QFont("Arial", 16, QFont::Bold));
+    chart->legend()->setVisible(false);
+    axisX->setGridLineVisible(false);
+    axisY->setGridLineVisible(false);
+    axisY->setLabelFormat("%.0f");
+    axisX->setLabelsColor(Qt::white);
+    axisY->setLabelsFont(QFont("Arial", 12, QFont::Bold));
+    axisX->setLabelsFont(QFont("Arial", 12, QFont::Bold));
 
 
-    chart->addAxis(axis, Qt::AlignBottom);
-    series->attachAxis(axis);
-    // Create a chart view to display the chart
+    axisX->append("Jan", 0);
+    axisX->append("Feb", 2);
+    axisX->append("Mar", 2.01);
+    axisX->append("Apr", 4);
+    axisX->append("May", 4.01);
+    axisX->append("Jun", 6);
+    axisX->append("Jul", 6.01);
+    axisX->append("Aug", 8);
+    axisX->append("Sep", 8.01);
+    axisX->append("Oct", 10);
+    axisX->append("Nov", 10.01);
+    axisX->append("Dec", 12);
+
+
     chartView = new QChartView(chart);
-    chartView->setStyleSheet("background-color: transparent;");
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->setStyleSheet("background-color: rgb(25,25,25);");
     QMargins margins(0, 0, 0, 0);
     chartView->chart()->setMargins(margins);
 
-    */
-
 }
 
-void BarChart::drawBars(const std::vector<std::shared_ptr<EntryData>> &data, QBarSeries &series, const QStringList &categories)
-{
-    QStringList dates = Refactorer::createDateList(data);
-    // Iterate through the monthly spendings vector
-    for(const auto &entry : dates)
-    {
-        double totalAmount = calcTotalAmount(data, entry);
-        QBarSet *barSet(new QBarSet(entry));
-        *barSet << totalAmount;
-
-        series.append(barSet);
-    }
-}
 
 
