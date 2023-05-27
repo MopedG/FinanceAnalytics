@@ -308,6 +308,42 @@ border: 3px solid rgb(102, 102, 102);
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QVBoxLayout" name="pieLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>5</number>
+          </property>
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <property name="rightMargin">
+           <number>5</number>
+          </property>
+          <property name="bottomMargin">
+           <number>5</number>
+          </property>
+         </layout>
+        </item>
+       </layout>
       </widget>
      </item>
      <item>
@@ -366,6 +402,12 @@ border: 3px solid rgb(255, 191, 30);
             <height>60</height>
            </size>
           </property>
+          <property name="cursor">
+           <cursorShape>OpenHandCursor</cursorShape>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
 background-color: rgb(43, 43, 43);
@@ -412,19 +454,19 @@ QPushButton:clicked {
           </property>
          </spacer>
         </item>
-        <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-         <widget class="QPushButton" name="pushButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
+        <item>
+         <widget class="QPushButton" name="openRepoButton">
           <property name="minimumSize">
            <size>
             <width>60</width>
             <height>60</height>
            </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>OpenHandCursor</cursorShape>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
@@ -438,15 +480,14 @@ QPushButton:hover {
 
 QPushButton:clicked {
 	background-color: rgb(34, 34, 34);
-}
-</string>
+}</string>
           </property>
           <property name="text">
            <string/>
           </property>
           <property name="icon">
            <iconset resource="../../../assets/recource.qrc">
-            <normaloff>:/assets/settingWheel.png</normaloff>:/assets/settingWheel.png</iconset>
+            <normaloff>:/assets/explorer.png</normaloff>:/assets/explorer.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -471,50 +512,6 @@ QPushButton:clicked {
            </size>
           </property>
          </spacer>
-        </item>
-        <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>60</width>
-            <height>60</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-background-color: rgb(43, 43, 43);
-border-radius: 20px;
-}
-
-QPushButton:hover {
-	background-color: rgb(38, 38, 38);
-}
-
-QPushButton:clicked {
-	background-color: rgb(34, 34, 34);
-}
-</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../../../assets/recource.qrc">
-            <normaloff>:/assets/spending.png</normaloff>:/assets/spending.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer">
@@ -693,6 +690,11 @@ border: 3px solid rgb(102, 102, 102)
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="barchartLayout"/>
+        </item>
+       </layout>
       </widget>
      </item>
     </layout>

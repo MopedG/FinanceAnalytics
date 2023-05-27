@@ -17,6 +17,7 @@ public:
     void deactivate();
     void activate();
     QString getMonth();
+    QString getYear();
 
 signals:
     void monthCardActivated(MonthCard *monthCard);

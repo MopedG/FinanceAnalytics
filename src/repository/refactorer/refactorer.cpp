@@ -25,6 +25,8 @@ std::vector<std::shared_ptr<EntryData>> Refactorer::combineEntriesByCategory(con
             {
                 std::shared_ptr<EntryData> existingEntry = addedEntryData.find(key)->second;
                 existingEntry->setAmount(existingEntry->getAmount() + entry->getAmount());
+                if(existingEntry->getAmount() <= 0)
+                    addedEntryData.erase(key);
 
             }
         }
@@ -48,7 +50,7 @@ QStringList Refactorer::createWhiteList(const std::vector<std::shared_ptr<EntryD
     return whiteList;
 }
 
-QStringList Refactorer::createDateList(const std::vector<std::shared_ptr<EntryData> > &entryData)
+QStringList Refactorer::createDateList(const std::vector<std::shared_ptr<EntryData>> &entryData)
 {
     QStringList uniqueDates;
     for (const auto& entry : entryData)
@@ -62,12 +64,12 @@ QStringList Refactorer::createDateList(const std::vector<std::shared_ptr<EntryDa
     return uniqueDates;
 }
 
-std::vector<std::pair<QString, double>> Refactorer::createSpendingsList(const std::vector<std::shared_ptr<EntryData>> &entryData, const QString &month)
+std::vector<std::pair<QString, double>> Refactorer::createSpendingsList(const std::vector<std::shared_ptr<EntryData>> &entryData, const QString &month, int year)
 {
     std::vector<std::pair<QString, double>> spendingsList;
     for(const auto &entry : entryData)
     {
-        if(entry->getMonthYear().first == month)
+        if(entry->getMonthYear().first == month && entry->getMonthYear().second == year)
         {
             spendingsList.emplace_back(std::pair(entry->getCategory(), entry->getAmount()));
         }

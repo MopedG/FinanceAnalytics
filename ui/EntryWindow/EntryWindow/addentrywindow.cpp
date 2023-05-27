@@ -12,6 +12,7 @@ AddEntryWindow::AddEntryWindow(QWidget *parent, std::vector<std::shared_ptr<Entr
     initializeClasses(Refactorer::createWhiteList(data));
     setUpInitialConnections();
     ui->setupUi(this);
+    ui->yearEdit->setText(QString::number(Validator::getCurrentYear()));
     on_openEntryForm();
 }
 
@@ -49,7 +50,6 @@ void AddEntryWindow::setEntryFormAttributes()
     ui->formLayout->addWidget(entryForm, 0, Qt::AlignTop);
     entryForm->setAttribute(Qt::WA_DeleteOnClose, true);
     entryForm->disableCancelEdit();
-    ui->yearEdit->setText(QString::number(Validator::getCurrentYear()));
 }
 
 void AddEntryWindow::connectEntryForm()

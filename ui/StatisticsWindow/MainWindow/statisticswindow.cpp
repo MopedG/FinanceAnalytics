@@ -2,9 +2,14 @@
 #include "ui_statisticswindow.h"
 #include "EntryWindow/EntryDatahandler/entrydata.h"
 #include "Repository/refactorer/refactorer.h"
-#include "validator/validator.h"
 #include "StatisticsWindow/Forms/MonthCard/monthcard.h"
 #include "StatisticsWindow/Forms/SpendingForm/spendingform.h"
+#include "StatisticsWindow/Forms/DonutChart/donutchart.h"
+#include "StatisticsWindow/Forms/BarChart/barchart.h"
+#include "Repository/Writer/writer.h"
+#include "EntryWindow/MessageBox/ErrorMessageBox/errormessagebox.h"
+#include <memory>
+#include <QProcess>
 
 StatisticsWindow::StatisticsWindow(QWidget *parent, const std::vector<std::shared_ptr<EntryData>> &data) :
     QWidget(parent),
@@ -25,10 +30,15 @@ void StatisticsWindow::update(const std::vector<std::shared_ptr<EntryData>> &dat
 {
     this->data = data;
     QStringList dates = Refactorer::createDateList(data);
+    createBarChart(data);
     if(dates.size() != ui->monthLayout->count())
         updateMonthCard(dates);
     else
-        updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth()));
+    {
+        createDonutChart(data);
+        updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt()));
+    }
+
 }
 
 void StatisticsWindow::updateMonthCard(const QStringList &dates)
@@ -37,7 +47,7 @@ void StatisticsWindow::updateMonthCard(const QStringList &dates)
     createMonthCards(dates, true);
 }
 
-void StatisticsWindow::updateSpendingForms(const std::vector<std::pair<QString, double>> spendings)
+void StatisticsWindow::updateSpendingForms(const std::vector<std::pair<QString, double>> &spendings)
 {
     removeSpendingForms();
     createSpendingForms(spendings);
@@ -46,6 +56,7 @@ void StatisticsWindow::updateSpendingForms(const std::vector<std::pair<QString, 
 void StatisticsWindow::initObjects(const std::vector<std::shared_ptr<EntryData>> &data)
 {
     createMonthCards(Refactorer::createDateList(data));
+    createBarChart(data);
 }
 
 void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
@@ -67,7 +78,7 @@ void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
     }
 }
 
-void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, double>> spendings)
+void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, double>> &spendings)
 {
     double totalSpendings = 0;
     for(const auto &entry : spendings)
@@ -77,8 +88,26 @@ void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, 
         ui->spendingsLayout->addWidget(spendingForm, 0, Qt::AlignTop);
         totalSpendings += entry.second;
     }
-    ui->titleLabel->setText(monthCardActive->getMonth() + " " + QString::number(Validator::getCurrentYear()));
+    ui->titleLabel->setText(monthCardActive->getMonth() + " " + monthCardActive->getYear());
     ui->totalSpendingsLabel->setText(QString::number(totalSpendings) + " €");
+}
+
+void StatisticsWindow::createDonutChart(const std::vector<std::shared_ptr<EntryData>> &data)
+{
+    std::vector<std::pair<QString, double>> spendingsList =
+        Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
+    if(!ui->pieLayout->isEmpty())
+        delete ui->pieLayout->takeAt(0)->widget();
+    std::unique_ptr<DonutChart> donut(new DonutChart(spendingsList));
+    ui->pieLayout->addWidget(donut->chartView);
+}
+
+void StatisticsWindow::createBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
+{
+    if(!ui->barchartLayout->isEmpty())
+        delete ui->barchartLayout->takeAt(0);
+    BarChart *barChart(new BarChart(data));
+    ui->barchartLayout->addWidget(barChart->chartView);
 }
 
 void StatisticsWindow::removeMonthCards()
@@ -116,6 +145,31 @@ void StatisticsWindow::on_monthCardActivated(MonthCard *activeMonthCard)
     monthCardActive = activeMonthCard;
     monthCardActive->activate();
     lastActiveMonthCard = monthCardActive->getMonth();
-    updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth()));
+    std::vector<std::pair<QString, double>> spendingsList =
+            Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
+    updateSpendingForms(spendingsList);
+    createDonutChart(data);
+}
+
+void openRepoFile(const QString &path)
+{
+    QString explorerCommand = "explorer.exe /select,\"" + path + "\"";
+    QProcess::startDetached(explorerCommand);
+}
+
+void displayRepoWarning()
+{
+    std::unique_ptr<ErrorMessageBox>warningDialog(new ErrorMessageBox);
+    warningDialog->setErrorMessage("Jegliche Änderungen in der Repository File sind unüberwacht und können zu einem Absturz der Applikation führen."
+    "   \nUm Änderungen anzeigen zu lassen, starten sie bitte die Applikation neu.");
+    warningDialog->setNewWindowTitle("Warning");
+    warningDialog->exec();
+}
+
+
+void StatisticsWindow::on_openRepoButton_clicked()
+{
+    openRepoFile(QString::fromStdString(Writer::getRepositoryFilePath().string()));
+    displayRepoWarning();
 }
 

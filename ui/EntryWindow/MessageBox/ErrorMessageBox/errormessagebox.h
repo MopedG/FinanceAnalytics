@@ -16,6 +16,7 @@ public:
     ~ErrorMessageBox();
 
     void setErrorMessage(const QString &errorMessage);
+    void setNewWindowTitle(const QString &title);
 
 signals:
     void enableEntryWindow();
