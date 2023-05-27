@@ -11,4 +11,4 @@
 *.txt
 /copyDep.cmd
 
-docs/
+#docs/
