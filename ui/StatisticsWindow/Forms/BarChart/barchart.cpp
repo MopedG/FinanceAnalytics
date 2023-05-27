@@ -6,6 +6,7 @@
 #include <QtCharts/QBarSet>
 #include <QtCharts/QChartView>
 #include <QtCharts/QCategoryAxis>
+#include <QtCharts/QLineSeries>
 
 
 BarChart::BarChart(const std::vector<std::shared_ptr<EntryData>> &data)
@@ -19,12 +20,48 @@ double calcTotalAmount(const std::vector<std::shared_ptr<EntryData>> &data, cons
     double total = 0;
     for(const auto &entry : data)
     {
-        if((entry->getMonthYear().first + " " + QString::number(entry->getMonthYear().second)) == month)
+        if((entry->getMonthYear().first + QString::number(entry->getMonthYear().second)) == month)
         {
             total += entry->getAmount();
         }
     }
     return total;
+}
+
+double calcAverage(double totalAmount, int amountBars)
+{
+    return totalAmount/amountBars;
+}
+
+double addMonthBars(const std::vector<std::shared_ptr<EntryData>> &data, const QStringList &months, QBarSet &set)
+{
+    QString currentYear = QString::number(Validator::getCurrentYear());
+    double totalAmount = 0;
+    int amountBars = 0;
+    for(const auto &month : months)
+    {
+        double amount = calcTotalAmount(data, month+currentYear);
+        (amount != 0) ? (totalAmount += amount, amountBars++) : 0;
+        set.append(amount);
+    }
+
+    return calcAverage(totalAmount, amountBars);
+}
+
+void createAverageLine(double average, QBarSet &set, QChart &chart, QValueAxis *axisY)
+{
+    QLineSeries *lineSeries = new QLineSeries();
+    lineSeries->append(0, average);
+    lineSeries->append(set.count(), average);
+
+    QPen pen(Qt::yellow);
+    pen.setWidth(2);
+    pen.setStyle(Qt::DashLine);
+    lineSeries->setPen(pen);
+
+    chart.addSeries(lineSeries);
+
+    lineSeries->attachAxis(axisY);
 }
 
 void BarChart::drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
@@ -37,19 +74,21 @@ void BarChart::drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
     QValueAxis *axisY = new QValueAxis();
 
     QString currentYear = QString::number(Validator::getCurrentYear());
+    QStringList months;
+    months << "Januar"
+           << "Februar"
+           << "März"
+           << "April"
+           << "Mai"
+           << "Juni"
+           << "Juli"
+           << "August"
+           << "September"
+           << "Oktober"
+           << "November"
+           << "Dezember";
 
-    set->append(calcTotalAmount(data, "Januar "+currentYear));
-    set->append(calcTotalAmount(data, "Februar "+currentYear));
-    set->append(calcTotalAmount(data, "März "+currentYear));
-    set->append(calcTotalAmount(data, "April "+currentYear));
-    set->append(calcTotalAmount(data, "Mai "+currentYear));
-    set->append(calcTotalAmount(data, "Juni "+currentYear));
-    set->append(calcTotalAmount(data, "Juli "+currentYear));
-    set->append(calcTotalAmount(data, "August "+currentYear));
-    set->append(calcTotalAmount(data, "September "+currentYear));
-    set->append(calcTotalAmount(data, "Oktober "+currentYear));
-    set->append(calcTotalAmount(data, "November "+currentYear));
-    set->append(calcTotalAmount(data, "Dezember "+currentYear));
+    double average = addMonthBars(data, months, *set);
 
     axisX->setRange(-1,12);
     axisY->setLabelsColor(Qt::white);
@@ -64,19 +103,17 @@ void BarChart::drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
     chart->setBackgroundBrush(QBrush(customColor));
     chart->setAnimationOptions(QChart::SeriesAnimations);
 
-
     // Set the color of the chart title text
-    chart->setTitle("Gesamtausgaben");
+    chart->setTitle("Gesamtausgaben " + currentYear);
     chart->setTitleBrush(QBrush(Qt::white));
-    chart->setTitleFont(QFont("Arial", 16, QFont::Bold));
+    chart->setTitleFont(QFont("Arial", 18, QFont::Bold));
     chart->legend()->setVisible(false);
     axisX->setGridLineVisible(false);
     axisY->setGridLineVisible(false);
     axisY->setLabelFormat("%.0f");
-    axisX->setLabelsColor(Qt::white);
     axisY->setLabelsFont(QFont("Arial", 12, QFont::Bold));
     axisX->setLabelsFont(QFont("Arial", 12, QFont::Bold));
-
+    axisX->setLabelsColor(Qt::white);
 
     axisX->append("Jan", 0);
     axisX->append("Feb", 2);
@@ -91,6 +128,7 @@ void BarChart::drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
     axisX->append("Nov", 10.01);
     axisX->append("Dec", 12);
 
+    createAverageLine(average, *set, *chart, axisY);
 
     chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
