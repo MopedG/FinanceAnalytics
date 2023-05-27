@@ -25,11 +25,11 @@ void DonutChart::drawDonut(const std::vector<std::pair<QString, double>> &spendi
     {
         double sizePerc = calcSize(totalSpendings, entry.second);
         Slice *slice(new Slice(entry.first, sizePerc));
+        slice->setPen(QPen(Qt::white, 1, Qt::SolidLine));
         if(sizePerc < 0.04)
             slice->setLabelVisible(false);
         series->append(slice);
     }
-
 
     QChart *donut = new QChart();
     donut->addSeries(series);

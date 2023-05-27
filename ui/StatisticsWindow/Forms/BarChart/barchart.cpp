@@ -1,6 +1,7 @@
 #include "barchart.h"
 #include "EntryWindow/EntryDatahandler/entrydata.h"
 #include "Validator/validator.h"
+#include "qgraphicseffect.h"
 #include <QtCharts/QChart>
 #include <QtCharts/QBarSeries>
 #include <QtCharts/QBarSet>
@@ -67,7 +68,7 @@ void createAverageLine(double average, QBarSet &set, QChart &chart, QValueAxis *
 void BarChart::drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
 {
     QBarSet *set = new QBarSet("");
-
+    set->setBorderColor(Qt::transparent);
     QBarSeries *series = new QBarSeries();
     QChart *chart = new QChart();
     QCategoryAxis *axisX = new QCategoryAxis();
