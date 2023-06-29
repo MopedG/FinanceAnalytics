@@ -1,7 +1,16 @@
 #include "time.h"
 #include <chrono>
 
-int Time::getMonth()
+int Time::getCurrentDay()
+{
+    auto currentTime  = std::chrono::system_clock::now();
+    std::time_t timeT  = std::chrono::system_clock::to_time_t(currentTime);
+    std::tm localTime = *std::localtime(&timeT);
+    int day = localTime.tm_mday;
+    return day;
+}
+
+int Time::getCurrentMonth()
 {
     auto currentTime  = std::chrono::system_clock::now();
     std::time_t timeT  = std::chrono::system_clock::to_time_t(currentTime);
@@ -10,7 +19,7 @@ int Time::getMonth()
     return month;
 }
 
-int Time::getYear()
+int Time::getCurrentYear()
 {
     auto currentTime  = std::chrono::system_clock::now();
     std::time_t timeT  = std::chrono::system_clock::to_time_t(currentTime);

@@ -5,6 +5,7 @@ class Time
 public:
     Time() = default;
 
-    static int getMonth();
-    static int getYear();
+    static int getCurrentDay();
+    static int getCurrentMonth();
+    static int getCurrentYear();
 };
