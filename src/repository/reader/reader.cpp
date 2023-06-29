@@ -1,5 +1,6 @@
 #include "reader.h"
-#include "repository/writer/writer.h"
+#include "Repository/repository.h"
+#include "EntryWindow/EntryDatahandler/entrydata.h"
 #include <filesystem>
 #include <QIODevice>
 #include <QTextStream>
@@ -7,7 +8,7 @@
 
 std::vector<std::shared_ptr<EntryData>> Reader::readData()
 {
-    std::filesystem::path repoPath = Writer::getRepositoryFilePath();
+    std::filesystem::path repoPath = Repository::getRepositoryFilePath();
     QFile repoFile(repoPath);
     QString dataLine;
     std::vector<std::shared_ptr<EntryData>> entryData;

@@ -2,11 +2,11 @@
 #include "ui_statisticswindow.h"
 #include "EntryWindow/EntryDatahandler/entrydata.h"
 #include "Repository/refactorer/refactorer.h"
+#include "Repository/repository.h"
 #include "StatisticsWindow/Forms/MonthCard/monthcard.h"
 #include "StatisticsWindow/Forms/SpendingForm/spendingform.h"
 #include "StatisticsWindow/Forms/DonutChart/donutchart.h"
 #include "StatisticsWindow/Forms/BarChart/barchart.h"
-#include "Repository/Writer/writer.h"
 #include "EntryWindow/MessageBox/ErrorMessageBox/errormessagebox.h"
 #include <memory>
 #include <QProcess>
@@ -169,7 +169,7 @@ void displayRepoWarning()
 
 void StatisticsWindow::on_openRepoButton_clicked()
 {
-    openRepoFile(QString::fromStdString(Writer::getRepositoryFilePath().string()));
+    openRepoFile(QString::fromStdString(Repository::getRepositoryFilePath().string()));
     displayRepoWarning();
 }
 

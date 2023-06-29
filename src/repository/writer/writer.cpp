@@ -1,4 +1,5 @@
 #include "writer.h"
+#include "Repository/repository.h"
 #include <filesystem>
 #include <QFile>
 #include <QTextStream>
@@ -23,7 +24,7 @@ QStringList Writer::serealizeData(const std::vector<std::shared_ptr<EntryData>> 
 
 bool Writer::writeData(const QStringList &serealizedData)
 {
-    std::filesystem::path filePath = getRepositoryFilePath();
+    std::filesystem::path filePath = Repository::getRepositoryFilePath();
     QFile targetFile(filePath);
     if(targetFile.open(QIODevice::WriteOnly | QIODevice::Text))
     {
@@ -39,18 +40,5 @@ bool Writer::writeData(const QStringList &serealizedData)
     }
 }
 
-std::filesystem::path Writer::getRepositoryFilePath()
-{
-    std::filesystem::path folderPath = getAppDataLocalPath() / "Repository";
-    std::filesystem::create_directories(folderPath);
-    std::filesystem::path fullPath = folderPath / "repository.txt";
-    return fullPath;
-}
-
-std::filesystem::__cxx11::path Writer::getAppDataLocalPath()
-{
-    QString path = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
-    return path.toStdString();
-}
 
 
