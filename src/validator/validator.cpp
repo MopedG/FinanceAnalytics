@@ -28,11 +28,11 @@ bool Validator::checkDate(const QString &month, int year)
         return false;
 
     bool success = true;
-    if (year != Time::getYear())
+    if (year != Time::getCurrentYear())
         success = false;
-    if (year == Time::getYear()-1 && month == "Dezember" && Time::getMonth() == 1) //Entry for december last year allowed made in january
+    if (year == Time::getCurrentYear()-1 && month == "Dezember" && Time::getCurrentMonth() == 1) //Entry for december last year allowed made in january
         success = true;
-    if(year == Time::getYear()+1 && month == "Januar" && Time::getMonth() == 12) //Entry for january next year allowed made in december
+    if(year == Time::getCurrentYear()+1 && month == "Januar" && Time::getCurrentMonth() == 12) //Entry for january next year allowed made in december
         success = true;
 
     return success;

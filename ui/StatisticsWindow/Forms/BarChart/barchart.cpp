@@ -34,7 +34,7 @@ double calcAverage(double totalAmount, int amountBars)
 
 double addMonthBars(const std::vector<std::shared_ptr<EntryData>> &data, const QStringList &months, QBarSet &set)
 {
-    QString currentYear = QString::number(Time::getYear());
+    QString currentYear = QString::number(Time::getCurrentYear());
     double totalAmount = 0;
     int amountBars = 0;
     for(const auto &month : months)
@@ -72,9 +72,9 @@ void BarChart::drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
     QChart *chart = new QChart();
     QCategoryAxis *axisX = new QCategoryAxis();
     QValueAxis *axisY = new QValueAxis();
-
-
-    QString currentYear = QString::number(Time::getYear());
+    
+    
+    QString currentYear = QString::number(Time::getCurrentYear());
     QStringList months;
     months << "Januar"
            << "Februar"

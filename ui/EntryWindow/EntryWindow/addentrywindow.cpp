@@ -13,7 +13,7 @@ AddEntryWindow::AddEntryWindow(QWidget *parent, std::vector<std::shared_ptr<Entr
     initializeClasses(Refactorer::createWhiteList(data));
     setUpInitialConnections();
     ui->setupUi(this);
-    ui->yearEdit->setText(QString::number(Time::getYear()));
+    ui->yearEdit->setText(QString::number(Time::getCurrentYear()));
 
     on_openEntryForm();
 }
