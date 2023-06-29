@@ -68,6 +68,8 @@ set(PROJECT_SOURCES
         src/Repository/Reader/reader.cpp
         src/Repository/Refactorer/refactorer.h
         src/Repository/Refactorer/refactorer.cpp
+        src/Time/time.h
+        src/Time/time.cpp
         assets/recource.qrc
 )
 

@@ -1,5 +1,5 @@
 #include "validator.h"
-#include <chrono>
+#include "Time/time.h"
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 
@@ -28,32 +28,14 @@ bool Validator::checkDate(const QString &month, int year)
         return false;
 
     bool success = true;
-    if (year != getCurrentYear())
+    if (year != Time::getYear())
         success = false;
-    if (year == getCurrentYear()-1 && month == "Dezember" && getCurrentMonth() == 1) //Entry for december last year allowed made in january
+    if (year == Time::getYear()-1 && month == "Dezember" && Time::getMonth() == 1) //Entry for december last year allowed made in january
         success = true;
-    if(year == getCurrentYear()+1 && month == "Januar" && getCurrentMonth() == 12) //Entry for january next year allowed made in december
+    if(year == Time::getYear()+1 && month == "Januar" && Time::getMonth() == 12) //Entry for january next year allowed made in december
         success = true;
 
     return success;
-}
-
-int Validator::getCurrentYear()
-{
-    auto currentTime  = std::chrono::system_clock::now();
-    std::time_t timeT  = std::chrono::system_clock::to_time_t(currentTime);
-    std::tm localTime = *std::localtime(&timeT);
-    int year = localTime.tm_year + 1900;
-    return year;
-}
-
-int Validator::getCurrentMonth()
-{
-    auto currentTime  = std::chrono::system_clock::now();
-    std::time_t timeT  = std::chrono::system_clock::to_time_t(currentTime);
-    std::tm localTime = *std::localtime(&timeT);
-    int month = localTime.tm_mon + 1;
-    return 12;
 }
 
 bool Validator::categoryInWhiteList(const QStringList &whiteList, const QString &category)
