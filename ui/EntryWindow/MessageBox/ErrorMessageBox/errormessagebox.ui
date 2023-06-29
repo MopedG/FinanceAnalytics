@@ -91,7 +91,7 @@ background: transparent;</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::TabFocus</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton

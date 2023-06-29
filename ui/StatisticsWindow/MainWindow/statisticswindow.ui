@@ -219,6 +219,9 @@ border-bottom: 3px solid rgb(255, 79, 48);
                       <bold>true</bold>
                      </font>
                     </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::NoFocus</enum>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">QPushButton {
 color: rgb(255, 79, 48);
@@ -403,10 +406,10 @@ border: 3px solid rgb(255, 191, 30);
            </size>
           </property>
           <property name="cursor">
-           <cursorShape>OpenHandCursor</cursorShape>
+           <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="focusPolicy">
-           <enum>Qt::ClickFocus</enum>
+           <enum>Qt::TabFocus</enum>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
@@ -463,10 +466,10 @@ QPushButton:clicked {
            </size>
           </property>
           <property name="cursor">
-           <cursorShape>OpenHandCursor</cursorShape>
+           <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="focusPolicy">
-           <enum>Qt::ClickFocus</enum>
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {

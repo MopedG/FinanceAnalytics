@@ -102,6 +102,9 @@ background: transparent;</string>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::TabFocus</enum>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton
 {
@@ -177,6 +180,9 @@ QPushButton:disabled{
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::TabFocus</enum>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton
 {
@@ -211,6 +217,9 @@ QPushButton:disabled{
             <width>50</width>
             <height>50</height>
            </size>
+          </property>
+          <property name="shortcut">
+           <string>Return</string>
           </property>
          </widget>
         </item>

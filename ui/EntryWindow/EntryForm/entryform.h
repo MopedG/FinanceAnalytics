@@ -39,6 +39,7 @@ private:
     QString currentAmount;
 
     void disableFields(bool disable = true);
+    QString commaToDot(const QString &amount);
 
 };
 
