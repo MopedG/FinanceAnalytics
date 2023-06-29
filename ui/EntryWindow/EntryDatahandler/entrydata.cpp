@@ -1,10 +1,11 @@
 #include "entrydata.h"
 
 
-EntryData::EntryData(std::pair<QString, int> monthYear, QString category, double amount) :
+EntryData::EntryData(std::pair<QString, int> monthYear, QString category, double amount, QString dateChanged) :
     monthYear(monthYear),
     category(category),
-    amount(amount)
+    amount(amount),
+    dateChanged(dateChanged)
 {}
 
 std::pair<QString, int> EntryData::getMonthYear() const
@@ -20,6 +21,11 @@ void EntryData::setMonthYear(const std::pair<QString, int> &newMonthYear)
 QString EntryData::getCategory() const
 {
     return category;
+}
+
+QString EntryData::getDateChanged() const
+{
+    return dateChanged;
 }
 
 void EntryData::setCategory(const QString &newCategory)
@@ -63,4 +69,9 @@ int EntryData::monthToInt(const QString &month) const
 void EntryData::setAmount(double newAmount)
 {
     amount = newAmount;
+}
+
+void EntryData::setDateChanged(const QString &newDateChanged)
+{
+    dateChanged = newDateChanged;
 }
