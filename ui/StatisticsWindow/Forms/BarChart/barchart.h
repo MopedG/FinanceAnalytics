@@ -6,6 +6,8 @@
 class QChartView;
 class QBarSeries;
 class EntryData;
+
+
 class BarChart : public QObject
 {
     Q_OBJECT
@@ -16,6 +18,7 @@ public:
 
 private:
     void drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data);
+
 };
 
 
