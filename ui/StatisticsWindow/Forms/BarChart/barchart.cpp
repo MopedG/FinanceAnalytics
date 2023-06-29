@@ -1,6 +1,6 @@
 #include "barchart.h"
 #include "EntryWindow/EntryDatahandler/entrydata.h"
-#include "Validator/validator.h"
+#include "Time/time.h"
 #include <QtCharts/QChart>
 #include <QtCharts/QBarSeries>
 #include <QtCharts/QBarSet>
@@ -34,7 +34,7 @@ double calcAverage(double totalAmount, int amountBars)
 
 double addMonthBars(const std::vector<std::shared_ptr<EntryData>> &data, const QStringList &months, QBarSet &set)
 {
-    QString currentYear = QString::number(Validator::getCurrentYear());
+    QString currentYear = QString::number(Time::getYear());
     double totalAmount = 0;
     int amountBars = 0;
     for(const auto &month : months)
@@ -74,7 +74,7 @@ void BarChart::drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
     QValueAxis *axisY = new QValueAxis();
 
 
-    QString currentYear = QString::number(Validator::getCurrentYear());
+    QString currentYear = QString::number(Time::getYear());
     QStringList months;
     months << "Januar"
            << "Februar"
