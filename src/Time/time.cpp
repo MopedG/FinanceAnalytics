@@ -27,3 +27,8 @@ int Time::getCurrentYear()
     int year = localTime.tm_year + 1900;
     return year;
 }
+
+QString Time::getCurrentDate()
+{
+    return QString::number(getCurrentDay()) + "." + QString::number(getCurrentMonth());
+}

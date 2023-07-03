@@ -6,7 +6,7 @@ void EntryDatahandler::saveEntry(const QString &category, double amount, int id)
     std::shared_ptr<EntryData> data = std::make_shared<EntryData>();
     data->setCategory(category);
     data->setAmount(amount);
-    //data->setDateChanged(Time::) date like 17.Januar 2023
+    data->setDateChanged(Time::getCurrentDate());
     newEntryData.insert(std::pair(id, data));
 }
 
