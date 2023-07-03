@@ -24,9 +24,9 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
-    <widget class="QLabel" name="category">
+    <widget class="QPushButton" name="category">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
        <horstretch>5</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -39,10 +39,11 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(51, 51, 51);
-color: rgb(255, 255, 255);
-qproperty-alignment: AlignCenter;
-border-radius: 12px;</string>
+      <string notr="true">QPushButton {
+	background-color: rgb(51, 51, 51);
+	color: rgb(255, 255, 255);
+	border-radius: 12px;
+}</string>
      </property>
      <property name="text">
       <string>Shopping</string>
