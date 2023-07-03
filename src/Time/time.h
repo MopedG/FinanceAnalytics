@@ -8,4 +8,5 @@ public:
     static int getCurrentDay();
     static int getCurrentMonth();
     static int getCurrentYear();
+    static QString getCurrentDate();
 };
