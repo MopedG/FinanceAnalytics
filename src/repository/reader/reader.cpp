@@ -5,6 +5,7 @@
 #include <QIODevice>
 #include <QTextStream>
 #include <QFile>
+#include <iostream>
 
 std::vector<std::shared_ptr<EntryData>> Reader::readData()
 {
@@ -27,7 +28,11 @@ std::vector<std::shared_ptr<EntryData>> Reader::readData()
                 int year = data[1].toInt();
                 QString category = data[2];
                 double amount = data[3].toDouble();
-                QString dateChanged = data[4];
+                QString dateChanged;
+                if(data.length() > 4)
+                    dateChanged = data[4];
+                else
+                    dateChanged = "No Data";
 
                 std::shared_ptr<EntryData> entry = std::make_shared<EntryData>(std::pair(month, year), category, amount);
                 entry->setDateChanged(dateChanged);
