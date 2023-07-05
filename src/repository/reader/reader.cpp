@@ -27,8 +27,10 @@ std::vector<std::shared_ptr<EntryData>> Reader::readData()
                 int year = data[1].toInt();
                 QString category = data[2];
                 double amount = data[3].toDouble();
+                QString dateChanged = data[4];
 
                 std::shared_ptr<EntryData> entry = std::make_shared<EntryData>(std::pair(month, year), category, amount);
+                entry->setDateChanged(dateChanged);
                 entryData.emplace_back(entry);
             }
         }
