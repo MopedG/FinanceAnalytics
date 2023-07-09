@@ -22,12 +22,12 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(26, 26, 26);</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout" stretch="5,0,0">
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="5,0,3">
    <property name="bottomMargin">
-    <number>20</number>
+    <number>5</number>
    </property>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="0">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="4,1">
      <item>
       <widget class="QPushButton" name="category">
        <property name="sizePolicy">
@@ -55,6 +55,9 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QWidget" name="lastChanged" native="true"/>
+     </item>
     </layout>
    </item>
    <item>
@@ -71,33 +74,53 @@
     </spacer>
    </item>
    <item>
-    <widget class="QLineEdit" name="amount">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-       <horstretch>3</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="font">
-      <font>
-       <family>Verdana</family>
-       <pointsize>17</pointsize>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(36, 36, 36);
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="4,1">
+     <item>
+      <widget class="QLineEdit" name="amount">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>3</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Verdana</family>
+         <pointsize>17</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(36, 36, 36);
 color: rgb(255, 102, 102);
 padding-right: 10px;
 border-radius: 12px;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Preferred</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
