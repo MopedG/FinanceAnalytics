@@ -8,9 +8,17 @@ SpendingForm::SpendingForm(QWidget *parent, const QString &category, double amou
     ui->setupUi(this);
     ui->category->setText(category);
     ui->amount->setText(QString::number(amount) + " €");
+    ui->lastChanged->setText("Last Changed: 17.10.");
+    ui->lastChanged->hide();
 }
 
 SpendingForm::~SpendingForm()
 {
     delete ui;
 }
+
+void SpendingForm::on_category_clicked()
+{
+    ui->lastChanged->show();
+}
+

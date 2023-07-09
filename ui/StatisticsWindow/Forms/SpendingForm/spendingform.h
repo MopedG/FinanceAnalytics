@@ -14,6 +14,9 @@ public:
     ~SpendingForm();
 
 
+private slots:
+    void on_category_clicked();
+
 private:
     Ui::SpendingForm *ui;
 };
