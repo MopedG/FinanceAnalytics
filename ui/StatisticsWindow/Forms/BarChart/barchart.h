@@ -13,6 +13,7 @@ class BarChart : public QObject
     Q_OBJECT
 public:
     BarChart(const std::vector<std::shared_ptr<EntryData>> &data);
+    ~BarChart();
 
     QChartView *chartView;
 

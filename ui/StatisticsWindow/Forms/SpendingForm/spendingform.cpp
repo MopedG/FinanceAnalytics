@@ -1,5 +1,6 @@
 #include "spendingform.h"
 #include "ui_spendingform.h"
+#include <QTimer>
 
 SpendingForm::SpendingForm(QWidget *parent, const QString &category, double amount) :
     QWidget(parent),
@@ -20,5 +21,9 @@ SpendingForm::~SpendingForm()
 void SpendingForm::on_category_clicked()
 {
     ui->lastChanged->show();
+    QTimer::singleShot(2500, [this]() {
+        if(ui->lastChanged != nullptr)
+            ui->lastChanged->hide();  // Hide the widget after 5 seconds
+    });
 }
 

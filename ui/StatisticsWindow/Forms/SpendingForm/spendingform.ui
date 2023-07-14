@@ -64,6 +64,9 @@
        <property name="focusPolicy">
         <enum>Qt::TabFocus</enum>
        </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;23.10.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
 	background-color: rgb(51, 51, 51);
