@@ -244,6 +244,9 @@ QPushButton:hover {
                 </item>
                 <item>
                  <layout class="QVBoxLayout" name="spendingsLayout">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
                   <property name="sizeConstraint">
                    <enum>QLayout::SetDefaultConstraint</enum>
                   </property>

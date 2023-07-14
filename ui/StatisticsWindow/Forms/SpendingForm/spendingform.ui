@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>781</width>
-    <height>103</height>
+    <height>100</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>0</width>
-    <height>103</height>
+    <height>100</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="5,3">
+    <layout class="QVBoxLayout" name="categoryLayout" stretch="5,3">
      <property name="spacing">
       <number>0</number>
      </property>
@@ -65,7 +65,7 @@
         <enum>Qt::TabFocus</enum>
        </property>
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;23.10.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:700;&quot;&gt;Hure&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
@@ -80,7 +80,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="5,2">
+      <layout class="QHBoxLayout" name="lastChangedLayout" stretch="5,2">
        <item>
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
