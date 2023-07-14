@@ -7,11 +7,17 @@
 #include <QtCharts/QChartView>
 #include <QtCharts/QCategoryAxis>
 #include <QtCharts/QLineSeries>
+#include <iostream>
 
 
 BarChart::BarChart(const std::vector<std::shared_ptr<EntryData>> &data)
 {
     drawBarChart(data);
+}
+
+BarChart::~BarChart()
+{
+    std::cout << "Test \n";
 }
 
 double calcTotalAmount(const std::vector<std::shared_ptr<EntryData>> &data, const QString &month)
