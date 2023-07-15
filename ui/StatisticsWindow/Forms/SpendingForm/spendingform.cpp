@@ -32,16 +32,6 @@ void SpendingForm::setUpLastChanged(const QString &text)
 
 void SpendingForm::on_category_clicked()
 {
-    //Testing
-    QPushButton *lastChange = new QPushButton();
-    lastChange->setStyleSheet("background-color: rgb(62, 62, 62);"
-                              "border-bottom-left-radius: 10px;"
-                              "border-bottom-std::right-radius: 10px;"
-                              "color: rgb(255, 255, 255);"
-                              );
-
-    ui->lastChangedLayout->addWidget(lastChange);
-    //
     ui->lastChanged->show();
     hideLastChangedAfterMilliSeconds(2500);
 }
