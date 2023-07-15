@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -38,7 +38,7 @@
    <item>
     <layout class="QVBoxLayout" name="categoryLayout" stretch="5,3">
      <property name="spacing">
-      <number>0</number>
+      <number>1</number>
      </property>
      <item alignment="Qt::AlignTop">
       <widget class="QPushButton" name="category">
@@ -72,6 +72,7 @@
 	background-color: rgb(51, 51, 51);
 	color: rgb(255, 255, 255);
 	border-radius: 12px;
+	margin-bottom:1px;
 }</string>
        </property>
        <property name="text">
