@@ -19,6 +19,10 @@ private slots:
 
 private:
     Ui::SpendingForm *ui;
+    std::unique_ptr<QTimer> timerHideLastChanged;
+
+    void setUpLastChanged(const QString &text);
+    void hideLastChangedAfterMilliSeconds(int milliseconds);
 };
 
 
