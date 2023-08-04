@@ -32,11 +32,14 @@ void StatisticsWindow::update(const std::vector<std::shared_ptr<EntryData>> &dat
     QStringList dates = Refactorer::createDateList(data);
     createBarChart(data);
     if(dates.size() != ui->monthLayout->count())
+    {
         updateMonthCard(dates);
+        createDonutChart(data);
+    }
     else
     {
         createDonutChart(data);
-        updateSpendingForms(Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt()));
+        updateSpendingForms(data);
     }
 
 }
@@ -47,10 +50,12 @@ void StatisticsWindow::updateMonthCard(const QStringList &dates)
     createMonthCards(dates, true);
 }
 
-void StatisticsWindow::updateSpendingForms(const std::vector<std::pair<QString, double>> &spendings)
+void StatisticsWindow::updateSpendingForms(const std::vector<std::shared_ptr<EntryData>> &data)
 {
     removeSpendingForms();
-    createSpendingForms(spendings);
+    std::vector<std::shared_ptr<EntryData>> spendingsList =
+        Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
+    createSpendingForms(spendingsList);
 }
 
 void StatisticsWindow::initObjects(const std::vector<std::shared_ptr<EntryData>> &data)
@@ -78,15 +83,15 @@ void StatisticsWindow::createMonthCards(const QStringList &dates, bool update)
     }
 }
 
-void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, double>> &spendings)
+void StatisticsWindow::createSpendingForms(const std::vector<std::shared_ptr<EntryData>> &data)
 {
     double totalSpendings = 0;
-    for(const auto &entry : spendings)
+    for(const auto &entry : data)
     {
-        spendingForm = new SpendingForm(nullptr, entry.first, entry.second);
+        spendingForm = new SpendingForm(nullptr, entry->getCategory(), entry->getAmount(), entry->getDateChanged());
         ui->spendingsLayout->setAlignment(Qt::AlignTop);
         ui->spendingsLayout->addWidget(spendingForm, 0, Qt::AlignTop);
-        totalSpendings += entry.second;
+        totalSpendings += entry->getAmount();
     }
     ui->titleLabel->setText(monthCardActive->getMonth() + " " + monthCardActive->getYear());
     ui->totalSpendingsLabel->setText(QString::number(totalSpendings) + " €");
@@ -95,7 +100,7 @@ void StatisticsWindow::createSpendingForms(const std::vector<std::pair<QString, 
 void StatisticsWindow::createDonutChart(const std::vector<std::shared_ptr<EntryData>> &data)
 {
     std::vector<std::pair<QString, double>> spendingsList =
-        Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
+        Refactorer::createDonutList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
     if(!ui->pieLayout->isEmpty())
         delete ui->pieLayout->takeAt(0)->widget();
     std::unique_ptr<DonutChart> donut(new DonutChart(spendingsList));
@@ -104,10 +109,19 @@ void StatisticsWindow::createDonutChart(const std::vector<std::shared_ptr<EntryD
 
 void StatisticsWindow::createBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
 {
-    if(!ui->barchartLayout->isEmpty())
-        delete ui->barchartLayout->takeAt(0);
+    deleteBarChartIfNotEmpty();
     BarChart *barChart(new BarChart(data));
     ui->barchartLayout->addWidget(barChart->chartView);
+}
+
+void StatisticsWindow::deleteBarChartIfNotEmpty()
+{
+    if(!ui->barchartLayout->isEmpty())
+    {
+        QLayoutItem *BarChartItem = ui->barchartLayout->takeAt(0);
+        delete BarChartItem->widget();
+        delete BarChartItem;
+    }
 }
 
 void StatisticsWindow::removeMonthCards()
@@ -145,8 +159,8 @@ void StatisticsWindow::on_monthCardActivated(MonthCard *activeMonthCard)
     monthCardActive = activeMonthCard;
     monthCardActive->activate();
     lastActiveMonthCard = monthCardActive->getMonth();
-    std::vector<std::pair<QString, double>> spendingsList =
-            Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
+    std::vector<std::shared_ptr<EntryData>> spendingsList =
+        Refactorer::createSpendingsList(data, monthCardActive->getMonth(), monthCardActive->getYear().toInt());
     updateSpendingForms(spendingsList);
     createDonutChart(data);
 }

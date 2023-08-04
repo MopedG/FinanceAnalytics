@@ -2,7 +2,7 @@
 #include "ui_spendingform.h"
 #include <QTimer>
 
-SpendingForm::SpendingForm(QWidget *parent, const QString &category, double amount) :
+SpendingForm::SpendingForm(QWidget *parent, const QString &category, double amount, const QString &dateChanged) :
     QWidget(parent),
     ui(new Ui::SpendingForm)
 {
@@ -10,7 +10,7 @@ SpendingForm::SpendingForm(QWidget *parent, const QString &category, double amou
 
     ui->category->setText(category);
     ui->amount->setText(QString::number(amount) + " €");
-    setUpLastChanged("Zul. geändert: 15.07.");
+    setUpLastChanged(dateChanged);
 }
 
 SpendingForm::~SpendingForm()
@@ -22,7 +22,7 @@ SpendingForm::~SpendingForm()
 
 void SpendingForm::setUpLastChanged(const QString &text)
 {
-    ui->lastChanged->setText(text);
+    ui->lastChanged->setText("Zul. geändert: "+text);
     ui->lastChanged->hide();
     timerHideLastChanged = std::make_unique<QTimer>();
     connect(timerHideLastChanged.get(), &QTimer::timeout, this, [this]() {
