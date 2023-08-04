@@ -1,10 +1,12 @@
 #include "entrydatahandler.h"
+#include "Time/time.h"
 
 void EntryDatahandler::saveEntry(const QString &category, double amount, int id)
 {
     std::shared_ptr<EntryData> data = std::make_shared<EntryData>();
     data->setCategory(category);
     data->setAmount(amount);
+    data->setDateChanged(Time::getCurrentDate());
     newEntryData.insert(std::pair(id, data));
 }
 

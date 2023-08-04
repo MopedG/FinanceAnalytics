@@ -74,7 +74,8 @@ void EntryForm::disableFields(bool disable)
 void EntryForm::on_submitButton_clicked()
 {
     QString categoryEntry = ui->categoryLineEdit->text();
-    QString spendingEntry = ui->spendingLineEdit->text();
+    QString spendingEntry = commaToDot(ui->spendingLineEdit->text());
+    ui->spendingLineEdit->setText(spendingEntry); //If user entered comma, a dot should be displayed
 
     if(!editPressedBefore)
     {
@@ -101,5 +102,18 @@ void EntryForm::on_editButton_clicked()
 void EntryForm::on_deleteButton_clicked()
 {
     emit closeEntryForm(*this);
+}
+
+QString EntryForm::commaToDot(const QString &amount)
+{
+    int commaIdx = amount.indexOf(',');
+    if(commaIdx != -1)
+    {
+        QString removedComma = amount;
+        removedComma[commaIdx] = '.';
+        return removedComma;
+    }
+    else
+        return amount;
 }
 

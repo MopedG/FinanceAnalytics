@@ -12,11 +12,6 @@ public:
 
     static QStringList serealizeData(const std::vector<std::shared_ptr<EntryData>> &entryData);
     static bool writeData(const QStringList &serealizedData);
-
-    static std::filesystem::path getRepositoryFilePath();
-
-private:
-    static std::filesystem::path getAppDataLocalPath();
 };
 
 

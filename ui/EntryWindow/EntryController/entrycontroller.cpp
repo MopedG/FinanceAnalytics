@@ -26,7 +26,7 @@ void EntryController::saveEntry(const QString &category, double amount, int id, 
     if(entryCanBeSaved)
     {
         addToCategoryWhitelist(category);
-        //QString formatedCategory = firstLetterToUpper(category);
+
         entryDatahandler->saveEntry(category, amount, id);
         emit entrySuccessfull(true, entryForm);
     }
@@ -46,8 +46,6 @@ void EntryController::editEntry(const QString &category, double amount, int id, 
     if(entryCanBeEdited)
     {
         addToCategoryWhitelist(category);
-        //QString formatedCategory = firstLetterToUpper(category);
-        //entryDatahandler->saveEntry(category, amount, id);
         entryDatahandler->editEntry(category, amount, id);
         emit entrySuccessfull(true, entryForm);
     }
@@ -124,6 +122,8 @@ QString EntryController::firstLetterToUpper(const QString &month)
 
     return formatMonth;
 }
+
+
 
 
 

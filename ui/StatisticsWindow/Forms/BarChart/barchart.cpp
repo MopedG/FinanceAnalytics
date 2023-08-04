@@ -1,19 +1,23 @@
 #include "barchart.h"
 #include "EntryWindow/EntryDatahandler/entrydata.h"
-#include "Validator/validator.h"
-#include "qgraphicseffect.h"
+#include "Time/time.h"
 #include <QtCharts/QChart>
 #include <QtCharts/QBarSeries>
 #include <QtCharts/QBarSet>
 #include <QtCharts/QChartView>
 #include <QtCharts/QCategoryAxis>
 #include <QtCharts/QLineSeries>
+#include <iostream>
 
 
 BarChart::BarChart(const std::vector<std::shared_ptr<EntryData>> &data)
 {
-    // Create a bar series to hold the data
     drawBarChart(data);
+}
+
+BarChart::~BarChart()
+{
+    std::cout << "Test \n";
 }
 
 double calcTotalAmount(const std::vector<std::shared_ptr<EntryData>> &data, const QString &month)
@@ -36,7 +40,7 @@ double calcAverage(double totalAmount, int amountBars)
 
 double addMonthBars(const std::vector<std::shared_ptr<EntryData>> &data, const QStringList &months, QBarSet &set)
 {
-    QString currentYear = QString::number(Validator::getCurrentYear());
+    QString currentYear = QString::number(Time::getCurrentYear());
     double totalAmount = 0;
     int amountBars = 0;
     for(const auto &month : months)
@@ -60,6 +64,7 @@ void createAverageLine(double average, QBarSet &set, QChart &chart, QValueAxis *
     pen.setStyle(Qt::DashLine);
     lineSeries->setPen(pen);
 
+
     chart.addSeries(lineSeries);
 
     lineSeries->attachAxis(axisY);
@@ -73,8 +78,9 @@ void BarChart::drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
     QChart *chart = new QChart();
     QCategoryAxis *axisX = new QCategoryAxis();
     QValueAxis *axisY = new QValueAxis();
-
-    QString currentYear = QString::number(Validator::getCurrentYear());
+    
+    
+    QString currentYear = QString::number(Time::getCurrentYear());
     QStringList months;
     months << "Januar"
            << "Februar"
@@ -93,6 +99,7 @@ void BarChart::drawBarChart(const std::vector<std::shared_ptr<EntryData>> &data)
 
     axisX->setRange(-1,12);
     axisY->setLabelsColor(Qt::white);
+    axisY->setTickCount(6);
     series->append(set);
     chart->addSeries(series);
     chart->addAxis(axisX, Qt::AlignBottom);

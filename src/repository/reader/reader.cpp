@@ -1,13 +1,15 @@
 #include "reader.h"
-#include "repository/writer/writer.h"
+#include "Repository/repository.h"
+#include "EntryWindow/EntryDatahandler/entrydata.h"
 #include <filesystem>
 #include <QIODevice>
 #include <QTextStream>
 #include <QFile>
+#include <iostream>
 
 std::vector<std::shared_ptr<EntryData>> Reader::readData()
 {
-    std::filesystem::path repoPath = Writer::getRepositoryFilePath();
+    std::filesystem::path repoPath = Repository::getRepositoryFilePath();
     QFile repoFile(repoPath);
     QString dataLine;
     std::vector<std::shared_ptr<EntryData>> entryData;
@@ -26,8 +28,14 @@ std::vector<std::shared_ptr<EntryData>> Reader::readData()
                 int year = data[1].toInt();
                 QString category = data[2];
                 double amount = data[3].toDouble();
+                QString dateChanged;
+                if(data.length() > 4)
+                    dateChanged = data[4];
+                else
+                    dateChanged = "No Data";
 
                 std::shared_ptr<EntryData> entry = std::make_shared<EntryData>(std::pair(month, year), category, amount);
+                entry->setDateChanged(dateChanged);
                 entryData.emplace_back(entry);
             }
         }

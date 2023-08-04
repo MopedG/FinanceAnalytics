@@ -595,7 +595,7 @@ background-color: rgb(26, 26, 26);</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
@@ -662,7 +662,7 @@ QPushButton:clicked {
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::NoFocus</enum>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
