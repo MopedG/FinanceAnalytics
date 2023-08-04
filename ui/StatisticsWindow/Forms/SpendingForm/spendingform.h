@@ -10,7 +10,7 @@ class SpendingForm : public QWidget
     Q_OBJECT
 
 public:
-    explicit SpendingForm(QWidget *parent = nullptr, const QString &category = "", double amount = 0);
+    explicit SpendingForm(QWidget *parent = nullptr, const QString &category = "", double amount = 0, const QString &dateChanged = "No Data");
     ~SpendingForm();
 
 
