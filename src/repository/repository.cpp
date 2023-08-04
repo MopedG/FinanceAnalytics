@@ -19,7 +19,7 @@ std::filesystem::__cxx11::path Repository::getRepositoryFilePath()
 {
     std::filesystem::path folderPath = getAppDataLocalPath() / "Repository";
     std::filesystem::create_directories(folderPath);
-    std::filesystem::path fullPath = folderPath / "demoRepository.txt";
+    std::filesystem::path fullPath = folderPath / "repository.txt";
     return fullPath;
 }
 
