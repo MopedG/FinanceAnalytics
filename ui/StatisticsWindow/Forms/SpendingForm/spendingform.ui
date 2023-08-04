@@ -68,7 +68,7 @@
         </font>
        </property>
        <property name="focusPolicy">
-        <enum>Qt::TabFocus</enum>
+        <enum>Qt::NoFocus</enum>
        </property>
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt; font-weight:700;&quot;&gt;Hure&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -132,7 +132,7 @@
           </font>
          </property>
          <property name="focusPolicy">
-          <enum>Qt::TabFocus</enum>
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(62, 62, 62);
@@ -187,7 +187,7 @@ color: rgb(255, 255, 255);
         </font>
        </property>
        <property name="focusPolicy">
-        <enum>Qt::TabFocus</enum>
+        <enum>Qt::NoFocus</enum>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(36, 36, 36);
