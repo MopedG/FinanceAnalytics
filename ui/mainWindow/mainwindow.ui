@@ -27,7 +27,7 @@
     </sizepolicy>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(26, 26, 26);</string>
+    <string notr="true"/>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
@@ -54,7 +54,7 @@
        </sizepolicy>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(23, 23, 22);</string>
+       <string notr="true">background-color: rgb(15, 15, 15);</string>
       </property>
       <widget class="QWidget" name="page1">
        <property name="sizePolicy">

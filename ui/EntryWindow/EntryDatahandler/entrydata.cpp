@@ -38,6 +38,13 @@ double EntryData::getAmount() const
     return amount;
 }
 
+QString EntryData::getKey() const
+{
+    QString key;
+    key = category + getMonthYear().first + QString::number(getMonthYear().second);
+    return key;
+}
+
 int EntryData::monthToInt(const QString &month) const
 {
     if (month == "Januar")

@@ -24,6 +24,7 @@ public:
     QString getCategory() const;
     QString getDateChanged() const;
     double getAmount() const;
+    QString getKey() const;
     int monthToInt(const QString &month) const;
 };
 
