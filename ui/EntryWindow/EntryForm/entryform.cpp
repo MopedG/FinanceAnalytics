@@ -26,7 +26,7 @@ void EntryForm::setAutoCompletion(const QStringList &categoryWhitelist)
 {
     completer = std::make_unique<QCompleter>(categoryWhitelist, this);
     completer->setCaseSensitivity(Qt::CaseInsensitive);
-    completer->setCompletionMode(QCompleter::PopupCompletion);
+    completer->setCompletionMode(QCompleter::InlineCompletion);
     completer->setMaxVisibleItems(2);
     ui->categoryLineEdit->setCompleter(completer.get());
 }
