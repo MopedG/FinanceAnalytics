@@ -46,7 +46,6 @@ set(PROJECT_SOURCES
         src/Repository/Reader/reader.cpp
         src/Repository/Refactorer/refactorer.cpp
         src/Time/time.cpp
-        src/AutoCompleter/autocompleter.cpp
         assets/recource.qrc
 )
 

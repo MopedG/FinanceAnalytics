@@ -102,7 +102,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="applicationName">
              <property name="styleSheet">
               <string notr="true">font: 700 30pt &quot;Verdana&quot;;
 color: qlineargradient(spread:pad, x1:1, y1:0.011, x2:0, y2:0.960227, stop:0 rgba(164, 58, 151, 255), stop:0.659218 rgba(165, 145, 218, 255), stop:1 rgba(255, 203, 203, 255));

@@ -129,9 +129,3 @@ QString EntryForm::commaToDot(const QString &amount)
     else
         return amount;
 }
-
-void EntryForm::on_categoryLineEdit_textChanged(const QString &arg1)
-{
-    //ui->categoryLineEdit->setText(completion);
-}
-

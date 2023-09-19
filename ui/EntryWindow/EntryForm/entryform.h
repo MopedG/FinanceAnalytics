@@ -33,8 +33,6 @@ private slots:
     void on_editButton_clicked();
     void on_deleteButton_clicked();
 
-    void on_categoryLineEdit_textChanged(const QString &arg1);
-
 private:
     Ui::EntryForm *ui;
     std::unique_ptr<QCompleter> completer;

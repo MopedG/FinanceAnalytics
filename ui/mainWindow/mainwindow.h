@@ -36,6 +36,7 @@ private:
     void initStatisticsWindow();
     void initRepository();
     void setWindowSizes();
+    void setInitialStyles();
 };
 
 
