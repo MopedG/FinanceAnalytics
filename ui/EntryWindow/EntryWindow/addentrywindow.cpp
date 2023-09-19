@@ -9,7 +9,8 @@ AddEntryWindow::AddEntryWindow(QWidget *parent, std::vector<std::shared_ptr<Entr
     QWidget(parent),
     ui(new Ui::addEntryWindow)
 {
-    initializeClasses(Refactorer::createWhiteList(data));
+    categoryWhiteList = Refactorer::createWhiteList(data);
+    initializeClasses(categoryWhiteList);
     setUpInitialConnections();
     ui->setupUi(this);
     ui->yearEdit->setText(QString::number(Time::getCurrentYear()));
@@ -24,7 +25,7 @@ AddEntryWindow::~AddEntryWindow()
 
 void AddEntryWindow::on_openEntryForm()
 {
-    entryForm = new EntryForm(this);
+    entryForm = new EntryForm(this, categoryWhiteList);
     setEntryFormAttributes();
     connectEntryForm();
 }

@@ -9,4 +9,6 @@ int main(int argc, char *argv[])
     manager->startMainWindow();
 
     return a.exec();
+
+    return 0;
 }

@@ -7,14 +7,11 @@ class EntryData;
 class Repository
 {
 public:
-    Repository(std::vector<std::shared_ptr<EntryData>> entryData);
+    Repository(const std::vector<std::shared_ptr<EntryData> > &entryData);
+    void updateData(const std::vector<std::shared_ptr<EntryData> > &updatedData);
 
     std::vector<std::shared_ptr<EntryData>> entryData;
-
-    void updateData(std::vector<std::shared_ptr<EntryData>> updatedData);
 
     static std::filesystem::path getAppDataLocalPath();
     static std::filesystem::path getRepositoryFilePath();
 };
-
-

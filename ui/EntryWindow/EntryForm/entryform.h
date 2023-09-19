@@ -1,16 +1,19 @@
 #pragma once
 #include <QWidget>
+#include <memory>
+#include <QCompleter>
 
 namespace Ui {
 class EntryForm;
 }
 
+class AutoCompleter;
 class EntryForm : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit EntryForm(QWidget *parent = nullptr);
+    explicit EntryForm(QWidget *parent = nullptr, const QStringList &categoryWhitelist = {});
     ~EntryForm();
     void disableCancelEdit(bool disable = true);
     void operationSuccessfull(bool successfull);
@@ -30,8 +33,11 @@ private slots:
     void on_editButton_clicked();
     void on_deleteButton_clicked();
 
+    void on_categoryLineEdit_textChanged(const QString &arg1);
+
 private:
     Ui::EntryForm *ui;
+    std::unique_ptr<QCompleter> completer;
     static int instances;
     bool editPressedBefore = false;
     bool entrySaved = false;
@@ -41,6 +47,7 @@ private:
     void disableFields(bool disable = true);
     QString commaToDot(const QString &amount);
 
+    void setAutoCompletion(const QStringList &categoryWhitelist);
 };
 
 

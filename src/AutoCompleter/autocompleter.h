@@ -1,13 +1,17 @@
 #pragma once
 #include <QString>
+#include <QStringList>
 
-class EntryData;
 class AutoCompleter
 {
 public:
+    AutoCompleter(const QStringList &categoryWhiteList);
     QString getAutoCompletion(const QString &userInput);
 
 private:
-    AutoCompleter() = default;
+
+    QStringList categoryWhiteList;
+
+    bool contains(QString str1, QString str2);
 };
 

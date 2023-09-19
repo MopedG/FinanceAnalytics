@@ -3,6 +3,7 @@
 #include <QWidget>
 #include <memory>
 
+class AutoCompleter;
 class EntryController;
 class EntryForm;
 class EntryData;
@@ -40,6 +41,7 @@ private:
     Ui::addEntryWindow *ui;
     EntryForm *entryForm;
     std::unique_ptr<EntryController> controller;
+    QStringList categoryWhiteList;
 
     void setEntryFormAttributes();
     void connectEntryForm();
