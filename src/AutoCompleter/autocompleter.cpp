@@ -1,6 +1,7 @@
 #include "autocompleter.h"
 
-AutoCompleter::AutoCompleter()
+QString AutoCompleter::getAutoCompletion(const QString &userInput)
 {
 
 }
+

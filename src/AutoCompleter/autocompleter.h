@@ -1,11 +1,13 @@
-#ifndef AUTOCOMPLETER_H
-#define AUTOCOMPLETER_H
+#pragma once
+#include <QString>
 
-
+class EntryData;
 class AutoCompleter
 {
 public:
-    AutoCompleter();
+    QString getAutoCompletion(const QString &userInput);
+
+private:
+    AutoCompleter() = default;
 };
 
-#endif // AUTOCOMPLETER_H
