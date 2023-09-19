@@ -134,63 +134,63 @@ background-color: rgb(20, 20, 20);</string>
               <colorrole role="WindowText">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Button">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>236</red>
-                 <green>231</green>
-                 <blue>165</blue>
+                 <red>202</red>
+                 <green>218</green>
+                 <blue>224</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Text">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="ButtonText">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Base">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>236</red>
-                 <green>231</green>
-                 <blue>165</blue>
+                 <red>202</red>
+                 <green>218</green>
+                 <blue>224</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Window">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>236</red>
-                 <green>231</green>
-                 <blue>165</blue>
+                 <red>202</red>
+                 <green>218</green>
+                 <blue>224</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="PlaceholderText">
                <brush brushstyle="SolidPattern">
                 <color alpha="128">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
@@ -199,63 +199,63 @@ background-color: rgb(20, 20, 20);</string>
               <colorrole role="WindowText">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Button">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>236</red>
-                 <green>231</green>
-                 <blue>165</blue>
+                 <red>202</red>
+                 <green>218</green>
+                 <blue>224</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Text">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="ButtonText">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Base">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>236</red>
-                 <green>231</green>
-                 <blue>165</blue>
+                 <red>202</red>
+                 <green>218</green>
+                 <blue>224</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Window">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>236</red>
-                 <green>231</green>
-                 <blue>165</blue>
+                 <red>202</red>
+                 <green>218</green>
+                 <blue>224</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="PlaceholderText">
                <brush brushstyle="SolidPattern">
                 <color alpha="128">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
@@ -264,63 +264,63 @@ background-color: rgb(20, 20, 20);</string>
               <colorrole role="WindowText">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Button">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>236</red>
-                 <green>231</green>
-                 <blue>165</blue>
+                 <red>202</red>
+                 <green>218</green>
+                 <blue>224</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Text">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="ButtonText">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Base">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>236</red>
-                 <green>231</green>
-                 <blue>165</blue>
+                 <red>202</red>
+                 <green>218</green>
+                 <blue>224</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="Window">
                <brush brushstyle="SolidPattern">
                 <color alpha="255">
-                 <red>236</red>
-                 <green>231</green>
-                 <blue>165</blue>
+                 <red>202</red>
+                 <green>218</green>
+                 <blue>224</blue>
                 </color>
                </brush>
               </colorrole>
               <colorrole role="PlaceholderText">
                <brush brushstyle="SolidPattern">
                 <color alpha="128">
-                 <red>36</red>
-                 <green>36</green>
-                 <blue>36</blue>
+                 <red>40</red>
+                 <green>40</green>
+                 <blue>40</blue>
                 </color>
                </brush>
               </colorrole>
@@ -330,7 +330,7 @@ background-color: rgb(20, 20, 20);</string>
            <property name="font">
             <font>
              <family>Segoe UI</family>
-             <pointsize>20</pointsize>
+             <pointsize>24</pointsize>
              <italic>false</italic>
              <bold>true</bold>
             </font>
@@ -339,10 +339,10 @@ background-color: rgb(20, 20, 20);</string>
             <enum>Qt::ClickFocus</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(236, 231, 165);
+            <string notr="true">background-color: rgb(202, 218, 224);
 border-radius: 6px;
-color: rgb(36, 36, 36);
-font: 700 20pt &quot;Segoe UI&quot;;
+color: rgb(40,40,40);
+font: 700 24pt &quot;Segoe UI&quot;;
 qproperty-alignment: AlignCenter;</string>
            </property>
            <property name="placeholderText">
@@ -389,7 +389,7 @@ qproperty-alignment: AlignCenter;</string>
            <property name="font">
             <font>
              <family>Segoe UI</family>
-             <pointsize>20</pointsize>
+             <pointsize>24</pointsize>
              <italic>false</italic>
              <bold>true</bold>
             </font>
@@ -398,11 +398,11 @@ qproperty-alignment: AlignCenter;</string>
             <enum>Qt::ClickFocus</enum>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(236, 231, 165);
+            <string notr="true">background-color: rgb(202, 218, 224);
 border-radius: 6px;
 qproperty-alignment: AlignCenter;
-color: rgb(36, 36, 36);
-font: 700 20pt &quot;Segoe UI&quot;;</string>
+color: rgb(40,40,40);
+font: 700 24pt &quot;Segoe UI&quot;;</string>
            </property>
            <property name="placeholderText">
             <string>Jahr</string>

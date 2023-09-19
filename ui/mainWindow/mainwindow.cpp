@@ -30,10 +30,10 @@ void MainWindow::setInitialStyles()
     QGraphicsDropShadowEffect *statisticsButtonEffect = new QGraphicsDropShadowEffect( );
     headerEffect->setColor(QColor(125, 23, 227, 128));
     headerEffect->setOffset(6);
-    headerEffect->setBlurRadius(10);
-    newEntryButtonEffect->setColor(QColor(145, 70, 219,128));
-    newEntryButtonEffect->setOffset(4);
-    newEntryButtonEffect->setBlurRadius(8);
+    headerEffect->setBlurRadius(5);
+    newEntryButtonEffect->setColor(QColor(145, 70, 219,77));
+    newEntryButtonEffect->setOffset(5);
+    newEntryButtonEffect->setBlurRadius(5);
 
     statisticsButtonEffect->setColor(QColor(255,255,255,128));
     statisticsButtonEffect->setOffset(4);
