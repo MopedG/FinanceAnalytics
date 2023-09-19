@@ -3,14 +3,14 @@
 #include "EntryWindow/EntryController/entrycontroller.h"
 #include "Repository/Refactorer/refactorer.h"
 #include "Time/time.h"
-#include "validator/validator.h"
 #include "ui_addentrywindow.h"
 
 AddEntryWindow::AddEntryWindow(QWidget *parent, std::vector<std::shared_ptr<EntryData>> data) :
     QWidget(parent),
     ui(new Ui::addEntryWindow)
 {
-    initializeClasses(Refactorer::createWhiteList(data));
+    categoryWhiteList = Refactorer::createWhiteList(data);
+    initializeClasses(categoryWhiteList);
     setUpInitialConnections();
     ui->setupUi(this);
     ui->yearEdit->setText(QString::number(Time::getCurrentYear()));
@@ -25,7 +25,7 @@ AddEntryWindow::~AddEntryWindow()
 
 void AddEntryWindow::on_openEntryForm()
 {
-    entryForm = new EntryForm(this);
+    entryForm = new EntryForm(this, categoryWhiteList);
     setEntryFormAttributes();
     connectEntryForm();
 }

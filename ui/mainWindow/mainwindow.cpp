@@ -8,25 +8,39 @@
 #include <QScreen>
 #include <QGraphicsDropShadowEffect>
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setWindowTitle("Finance Tracker");
-    /*QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect( ); //Button Box-Shadow
-    effect->setColor(QColorConstants::White);
-    effect->setOffset(2);
-    effect->setBlurRadius(8);
-    ui->newEntryButton->setGraphicsEffect(effect);
-    ui->showStatisticsButton->setGraphicsEffect(effect);*/
+    setInitialStyles();
     init();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::setInitialStyles()
+{
+    setWindowTitle("Finance Tracker");
+    QGraphicsDropShadowEffect *headerEffect = new QGraphicsDropShadowEffect( ); //Button Box-Shadow
+    QGraphicsDropShadowEffect *newEntryButtonEffect = new QGraphicsDropShadowEffect( );
+    QGraphicsDropShadowEffect *statisticsButtonEffect = new QGraphicsDropShadowEffect( );
+    headerEffect->setColor(QColor(125, 23, 227, 128));
+    headerEffect->setOffset(6);
+    headerEffect->setBlurRadius(5);
+    newEntryButtonEffect->setColor(QColor(145, 70, 219,77));
+    newEntryButtonEffect->setOffset(5);
+    newEntryButtonEffect->setBlurRadius(5);
+
+    statisticsButtonEffect->setColor(QColor(255,255,255,128));
+    statisticsButtonEffect->setOffset(4);
+    statisticsButtonEffect->setBlurRadius(8);
+    ui->newEntryButton->setGraphicsEffect(newEntryButtonEffect);
+    ui->frame_4->setGraphicsEffect(headerEffect);
+    ui->showStatisticsButton->setGraphicsEffect(statisticsButtonEffect);
 }
 
 void MainWindow::on_newEntryButton_clicked()

@@ -1,11 +1,29 @@
 #include "refactorer.h"
 #include "Sorter/sorter.h"
+#include "Time/time.h"
 #include <map>
 #include <set>
 
-Refactorer::Refactorer()
+bool addIfNotInList(std::map<QString, std::shared_ptr<EntryData>> &addedEntryData, const std::shared_ptr<EntryData> &entry)
 {
+    bool addedToList = false;
+    const QString key = entry->getKey();
+    if (addedEntryData.find(key) == addedEntryData.end()) {
+        addedEntryData.insert(std::pair(key, entry));
+        addedToList = true;
+    }
+    return addedToList;
+}
 
+void addIfInList(std::map<QString, std::shared_ptr<EntryData>> &addedEntryData, const std::shared_ptr<EntryData> &entry)
+{
+    const QString key = entry->getKey();
+    std::shared_ptr<EntryData> existingEntry = addedEntryData.find(key)->second;
+
+    existingEntry->setAmount(existingEntry->getAmount() + entry->getAmount());
+    existingEntry->setDateChanged(Time::getCurrentDate());
+    if(existingEntry->getAmount() <= 0)
+        addedEntryData.erase(key);
 }
 
 std::vector<std::shared_ptr<EntryData>> Refactorer::combineEntriesByCategory(const std::vector<std::shared_ptr<EntryData>> &entryData)
@@ -14,27 +32,13 @@ std::vector<std::shared_ptr<EntryData>> Refactorer::combineEntriesByCategory(con
     std::map<QString, std::shared_ptr<EntryData>> addedEntryData;
 
         for (const auto& entry : entryData) {
-            const QString &category = entry->getCategory();
-            const QString &date = entry->getMonthYear().first + QString::number(entry->getMonthYear().second);
-            const QString &key = category+date;
-
-            if (addedEntryData.find(key) == addedEntryData.end()) {
-                addedEntryData.insert(std::pair(key, entry));
-            }
-            else
-            {
-                std::shared_ptr<EntryData> existingEntry = addedEntryData.find(key)->second;
-                existingEntry->setAmount(existingEntry->getAmount() + entry->getAmount());
-                if(existingEntry->getAmount() <= 0)
-                    addedEntryData.erase(key);
-
-            }
+            bool addedToList = addIfNotInList(addedEntryData, entry);
+            if(!addedToList)
+                addIfInList(addedEntryData, entry);
         }
-
         for (const auto& entry : addedEntryData) {
             refactoredEntryData.push_back(entry.second);
         }
-
 
         return refactoredEntryData;
 }

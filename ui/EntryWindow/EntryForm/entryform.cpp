@@ -1,21 +1,34 @@
 #include "entryform.h"
 #include "ui_entryform.h"
+#include <iostream>
 
 int EntryForm::instances = 0;
 
-EntryForm::EntryForm(QWidget *parent) :
+
+
+EntryForm::EntryForm(QWidget *parent, const QStringList &categoryWhitelist) :
     QWidget(parent),
     ui(new Ui::EntryForm)
 {
     ui->setupUi(this);
     instances++;
     id = instances;
+    setAutoCompletion(categoryWhitelist);
 }
 
 EntryForm::~EntryForm()
 {
     instances--;
     delete ui;
+}
+
+void EntryForm::setAutoCompletion(const QStringList &categoryWhitelist)
+{
+    completer = std::make_unique<QCompleter>(categoryWhitelist, this);
+    completer->setCaseSensitivity(Qt::CaseInsensitive);
+    completer->setCompletionMode(QCompleter::InlineCompletion);
+    completer->setMaxVisibleItems(2);
+    ui->categoryLineEdit->setCompleter(completer.get());
 }
 
 void EntryForm::disableCancelEdit(bool disable)
@@ -116,4 +129,3 @@ QString EntryForm::commaToDot(const QString &amount)
     else
         return amount;
 }
-

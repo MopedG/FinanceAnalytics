@@ -12,7 +12,6 @@ bool Datahandler::saveEntrysToFile(const std::map<int, std::shared_ptr<EntryData
         if(entry.second->getAmount() != 0)
             fetchedFromFile.emplace_back(entry.second);
     }
-    //#############################################################################################################
 
     fetchedFromFile = Refactorer::combineEntriesByCategory(fetchedFromFile);
 
