@@ -109,7 +109,7 @@ color: qlineargradient(spread:pad, x1:1, y1:0.011, x2:0, y2:0.960227, stop:0 rgb
 qproperty-alignment: AlignCenter;</string>
              </property>
              <property name="text">
-              <string>Finance Tracker 2.0</string>
+              <string>Finance Tracker 2.6</string>
              </property>
             </widget>
            </item>
