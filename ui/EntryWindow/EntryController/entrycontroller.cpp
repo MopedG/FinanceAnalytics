@@ -30,7 +30,10 @@ void EntryController::saveEntry(const QString &category, double amount, int id, 
         entryDatahandler->saveEntry(category, amount, id);
         emit entrySuccessfull(true, entryForm);
     }
-    emit entrySuccessfull(false, entryForm);
+    else
+    {
+        emit entrySuccessfull(false, entryForm);
+    }
 }
 
 void EntryController::editEntry(const QString &category, double amount, int id, EntryForm &entryForm)
